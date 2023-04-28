@@ -1,0 +1,64 @@
+/*colors used: https://www.schemecolor.com/green-ocean.php*/
+
+section, header, footer {
+    margin: auto;
+    width: 35%;
+}
+
+header, footer {
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #316764;
+}
+
+body {
+    background-color: #A7DDBC;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+label {
+    color: white;
+}
+
+button {
+    background-color: #609687;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+img {
+    border-radius: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+footer {
+    margin-top: 10px;
+    border: #316764 solid 2px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
