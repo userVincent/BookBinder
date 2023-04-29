@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <table>
+        <h1>Welcome, {{ user.email }}</h1>
+        <a href="{{ path('app_logout') }}">Logout</a>
+    </table>
+    <h2>All Books</h2>
+
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} by <b>{{ book.author }}</b></li>
+            <p>This book contains {{ book.pages }} pages</p>
+            <p>The ISBN of the book is {{ book.ISBN }}</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{#{% block body %}#}
+{#<style>#}
+{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+{#</style>#}
+
+{#<div class="example-wrapper">#}
+{#    <h1>Hello {{ controller_name }}! ✅</h1>#}
+
+{#    This friendly message is coming from:#}
+{#    <ul>#}
+{#        <li>Your controller at <code><a href="{{ 'C:/Users/Hassin/Desktop/WebTechBookBinder/bookbinder/Bookbinder/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>#}
+{#        <li>Your template at <code><a href="{{ 'C:/Users/Hassin/Desktop/WebTechBookBinder/bookbinder/Bookbinder/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>#}
+{#    </ul>#}
+{#</div>#}
+{#{% endblock %}#}
