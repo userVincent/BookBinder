@@ -28,6 +28,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setEmail($form->get('email')->getData());
+            $user->setAddress($form->get('address')->getData());
+            $user->setBirthday($form->get('birthday')->getData());
+            $user->setLastName($form->get('lastName')->getData());
+            $user->setFirstName($form->get('firstName')->getData());
 
             $entityManager->persist($user);
             $entityManager->flush();

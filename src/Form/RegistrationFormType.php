@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+//use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -43,6 +46,23 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('firstName', TextType::class, [
+                'label' => 'First Name',
+                'required' => true,
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => 'Last Name',
+                'required' => true,
+            ])
+            ->add('birthday', BirthdayType::class, [
+                'label' => 'Birthday',
+                'required' => true,
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Address',
+                'required' => true,
+            ])
+
         ;
     }
 
