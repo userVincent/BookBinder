@@ -1,10 +1,5 @@
 /*colors used: https://www.schemecolor.com/green-ocean.php*/
 
-section, header, footer {
-    margin: auto;
-    width: 35%;
-}
-
 header, footer {
     text-align: center;
 }
@@ -17,8 +12,10 @@ section {
 
 body {
     background-color: #A7DDBC;
-    padding: 30px;
     font-family: Arial, Helvetica, sans-serif;
+    width: 450px;
+    margin: auto;
+    padding: 20px;
 }
 
 input[type=text], input[type=password] {
@@ -61,4 +58,19 @@ footer {
     border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
+}
+input[type="date"]{
+    background-color: #609687;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-left: 50px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #609687;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
 }
