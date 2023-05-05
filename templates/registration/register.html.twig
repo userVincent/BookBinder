@@ -1,24 +1,40 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'base_login_register.html.twig' %}
 {% block title %}Register{% endblock %}
 
-{% block body %}
-    <h1>Register</h1>
+{% block h1 %}Sign in to BookBinder{% endblock %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.birthday) }}
-        {{ form_row(registrationForm.address) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+{% block main_footer %}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <form action="{{ path('app_login') }}" method="post">
+        <main>
+            <section>
+                {{ form_start(registrationForm) }}
+                <form action="/action_page.php">
+                    <div class="container">
 
+                        {{ form_row(registrationForm.firstName, { 'label': 'Firstname', 'attr': {'placeholder': 'Enter Firstname', 'required': true, 'id': 'firstname'} }) }}
+
+                        {{ form_row(registrationForm.lastName, { 'label': 'Lastname', 'attr': {'placeholder': 'Enter Lastname', 'required': true, 'id': 'lastname'} }) }}
+
+                        {{ form_row(registrationForm.email, { 'label': 'Email', 'attr': {'placeholder': 'Enter Email', 'required': true, 'id': 'email'} }) }}
+
+                        {{ form_row(registrationForm.address, { 'label': 'Address', 'attr': {'placeholder': 'Enter Address', 'required': true, 'id': 'address'} }) }}
+                        <br><br>
+                        {{ form_row(registrationForm.birthday, { 'label': 'Birthday:', 'attr': {'required': true, 'id': 'birthday'} }) }}
+
+                        {{ form_row(registrationForm.plainPassword, { 'label': 'Password', 'attr': {'placeholder': 'Enter Password', 'required': true, 'id': 'password'} }) }}
+                        {{ form_row(registrationForm.agreeTerms) }}
+
+
+                        <button type="submit" class="registration">Register</button>
+                    </div>
+                </form>
+                {{ form_end(registrationForm) }}
+            </section>
+        </main>
+    </form>
     <br><br>
-    <a href="{{ path('app_login') }}"><b>LOGIN</b></a>
+    <footer>
+        <p>Already have an account? <a href="{{ path('app_login') }}"><b>Sign in</b></a>.</p>
+    </footer>
 {% endblock %}

@@ -1,21 +1,83 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}BookBinder_Home{% endblock %}
 
-{% block body %}
-    <table>
-        <h1>Welcome, {{ user.email }}</h1>
-        <a href="{{ path('app_logout') }}">Logout</a>
-    </table>
-    <h2>All Books</h2>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('build/css/home.css') }}">
+    {% endblock %}
 
-    <ul>
-        {% for book in books %}
-            <li>{{ book.title }} by <b>{{ book.author }}</b></li>
-            <p>This book contains {{ book.pages }} pages</p>
-            <p>The ISBN of the book is {{ book.ISBN }}</p>
-        {% endfor %}
-    </ul>
+{% block main %}
+    <h2>Find Books and Book Lovers!!</h2>
+    <section>
+        <form action="/action_page.php">
+            <div class="wrapper">
+                <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                <input class="search" placeholder="Search Books" type="text" >
+            </div>
+        </form>
+    </section>
+
+    <section id="trending-books">
+        <h2>Trending Books</h2>
+        <div class="row">
+            <div class="book">
+                <img src="book1.jpg" alt="Book 1">
+                <h3>Book 1 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book2.jpg" alt="Book 2">
+                <h3>Book 2 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book3.jpg" alt="Book 3">
+                <h3>Book 3 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book4.jpg" alt="Book 4">
+                <h3>Book 4 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book5.jpg" alt="Book 5">
+                <h3>Book 5 Title</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="book">
+                <img src="book6.jpg" alt="Book 6">
+                <h3>Book 6 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book7.jpg" alt="Book 7">
+                <h3>Book 7 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book8.jpg" alt="Book 8">
+                <h3>Book 8 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book9.jpg" alt="Book 9">
+                <h3>Book 9 Title</h3>
+            </div>
+            <div class="book">
+                <img src="book10.jpg" alt="Book 10">
+                <h3>Book 10 Title</h3>
+            </div>
+        </div>
+
+    </section>
+
+
+    <aside>
+        <article>
+
+        </article>
+        <article>
+
+
+
+        </article>
+    </aside>
 {% endblock %}
 
 {#{% block body %}#}
