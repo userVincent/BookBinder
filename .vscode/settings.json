@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "mysql.studev.groept.be",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "a22web38",
+            "password": "GCGNZ0pc",
+            "database": "a22web38",
+            "username": "a22web38"
+        }
+    ]
+}
