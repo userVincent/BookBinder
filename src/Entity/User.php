@@ -210,12 +210,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->meetups;
     }
 
-    public function addMeetup(Meetup $meetup, User $person2, \DateTimeInterface $date, \DateTimeInterface $time): self
+    public function addMeetup(Meetup $meetup, User $person2, Library $library, \DateTimeInterface $date, \DateTimeInterface $time): self
     {
         if (!$this->meetups->contains($meetup)) {
             $this->meetups->add($meetup);
             $meetup->setPerson1($this);
             $meetup->setPerson2($person2);
+            $meetup->setLibrary($library);
             $meetup->setDate($date);
             $meetup->setTime($time);
         }
