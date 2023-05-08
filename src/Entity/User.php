@@ -243,10 +243,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($meetup->getPerson1() === $this) {
                 $meetup->getPerson2()->removeMeetupLocally($meetup);
+                $meetup->getLibrary()->removeMeetup($meetup);
                 $meetupRepository->remove($meetup, true);
                 
             }else if ($meetup->getPerson2() === $this) {
                 $meetup->getPerson1()->removeMeetupLocally($meetup);
+                $meetup->getLibrary()->removeMeetup($meetup);
                 $meetupRepository->remove($meetup, true);
             }
         }
