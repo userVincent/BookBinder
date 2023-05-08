@@ -31,10 +31,14 @@ class Library
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'libraries')]
     private Collection $members;
 
+    #[ORM\OneToMany(mappedBy: 'library', targetEntity: Meetup::class)]
+    private Collection $meetups;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
         $this->members = new ArrayCollection();
+        $this->meetups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,6 +126,36 @@ class Library
     public function removeMember(User $member): self
     {
         $this->members->removeElement($member);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Meetup>
+     */
+    public function getMeetups(): Collection
+    {
+        return $this->meetups;
+    }
+
+    public function addMeetup(Meetup $meetup): self
+    {
+        if (!$this->meetups->contains($meetup)) {
+            $this->meetups->add($meetup);
+            $meetup->setLibrary($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMeetup(Meetup $meetup): self
+    {
+        if ($this->meetups->removeElement($meetup)) {
+            // set the owning side to null (unless already changed)
+            if ($meetup->getLibrary() === $this) {
+                $meetup->setLibrary(null);
+            }
+        }
 
         return $this;
     }

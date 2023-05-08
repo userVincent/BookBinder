@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Repository\MeetupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -47,9 +48,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Library::class, mappedBy: 'members')]
     private Collection $libraries;
 
+    #[ORM\OneToMany(mappedBy: 'person', targetEntity: Meetup::class)]
+    private Collection $meetups;
+
     public function __construct()
     {
         $this->libraries = new ArrayCollection();
+        $this->meetups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,6 +197,58 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->libraries->removeElement($library)) {
             $library->removeMember($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Meetup>
+     */
+    public function getMeetups(): Collection
+    {
+        return $this->meetups;
+    }
+
+    public function addMeetup(Meetup $meetup, User $person2, \DateTimeInterface $date, \DateTimeInterface $time): self
+    {
+        if (!$this->meetups->contains($meetup)) {
+            $this->meetups->add($meetup);
+            $meetup->setPerson1($this);
+            $meetup->setPerson2($person2);
+            $meetup->setDate($date);
+            $meetup->setTime($time);
+        }
+
+        return $this;
+    }
+
+    public function removeMeetupLocally(Meetup $meetup): self
+    {
+        if ($this->meetups->removeElement($meetup)) {
+            // set the owning side to null (unless already changed)
+            if ($meetup->getPerson1() === $this) {
+                $meetup->setPerson1(null);
+            }else if ($meetup->getPerson2() === $this) {
+                $meetup->setPerson2(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function removeMeetup(Meetup $meetup, MeetupRepository $meetupRepository): self
+    {
+        if ($this->meetups->removeElement($meetup)) {
+            // set the owning side to null (unless already changed)
+            if ($meetup->getPerson1() === $this) {
+                $meetup->getPerson2()->removeMeetupLocally($meetup);
+                $meetupRepository->remove($meetup, true);
+                
+            }else if ($meetup->getPerson2() === $this) {
+                $meetup->getPerson1()->removeMeetupLocally($meetup);
+                $meetupRepository->remove($meetup, true);
+            }
         }
 
         return $this;
