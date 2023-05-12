@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Book Binder{% endblock %}</title>
+  <meta charset="UTF-8" />
+  <meta name="keywords" content="Book Binder" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <link href="home.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<header class="flex-container">
+  <div id="logo">
+    <img src="images/img.png" alt="db layout"/>
+  </div>
+  <div>
+    <h1>Book Binder</h1>
+    <h2 id="subtitle">Meet book lovers</h2>
+  </div>
+
+  <nav>
+    <ul style="list-style-type:none" id="hypertext" class="flex-container">
+      <li class="element"><a href="">Home</a></li>
+      <li class="element"><a href="">Trending</a></li>
+      <li class="element"><a href="">Meetup</a></li>
+      <li class="element"><a href="">Setting</a></li>
+    </ul>
+  </nav>
+  </div>
+</header>
+<main>
+  <h2>Find Books and Book Lovers!!</h2>
+  <section>
+    <form action="/action_page.php">
+      <div class="wrapper">
+        <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+        <input class="search" placeholder="Search Books" type="text" >
+      </div>
+    </form>
+  </section>
+
+  <section id="trending-books">
+    <h2>Trending Books</h2>
+    <div class="row">
+      <div class="book">
+        <img src="book1.jpg" alt="Book 1">
+        <h3>Book 1 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book2.jpg" alt="Book 2">
+        <h3>Book 2 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book3.jpg" alt="Book 3">
+        <h3>Book 3 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book4.jpg" alt="Book 4">
+        <h3>Book 4 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book5.jpg" alt="Book 5">
+        <h3>Book 5 Title</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="book">
+        <img src="book6.jpg" alt="Book 6">
+        <h3>Book 6 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book7.jpg" alt="Book 7">
+        <h3>Book 7 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book8.jpg" alt="Book 8">
+        <h3>Book 8 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book9.jpg" alt="Book 9">
+        <h3>Book 9 Title</h3>
+      </div>
+      <div class="book">
+        <img src="book10.jpg" alt="Book 10">
+        <h3>Book 10 Title</h3>
+      </div>
+    </div>
+
+  </section>
+
+
+  <aside>
+    <article>
+
+    </article>
+    <article>
+
+
+
+    </article>
+  </aside>
+</main>
+<footer>
+  <div class="footer-container">
+    <img src="images/img.png" alt="db layout"/>
+
+    <p>Copyright &copy; 2022 BookBinder.
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
