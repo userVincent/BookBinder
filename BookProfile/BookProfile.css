@@ -134,6 +134,7 @@ footer {
 .far, .fas {
     cursor: pointer;
     user-select: none;
+    margin: 15px;
 }
 
 .far:hover, .fas:hover {
@@ -222,6 +223,10 @@ button:hover {
 .bar-3 {width: 10%; height: 18px; background-color: #ff9800;}
 .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
 .bar-1 {width: 15%; height: 18px; background-color: #ff9800;}
+
+.ReviewForm {
+    display: none;
+}
 
 /* Styles for screen widths up to 900px */
 

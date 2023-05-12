@@ -170,14 +170,37 @@
                         </div>
                     </div>
 
-                    <button type="button" style="font-size: 15px"> <i class='fas fa-quote-left'></i> <b> Schrijf een review</b>  <i class='fas fa-quote-right'></i> </button>
+                    <button onclick="openForm()" type="button" style="font-size: 15px"> <i class='fas fa-quote-left'></i> <b> Schrijf een review</b>  <i class='fas fa-quote-right'></i> </button>
 
+                    <script>
+                        function openForm() {
+                            document.getElementById("inputReview").style.display = "block";
+                        }
+                    </script>
+                    <div class="reviewForm" id="inputReview">
+                        <form action="/action_page.php" class="form-container">
+                            <label for="overall-rating">Overall Rating:</label>
+                            <select id="overall-rating" name="overall-rating">
+                                <option value="5">5 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="2">2 stars</option>
+                                <option value="1">1 star</option>
+                            </select><br>
+
+                            <label for="review-text">Review Text:</label>
+                            <textarea id="review-text" name="review-text"></textarea><br>
+
+                            <input type="submit" value="Submit Review">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <i style="font-size: 40px" onclick="likeDislike(this)" class="far fa-heart"></i>
+        <i style="font-size: 50px" onclick="likeDislike(this)" class="far fa-heart"></i>
 
+        <!-- Does not work? -->
         <script>
             function likeDislike(x) {
                 x.classList.toggle("fas fa-heart");
