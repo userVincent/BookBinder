@@ -44,7 +44,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $Address = null;
-<<<<<<< HEAD
 
     #[ORM\ManyToMany(targetEntity: Library::class, mappedBy: 'members')]
     private Collection $libraries;
@@ -58,10 +57,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->meetups = new ArrayCollection();
     }
 
-=======
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
->>>>>>> aocheng_zhao
+
     public function getId(): ?int
     {
         return $this->id;
