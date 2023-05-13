@@ -19,3 +19,8 @@ controllers:
 app_logout:
     path: /login
     methods: GET
+
+app_search_books:
+    path: /search-books
+    controller: App\Controller\HomeController::searchBooks
+    methods: GET
