@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="Book Binder" />
+        <title>{% block title %}Book Binder{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700" rel="stylesheet">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        {% endblock %}
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-</head>
-<body>
-{% block body %}{% endblock %}
-</body>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header class="flex-container">
+            <div id="logo">
+                <img src="{{ asset('images/logo.jpg') }}" width = "80" alt="db layout"/>
+            </div>
+            <div>
+                <h1>Book Binder</h1>
+                <h2 id="subtitle">Meet book lovers</h2>
+            </div>
+
+            <nav>
+                <ul style="list-style-type:none" id="hypertext" class="flex-container">
+                    <li class="element"><a href="">Home</a></li>
+                    <li class="element"><a href="">Trending</a></li>
+                    <li class="element"><a href="">Meetup</a></li>
+                    <li class="element"><a href="">Setting</a></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <img src="{{ asset('images/logo.jpg') }}" width = "20" alt="db layout"/>
+
+                <p>Copyright &copy; 2022 BookBinder.
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
+                </p>
+            </div>
+        </footer>
+    </body>
 </html>
