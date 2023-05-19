@@ -1,0 +1,21 @@
+Index: config/routes.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>controllers:\r\n    resource:\r\n        path: ../src/Controller/\r\n        namespace: App\\Controller\r\n    type: attribute\r\n\r\n#register:\r\n#    path: /register\r\n#    controller: App\\Controller\\RegistrationController::register\r\n#\r\n#app_login:\r\n#    path: /login\r\n#    controller: App\\Controller\\LoginController::index\r\n#\r\n#app_book:\r\n#    path: /books\r\n#    controller:  App\\Controller\\BookController::index\r\n\r\napp_logout:\r\n    path: /login\r\n    methods: GET
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config/routes.yaml b/config/routes.yaml
+--- a/config/routes.yaml	
++++ b/config/routes.yaml	
+@@ -15,6 +15,10 @@
+ #app_book:
+ #    path: /books
+ #    controller:  App\Controller\BookController::index
++#
++#app_home:
++#    path: /home
++#    controller:  App\Controller\HomeController::index
+ 
+ app_logout:
+     path: /login
