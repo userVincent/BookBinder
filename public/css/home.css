@@ -24,6 +24,42 @@ header a{
     color: mintcream;
 }
 
+#profile_icon{
+    margin-top: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
 #subtitle{
     margin-top: -30px;
     margin-left: 50px;
@@ -42,6 +78,10 @@ header a{
     font-size: 25px;
 }
 
+.menu{
+    font-size: 15px;
+}
+
 section {
     padding: 20px;
     border-radius: 10px;
@@ -58,33 +98,50 @@ body {
 
 }
 
-.wrapper {
-    position: relative;
-    display: flex;
-    min-width: 70%;
 
+.search-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 
+.books-results{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    gap: .25rem;
+}
+
+.book{
+    border: 1px solid black;
+    background-color: white;
+    padding: .5rem;
+}
+
+.book > .title{
+    margin-bottom: .25rem;
+}
+
+.hide{
+    display:None;
+}
 
 .search {
-    border: 1px solid grey;
-    border-radius: 5px;
-    height: 50px;
-    width: 100%;
-    padding: 2px 23px 2px 30px;
-    outline: 0;
-    background-color: #f5f5f5;
+    flex: 1;
+    height: 40px; /* Adjust the height as desired */
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
 }
 
-
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 10px; /* adjust the right position to move the icon to the right place */
-    width: 20px;
+#search-button {
+    height: 40px; /* Adjust the height to match the search input */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 input[type=text], input[type=password] {
@@ -98,6 +155,10 @@ input[type=text], input[type=password] {
     font-size: 16px;
 }
 
+.book a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the default text color */
+}
 
 footer {
     margin-top: 10px;
@@ -165,8 +226,5 @@ img {
         width: 50px;
         position: center;
         }
-<<<<<<< HEAD:public/css/home.css
 
-=======
->>>>>>> aocheng_zhao:assets/styles/home.css
 }
