@@ -78,6 +78,7 @@ header a{
     font-size: 25px;
 }
 
+
 .menu{
     font-size: 15px;
 }
@@ -158,6 +159,20 @@ input[type=text], input[type=password] {
 .book a {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Use the default text color */
+}
+
+.favorite-button {
+    background-color: #ffcc00; /* Set the background color */
+    color: #ffffff; /* Set the text color */
+    border: none; /* Remove the border */
+    padding: 8px 16px; /* Add some padding */
+    border-radius: 4px; /* Add rounded corners */
+    font-weight: bold; /* Make the text bold */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.favorite-button:hover {
+    background-color: #ffdb4d; /* Change the background color on hover */
 }
 
 footer {

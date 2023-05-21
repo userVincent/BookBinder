@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2d9b2ab-975a-4911-ab8f-1503bd750fe2" name="Changes" comment="">
+    <list default="true" id="f2d9b2ab-975a-4911-ab8f-1503bd750fe2" name="Changes" comment="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="book-features" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -200,8 +197,24 @@
       <updated>1683981277641</updated>
       <workItem from="1683981280725" duration="1379000" />
       <workItem from="1683982679549" duration="3024000" />
-      <workItem from="1684493711287" duration="9488000" />
+      <workItem from="1684493711287" duration="14150000" />
+      <workItem from="1684681844946" duration="1937000" />
     </task>
+    <task id="LOCAL-00001" summary="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design.">
+      <created>1684503691014</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684503691014</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required.">
+      <created>1684504092512</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684504092512</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,5 +230,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design." />
+    <MESSAGE value="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required." />
   </component>
 </project>

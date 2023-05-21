@@ -54,6 +54,7 @@ function getBooks() {
                                 <p>Author: ${author1}</p>
                                 <p>Pages: ${pages1}</p>
                                 <p>Language: ${language1}</p>
+                                <button class="favorite-button" onclick="addToFavorites(${isbn1})">Favorite</button>
                             </div>
                         </div>
                         <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
@@ -67,6 +68,7 @@ function getBooks() {
                                 <p>Author: ${author2}</p>
                                 <p>Pages: ${pages2}</p>
                                 <p>Language: ${language2}</p>
+                                <button class="favorite-button" onclick="addToFavorites(${isbn2})">Favorite</button>
                             </div>
                         </div>
                     </div>
@@ -88,4 +90,51 @@ input.addEventListener('keyup', function(event) {
         getBooks();
     }
 });
+
+function addToFavorites(isbn) {
+    // Create an XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Prepare the data to be sent
+    const isbn_favorite = isbn;
+
+    // Convert the data to a JSON string
+    const jsonData = JSON.stringify(isbn_favorite);
+
+    fetch("/api/submit-data", {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body: jsonData,
+    })
+        .then(response => response.json())
+        .then(responseData => {
+            // Handle the response from the backend
+            console.log(responseData);
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error(error);
+        });
+
+    // Set up the request
+    xhr.open('POST', 'your_php_script.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Set up the callback function for when the request completes
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Request succeeded
+            console.log(xhr.responseText);
+            // Handle the response from the PHP script as needed
+        } else {
+            // Request failed
+            console.error('Request failed. Status:', xhr.status);
+        }
+    };
+
+    // Send the request with the JSON data
+    xhr.send(jsonData);
+}
 
