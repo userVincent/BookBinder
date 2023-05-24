@@ -51,18 +51,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'person', targetEntity: Meetup::class)]
     private Collection $meetups;
 
+    /**
+     * Many Users have Many Groups.
+     * @var Collection<Book>
+     */
+    #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'users')]
+    #[ORM\JoinTable(name: 'user_favorite_books')]
+    private Collection $favoriteBooks;
+
     public function __construct()
     {
         $this->libraries = new ArrayCollection();
         $this->meetups = new ArrayCollection();
-        $this->favorite = new ArrayCollection();
+        $this->favoriteBooks = new ArrayCollection();
     }
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserFavoriteBook::class)]
-    private Collection $favorite;
 
     public function getId(): ?int
     {
@@ -275,32 +281,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, UserFavoriteBook>
+     * @return Collection<Book>
      */
-    public function getFavorite(): Collection
+    public function getFavoriteBooks(): Collection
     {
-        return $this->favorite;
+        return $this->favoriteBooks;
     }
 
-    public function addFavorite(UserFavoriteBook $favorite): self
+    public function addFavoriteBook(Book $book): self
     {
-        if (!$this->favorite->contains($favorite)) {
-            $this->favorite->add($favorite);
-            $favorite->setUser($this);
+        if (!$this->favoriteBooks->contains($book)) {
+            $this->favoriteBooks[] = $book;
+            $book->addUser($this);
         }
 
         return $this;
     }
 
-    public function removeFavorite(UserFavoriteBook $favorite): self
+    public function removeFavoriteBook(Book $book): self
     {
-        if ($this->favorite->removeElement($favorite)) {
-            // set the owning side to null (unless already changed)
-            if ($favorite->getUser() === $this) {
-                $favorite->setUser(null);
-            }
+        if ($this->favoriteBooks->removeElement($book)) {
+            $book->removeUser($this);
         }
 
         return $this;
     }
+
 }

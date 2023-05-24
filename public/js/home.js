@@ -36,6 +36,7 @@ function getBooks() {
                 const language1 = book1.language ? book1.language : "Unknown";
                 const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
 
+
                 const title2 = book2.title;
                 const author2 = book2.authors ? book2.authors[0] : "Unknown";
                 const isbn2 = book2.industryIdentifiers ? book2.industryIdentifiers[0].identifier : "Not available";
@@ -70,20 +71,30 @@ function getBooks() {
                                 <p>Author: ${author2}</p>
                                 <p>Pages: ${pages2}</p>
                                 <p>Language: ${language2}</p>
-                                <button class="favorite-button" onclick="">Favorite</button>
+                                <button class="favorite-button" onclick="handleFavorite('${isbn2}', this)">Favorite</button>
                             </div>
                         </div>
                     </div>
                 `;
 
                 document.getElementById("output").innerHTML += booksHTML;
+
+                // Get the buttons for each book after they have been added to the DOM
+                const button1 = document.querySelectorAll('.favorite-button')[i / 2];
+                const button2 = document.querySelectorAll('.favorite-button')[i / 2 + 1];
+
+                // Check fav status for book 1
+                checkFavoriteStatus(isbn1, button1);
+
+                // Check fav status for book 2
+                checkFavoriteStatus(isbn2, button2);
             }
         });
 }
 
 function handleFavorite(bookId, buttonElement) {
     // Send HTTP POST request to your Symfony backend endpoint
-    fetch('favorite-book?bookId=${bookId}', {
+    fetch(`favorite-book/${bookId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -107,6 +118,31 @@ function handleFavorite(bookId, buttonElement) {
             // Handle any errors that occur during the request
         });
 }
+
+// Function to check the favorite status of a book
+function checkFavoriteStatus(bookId, buttonElement) {
+    fetch(`check-favorite-book/${bookId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Book already favorited') {
+                buttonElement.textContent = 'Unfavorite';
+            } else if (data.message === 'Book not favorited') {
+                buttonElement.textContent = 'Favorite';
+                // Add any additional styling or behavior changes as needed
+            } else {
+                // Handle other possible response messages or errors
+            }
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
+        });
+}
+
 
 // Get the input field and search button elements
 const input = document.getElementById('input');

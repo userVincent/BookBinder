@@ -22,13 +22,20 @@ class Book
     #[ORM\ManyToMany(targetEntity: Library::class, mappedBy: 'books')]
     private Collection $libraries;
 
-    #[ORM\OneToMany(mappedBy: 'books', targetEntity: UserFavoriteBook::class, cascade: ['persist', 'remove'])]
-    private Collection $userFavoriteBooks;
+    /**
+     * Many Groups have Many Users.
+     * @var Collection<int, User>
+     */
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteBooks')]
+    private Collection $users;
+
+
+
 
     public function __construct()
     {
         $this->libraries = new ArrayCollection();
-        $this->userFavoriteBooks = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -78,32 +85,30 @@ class Book
     }
 
     /**
-     * @return Collection<int, UserFavoriteBook>
+     * @return Collection<User>
      */
-    public function getUserFavoriteBooks(): Collection
+    public function getUsers(): Collection
     {
-        return $this->userFavoriteBooks;
+        return $this->users;
     }
 
-    public function addUserFavoriteBook(UserFavoriteBook $userFavoriteBook): self
+    public function addUser(User $user): self
     {
-        if (!$this->userFavoriteBooks->contains($userFavoriteBook)) {
-            $this->userFavoriteBooks[] = $userFavoriteBook;
-            $userFavoriteBook->setBook($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFavoriteBook($this);
         }
 
         return $this;
     }
 
-    public function removeUserFavoriteBook(UserFavoriteBook $userFavoriteBook): self
+    public function removeUser(User $user): self
     {
-        if ($this->userFavoriteBooks->removeElement($userFavoriteBook)) {
-            // set the owning side to null (unless already changed)
-            if ($userFavoriteBook->getBook() === $this) {
-                $userFavoriteBook->setBook(null);
-            }
+        if ($this->users->removeElement($user)) {
+            $user->removeFavoriteBook($this);
         }
 
         return $this;
     }
+
 }
