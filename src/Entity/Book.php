@@ -16,29 +16,19 @@ class Book
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $author = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $ISBN = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $pages = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $language = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?float $rating = null;
 
     #[ORM\ManyToMany(targetEntity: Library::class, mappedBy: 'books')]
     private Collection $libraries;
 
+    #[ORM\OneToMany(mappedBy: 'books', targetEntity: UserFavoriteBook::class, cascade: ['persist', 'remove'])]
+    private Collection $userFavoriteBooks;
+
     public function __construct()
     {
         $this->libraries = new ArrayCollection();
+        $this->userFavoriteBooks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,29 +36,6 @@ class Book
         return $this->id;
     }
 
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
 
     public function getISBN(): ?string
     {
@@ -82,41 +49,6 @@ class Book
         return $this;
     }
 
-    public function getPages(): ?int
-    {
-        return $this->pages;
-    }
-
-    public function setPages(?int $pages): self
-    {
-        $this->pages = $pages;
-
-        return $this;
-    }
-
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-
-    public function setLanguage(?string $language): self
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    public function getRating(): ?float
-    {
-        return $this->rating;
-    }
-
-    public function setRating(?float $rating): self
-    {
-        $this->rating = $rating;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Library>
@@ -140,6 +72,36 @@ class Book
     {
         if ($this->libraries->removeElement($library)) {
             $library->removeBook($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserFavoriteBook>
+     */
+    public function getUserFavoriteBooks(): Collection
+    {
+        return $this->userFavoriteBooks;
+    }
+
+    public function addUserFavoriteBook(UserFavoriteBook $userFavoriteBook): self
+    {
+        if (!$this->userFavoriteBooks->contains($userFavoriteBook)) {
+            $this->userFavoriteBooks[] = $userFavoriteBook;
+            $userFavoriteBook->setBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserFavoriteBook(UserFavoriteBook $userFavoriteBook): self
+    {
+        if ($this->userFavoriteBooks->removeElement($userFavoriteBook)) {
+            // set the owning side to null (unless already changed)
+            if ($userFavoriteBook->getBook() === $this) {
+                $userFavoriteBook->setBook(null);
+            }
         }
 
         return $this;

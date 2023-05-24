@@ -4,6 +4,7 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+
 #register:
 #    path: /register
 #    controller: App\Controller\RegistrationController::register
@@ -15,6 +16,11 @@ controllers:
 #app_book:
 #    path: /books
 #    controller:  App\Controller\BookController::index
+
+book_list:
+    path: /
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\HomeController::index
 
 app_logout:
     path: /login

@@ -55,10 +55,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->libraries = new ArrayCollection();
         $this->meetups = new ArrayCollection();
+        $this->favorite = new ArrayCollection();
     }
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserFavoriteBook::class)]
+    private Collection $favorite;
 
     public function getId(): ?int
     {
@@ -264,6 +268,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $meetup->getPerson1()->removeMeetupLocally($meetup);
                 $meetup->getLibrary()->removeMeetup($meetup);
                 $meetupRepository->remove($meetup, true);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserFavoriteBook>
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(UserFavoriteBook $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite->add($favorite);
+            $favorite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(UserFavoriteBook $favorite): self
+    {
+        if ($this->favorite->removeElement($favorite)) {
+            // set the owning side to null (unless already changed)
+            if ($favorite->getUser() === $this) {
+                $favorite->setUser(null);
             }
         }
 

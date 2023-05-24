@@ -18,6 +18,8 @@ window.onclick = function(event) {
     }
 }
 
+
+
 function getBooks() {
     document.getElementById('output').innerHTML = "";
     fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
@@ -54,6 +56,7 @@ function getBooks() {
                                 <p>Author: ${author1}</p>
                                 <p>Pages: ${pages1}</p>
                                 <p>Language: ${language1}</p>
+                                <button class="favorite-button" onclick="handleFavorite('${isbn1}', this)">Favorite</button>
                             </div>
                         </div>
                         <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
@@ -67,6 +70,7 @@ function getBooks() {
                                 <p>Author: ${author2}</p>
                                 <p>Pages: ${pages2}</p>
                                 <p>Language: ${language2}</p>
+                                <button class="favorite-button" onclick="">Favorite</button>
                             </div>
                         </div>
                     </div>
@@ -74,6 +78,33 @@ function getBooks() {
 
                 document.getElementById("output").innerHTML += booksHTML;
             }
+        });
+}
+
+function handleFavorite(bookId, buttonElement) {
+    // Send HTTP POST request to your Symfony backend endpoint
+    fetch('favorite-book?bookId=${bookId}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ bookId: bookId }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Check the response message and update the button accordingly
+            if (data.message === 'Book favorited successfully') {
+                buttonElement.textContent = 'Unfavorite';
+                // Add any additional styling or behavior changes as needed
+            } else if (data.message === 'Book unfavorited successfully') {
+                buttonElement.textContent = 'Favorite';
+                // Add any additional styling or behavior changes as needed
+            } else {
+                // Handle other possible response messages or errors
+            }
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
         });
 }
 
