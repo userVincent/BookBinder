@@ -11,63 +11,30 @@
 {% endblock %}
 
 {% block main %}
-
-    <h2>Find Books and Book Lovers!!</h2>
     <section>
-        <form  action="{{ path('app_search_books') }}" method="get">
-            <div class="wrapper">
-                <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
-                <input class="search" placeholder="Search Books" type="text" name="query">
-            </div>
-        </form>
+        <form  action="{{ path('app_search_books') }}" method="get"></form>
     </section>
 
     <section class="Book">
 
         <div>
             <img id="book_img" alt="Book cover">
+            <button id="favorite_button">Favorite!!</button>
         </div>
-
-        <script>
-            // Call the function when the page is loaded
-            window.addEventListener('DOMContentLoaded', function() {
-                var isbn = "{{ isbn }}";  // Replace with your ISBN
-
-                // Fetch the book image from Google Books API
-                fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Extract the image links from the API response
-                        var book = data.items[0].volumeInfo;
-                        var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
-                        // Modify the URL to increase the resolution
-                        imageLink = imageLink.replace('&edge=curl', '&printsec=frontcover&img=1&zoom=5');
-
-                        // Update the image source in the HTML
-                        document.getElementById('book_img').src = imageLink;
-                    })
-                    .catch(error => console.log(error));
-            });
-        </script>
-
 
 
         <div class="Information">
-            <h2>{{ title }}</h2>
-            <h3></h3>
+            <h2 id="book_title"></h2>
+            <h3 id="author"></h3>
 
             <h4>Genres</h4>
             <div class="Genres">
-                <p>Young Adult, Fiction</p>
+                <p id="genres">Young Adult, Fiction</p>
             </div>
 
             <div class="Description">
                 <h4>Description</h4>
-                <p>We are the Liars. We are beautiful, privileged and live a life of carefree luxury.
-                    We are cracked and broken. It is a story of love and romance. It is a tale of tragedy.
-                    Which are lies? Which is truth?...
-                </p>
+                <p id="description"></p>
             </div>
 
 
@@ -75,30 +42,27 @@
                 <div class="row">
                     <div class="Specifications">
                         <h5>ISBN</h5>
-                        <p>978-150110368</p>
+                        <p id="isbn">{{ isbn }}</p>
                     </div>
                     <div class="Specifications">
                         <h5>Print length</h5>
-                        <p>224 pages</p>
+                        <p id="pages"></p>
                     </div>
                     <div class="Specifications">
                         <h5>Publication date</h5>
-                        <p>2 August 2016</p>
+                        <p id="publication_date"></p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="Specifications">
                         <h5>Language</h5>
-                        <p>English</p>
+                        <p id="language"></p>
                     </div>
-                    <div class="Specifications">
-                        <h5>Dimensions</h5>
-                        <p>22 x 14 x 3.1 cm</p>
-                    </div>
+
                     <div class="Specifications">
                         <h5>Reading age</h5>
-                        <p>14-17 years</p>
+                        <p id="reading_age">14-17 years</p>
                     </div>
                 </div>
 
@@ -214,5 +178,47 @@
         </script>
 
     </section>
+
+
+    <script>
+        // Call the function when the page is loaded
+        window.addEventListener('DOMContentLoaded', function() {
+            var isbn = "{{ isbn }}";  // Replace with your ISBN
+
+            // Fetch the book image from Google Books API
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the image links from the API response
+                    const book = data.items[0].volumeInfo;
+                    const title = book.title;
+                    const author = book.authors ? book.authors[0] : "Unknown";
+                    const genres = book.categories ? book.categories.join(', ') : "Unknown";
+                    const description = book.description ? book.description : "No description available";
+                    const pages = book.pageCount ? book.pageCount : "Unknown";
+                    const publicationDate = book.publishedDate ? book.publishedDate : "Unknown";
+                    const language = book.language ? book.language : "Unknown";
+                    const readingAge = book.readingModes ? book.readingModes.ageGroup : "Unknown";
+
+                    var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+
+                    // Modify the URL to increase the resolution
+                    imageLink = imageLink.replace('&edge=curl', '&printsec=frontcover&img=1&zoom=5');
+
+                    // Update the image source in the HTML
+                    document.getElementById('book_img').src = imageLink;
+
+                    document.getElementById('book_title').textContent = title;
+                    document.getElementById('author').textContent = "Author: " + author;
+                    document.getElementById('genres').textContent =  genres;
+                    document.getElementById('description').textContent = description;
+                    document.getElementById('pages').textContent = pages;
+                    document.getElementById('publication_date').textContent = publicationDate;
+                    document.getElementById('language').textContent = language;
+                    document.getElementById('reading_age').textContent = readingAge;
+                })
+                .catch(error => console.log(error));
+        });
+    </script>
 
 {% endblock %}
