@@ -18,76 +18,144 @@ window.onclick = function(event) {
     }
 }
 
+let currentPage = 1;
+
+function loadMoreBooks() {
+    const resultsContainer = document.getElementById("output");
+    const scrollPosition = resultsContainer.scrollTop + resultsContainer.clientHeight;
+    const containerHeight = resultsContainer.scrollHeight;
+
+    if (scrollPosition >= containerHeight) {
+        currentPage++;
+        getBooks();
+    }
+}
+
+const container = document.getElementById('output');
 
 
-function getBooks() {
+function fetchFromAPI(searchString, maxResults = 40) {
+    const URL = "https://www.googleapis.com/books/v1/volumes?q="
+
+    const apiUrl = URL + searchString + "&maxResults=" + maxResults ;
+
+    return fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`API request failed with status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('An error occurred while fetching data from the API:', error);
+            throw error;
+        });
+}
+function getBooks(numBooks = 8) {
     document.getElementById('output').innerHTML = "";
-    fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
-        .then(response => response.json())
+    const maxResults = 8; // Number of additional results to fetch
+    fetchFromAPI(document.getElementById('input').value, numBooks)
         .then(data => {
-            for (var i = 0; i < 40; i += 2) {
+            for (var i = 0; i <numBooks; i += 4) {
                 const book1 = data.items[i].volumeInfo;
                 const book2 = data.items[i + 1].volumeInfo;
+                const book3 = data.items[i + 2].volumeInfo;
+                const book4 = data.items[i + 3].volumeInfo;
 
                 const title1 = book1.title;
                 const author1 = book1.authors ? book1.authors[0] : "Unknown";
                 const isbn1 = book1.industryIdentifiers ? book1.industryIdentifiers[0].identifier : "Not available";
-                const pages1 = book1.pageCount ? book1.pageCount : "Unknown";
-                const language1 = book1.language ? book1.language : "Unknown";
                 const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
 
                 const title2 = book2.title;
                 const author2 = book2.authors ? book2.authors[0] : "Unknown";
                 const isbn2 = book2.industryIdentifiers ? book2.industryIdentifiers[0].identifier : "Not available";
-                const pages2 = book2.pageCount ? book2.pageCount : "Unknown";
-                const language2 = book2.language ? book2.language : "Unknown";
                 const imageLinks2 = book2.imageLinks ? book2.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+
+                const title3 = book3.title;
+                const author3 = book3.authors ? book3.authors[0] : "Unknown";
+                const isbn3 = book3.industryIdentifiers ? book3.industryIdentifiers[0].identifier : "Not available";
+                const imageLinks3 = book3.imageLinks ? book3.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+
+                const title4 = book4.title;
+                const author4 = book4.authors ? book4.authors[0] : "Unknown";
+                const isbn4 = book4.industryIdentifiers ? book4.industryIdentifiers[0].identifier : "Not available";
+                const imageLinks4 = book4.imageLinks ? book4.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
 
                 var booksHTML = `
                     <div class="row">
-                        <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
-                        <a href="">
-                            <div class="book-image" style="flex: 0 0 30%; height: 200px; margin-right: 20px; border: 2px solid gray;">
-                                <img src="${imageLinks1}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
-                            </div>
-                        </a>
+                    <div class="grid-container">
+                        <section class="book_container">
+                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
+                            <a href="/book_profile/${encodeURIComponent(title1)}/${isbn1}">
+                                <div class="book-image" style="flex: 0 0 30%;">
+                                    <img src="${imageLinks1}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
+                                </div>
+                            </a>
                             <div class="book-info" style="flex: 1;">
-                                <a href=""><h3>Title: ${title1}</h3></a>
-                                <p>Author: ${author1}</p>
-                                <p>Pages: ${pages1}</p>
-                                <p>Language: ${language1}</p>
-                                <button class="favorite-button" onclick="handleFavorite('${isbn1}', this)">Favorite</button>
+                                <a href="/book_profile/${encodeURIComponent(title1)}/${isbn1}">
+                                <h3>${title1}</h3>
+                                </a>
+                                <p>${author1}</p>
                             </div>
                         </div>
-                        <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
-                        <a href="">
-                            <div class="book-image" style="flex: 0 0 30%; height: 200px; margin-right: 20px; border: 2px solid gray;">
-                                <img src="${imageLinks2}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
+                        </section>
+                        
+                        <section class="book_container">
+                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">  
+                                <a href="/book_profile/${encodeURIComponent(title2)}/${isbn2}">
+                                <div class="book-image" style="flex: 0 0 30%;">
+                                    <img src="${imageLinks2}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
+                                </div>
+                                </a>
+                                <div class="book-info" style="flex: 1;">
+                                    <a href="/book_profile/${encodeURIComponent(title2)}/${isbn2}">
+                                    <h3>${title2}</h3>
+                                    </a>
+                                    <p>${author2}</p>
+                                </div>
                             </div>
-                        </a>
-                            <div class="book-info" style="flex: 1;">
-                                <a href=""><h3>Title: ${title2}</h3></a>
-                                <p>Author: ${author2}</p>
-                                <p>Pages: ${pages2}</p>
-                                <p>Language: ${language2}</p>
-                                <button class="favorite-button" onclick="handleFavorite('${isbn2}', this)">Favorite</button>
+                        </section>
+                                
+                        <section class="book_container">
+                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
+                                <a href="/book_profile/${encodeURIComponent(title3)}/${isbn3}">
+                                    <div class="book-image" style="flex: 0 0 30%;">
+                                        <img src="${imageLinks3}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
+                                    </div>
+                                </a>
+                                <div class="book-info" style="flex: 1;">
+                                    <a href="/book_profile/${encodeURIComponent(title3)}/${isbn3}">
+                                        <h3>${title3}</h3>
+                                    </a>
+                                    <p>${author3}</p>
+                                </div>
                             </div>
-                        </div>
+                        </section>
+                        
+                        <section class="book_container">
+                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
+                                <a href="/book_profile/${encodeURIComponent(title4)}/${isbn4}">
+                                    <div class="book-image" style="flex: 0 0 30%;">
+                                        <img src="${imageLinks4}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
+                                    </div>
+                                </a>
+                                <div class="book-info" style="flex: 1;">
+                                    <a href="/book_profile/${encodeURIComponent(title4)}/${isbn4}">
+                                        <h3>${title4}</h3>
+                                    </a>
+                                    <p>${author4}</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                    </div>
                     </div>
                 `;
 
                 document.getElementById("output").innerHTML += booksHTML;
-
-                // Get the buttons for each book after they have been added to the DOM
-                const button1 = document.querySelectorAll('.favorite-button')[i / 2];
-                const button2 = document.querySelectorAll('.favorite-button')[i / 2 + 1];
-
-                // Check fav status for book 1
-                checkFavoriteStatus(isbn1, button1);
-
-                // Check fav status for book 2
-                checkFavoriteStatus(isbn2, button2);
+                // Attach the loadMoreBooks function to the scroll event of the results container
+                document.getElementById("output").addEventListener("scroll", loadMoreBooks);
             }
         });
 }
