@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class BookprofileController extends AbstractController
 {
     #[Route('/bookprofile', name: 'app_bookprofile')]
@@ -29,4 +30,20 @@ class BookprofileController extends AbstractController
             'books' => $books,
         ]);
     }
+
+    public function bookProfile(Request $request, $title, $isbn): Response
+    {
+
+        return $this->render('bookprofile/index.html.twig', [
+            'controller_name' => 'BookprofileController',
+            'title' => $title,
+
+            'isbn' => $isbn,
+
+
+        ]);
+    }
+
 }
+
+

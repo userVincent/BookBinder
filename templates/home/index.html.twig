@@ -11,17 +11,24 @@
 {% endblock %}
 
 {% block main %}
-    <h2>Find Books and Book Lovers!!</h2>
-
-    <div class="search-wrapper">
-        <input id="input" class="search" placeholder="Search here..." type="text" >
-        <button id="search-button" onclick="getBooks()">Search</button>
-    </div>
-    <div id="output">
 
 
-    </div>
+    <section id="upper_main">
+        <h2 id="catchphrase">Find Books and Book Lovers!!</h2>
 
+        <img id="top_image" src="{{ asset('images/top_image.png') }}" alt="Top Image">
+
+        <div class="search-wrapper">
+            <input id="input" class="search" placeholder="Search here..." type="text" >
+            <button id="search-button" onclick="getBooks()">Search</button>
+        </div>
+        <div id="output">
+
+        </div>
+    </section>
+
+
+    {#
     <section id="trending-books">
         <h2>Trending Books</h2>
         <div>
@@ -40,6 +47,8 @@
             {% endfor %}
         </div>
     </section>
+    #}
+
 
     <aside>
         <article>

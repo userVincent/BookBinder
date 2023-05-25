@@ -1,5 +1,5 @@
 #logo {
-    margin-top: 10px;
+    margin-top: -4px;
     margin-right: 20px;
 }
 
@@ -7,25 +7,58 @@ nav {
     margin-left: auto;
 }
 
-header{
-    margin-top: 3%;
-    background-color: #316764;
-    color: mintcream;
-    border-radius: 25px;
-    padding: 20px;
-    height: 15%;
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 255)), url('../images/img.png');
+    background-position: center top;
+    background-repeat: repeat;
+    background-size: 100% auto, cover;
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    color: black;
+    z-index: -1;
+}
 
+
+#upper_main {
+    position: relative;
+}
+
+#top_image {
+    width: 100%; /* Set the width to match the parent container */
+}
+
+#catchphrase {
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 70px;
+    font-size: 30px;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure the text is displayed above the image */
+    font-family: 'Playfair', serif;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+}
+
+
+header {
+    margin-top: 3%;
+    color: black;
+    padding: 20px;
+    height: 8%;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
 }
 
 header a{
     text-decoration: none;
-    color: mintcream;
+    color: black;
 }
 
 #profile_icon{
-    margin-top: 20px;
+    margin-top: auto;
 }
 
 .dropdown {
@@ -59,6 +92,9 @@ header a{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+#title{
+    margin-top: 10px
+}
 
 #subtitle{
     margin-top: -30px;
@@ -73,9 +109,10 @@ header a{
 
 .element{
     margin-left: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
     font-size: 25px;
+    color: black;
 }
 
 
@@ -90,14 +127,6 @@ section {
 }
 
 
-body {
-    background-color: #A7DDBC;
-    color: #5C4033;
-    width: 80%;
-    margin: auto;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
 
 
 .search-wrapper {
@@ -112,14 +141,59 @@ body {
     gap: .25rem;
 }
 
-.book{
-    border: 1px solid black;
-    background-color: white;
-    padding: .5rem;
+.row {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
+
 }
 
-.book > .title{
-    margin-bottom: .25rem;
+.grid-container {
+    margin-top: 50px;
+    margin-left: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 25px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.book-image {
+    width: 150px;
+    height: 100%;
+    border: 2px solid gray;
+    background-color: darkgray;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.7); /* Shadow around the book image */
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.book-info {
+    margin-top: 10px;
+    width: 250%;
+
+}
+
+.book-info a {
+    color: black;
+    text-decoration: none;
+}
+
+.book-info h3 {
+    margin: 0;
+}
+
+.book-info p {
+    margin: 0;
 }
 
 .hide{
@@ -161,26 +235,17 @@ input[type=text], input[type=password] {
     color: inherit; /* Use the default text color */
 }
 
-.favorite-button {
-    background-color: #ffcc00; /* Set the background color */
-    color: #ffffff; /* Set the text color */
-    border: none; /* Remove the border */
-    padding: 8px 16px; /* Add some padding */
-    border-radius: 4px; /* Add rounded corners */
-    font-weight: bold; /* Make the text bold */
-    cursor: pointer; /* Show pointer cursor on hover */
-}
-
-.favorite-button:hover {
-    background-color: #ffdb4d; /* Change the background color on hover */
-}
-
 footer {
     margin-top: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 30px 20px;
-    background-color: #316764;
     color: white;
+
+    /* Remove box shadow */
+    box-shadow: none;
+
+    /* Add transparency to the background */
+    background-color: #ADD8E6; /* Light blue */
 }
 
 
@@ -190,7 +255,7 @@ footer {
     align-items: center;
 }
 
-img {
+#profile_img {
     width: 50px;
     border-radius: 10px;
 }

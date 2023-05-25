@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="{{ asset('css/bookprofile.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
 {% block main %}
+
     <h2>Find Books and Book Lovers!!</h2>
     <section>
         <form  action="{{ path('app_search_books') }}" method="get">
@@ -20,11 +25,37 @@
     <section class="Book">
 
         <div>
-            <img src="{{ asset('images/We_were_liars.png') }}" alt="Book cover">
+            <img id="book_img" alt="Book cover">
         </div>
+
+        <script>
+            // Call the function when the page is loaded
+            window.addEventListener('DOMContentLoaded', function() {
+                var isbn = "{{ isbn }}";  // Replace with your ISBN
+
+                // Fetch the book image from Google Books API
+                fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Extract the image links from the API response
+                        var book = data.items[0].volumeInfo;
+                        var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+
+                        // Modify the URL to increase the resolution
+                        imageLink = imageLink.replace('&edge=curl', '&printsec=frontcover&img=1&zoom=5');
+
+                        // Update the image source in the HTML
+                        document.getElementById('book_img').src = imageLink;
+                    })
+                    .catch(error => console.log(error));
+            });
+        </script>
+
+
+
         <div class="Information">
-            <h2>We were liars</h2>
-            <h3>E. Lockhart</h3>
+            <h2>{{ title }}</h2>
+            <h3></h3>
 
             <h4>Genres</h4>
             <div class="Genres">
