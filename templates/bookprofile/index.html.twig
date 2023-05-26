@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
 
-{% block javascripts %}
-    <script src="{{ asset('js/home.js') }}"></script>
-{% endblock %}
-
 {% block main %}
     <section>
         <form  action="{{ path('app_search_books') }}" method="get"></form>

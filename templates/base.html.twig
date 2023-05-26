@@ -35,7 +35,7 @@
             <ul style="list-style-type:none" id="hypertext" class="flex-container">
                 <li class="element"><a href="{{ path('app_home') }}">Home</a></li>
                 <li class="element"><a href="">Favorite</a></li>
-                <li class="element"><a href="">Meetup</a></li>
+                <li class="element"><a href="{{ path('app_meetup') }}">Meetup</a></li>
                 <li class="element" id="profile_icon">
                     <a href="#">
                         <img id="profile_img" onclick="toggleMenu()" class="dropbtn" src="{{ asset('images/profile_icon.png') }}" alt="db layout">
@@ -54,7 +54,6 @@
     </header>
 
         <main>
-            {% block search %}{% endblock %}
             {% block main %}{% endblock %}
         </main>
 
