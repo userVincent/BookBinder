@@ -25,16 +25,16 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/search-books', name: 'app_search_books')]
-    public function searchBooks(Request $request, BookRepository $bookRepository): Response
-    {
-        $query = $request->query->get('query');
-        $books = $bookRepository->searchBooks($query);
-
-        //dd($books);
-
-        return $this->render('book/index.html.twig', [
-            'books' => $books,
-        ]);
-    }
+//    #[Route('/search-books', name: 'app_search_books')]
+//    public function searchBooks(Request $request, BookRepository $bookRepository): Response
+//    {
+//        $query = $request->query->get('query');
+//        $books = $bookRepository->searchBooks($query);
+//
+//        //dd($books);
+//
+//        return $this->render('book/index.html.twig', [
+//            'books' => $books,
+//        ]);
+//    }
 }

@@ -22,24 +22,6 @@
 
     </div>
 
-    <section id="trending-books">
-        <h2>Trending Books</h2>
-        <div>
-            {% for book in trending_books %}
-                <div class="book" style="display: flex; width: 100%; margin-bottom: 20px;">
-                    <div class="placeholder-image" style="flex: 0 0 30%; height: 200px; background-color: gray; margin-right: 20px;"></div>
-                    <div class="book-info" style="flex: 1;">
-                        <h3>Title: {{ book.title }}</h3>
-                        <p>Author: {{ book.author }}</p>
-                        <p>ISBN: {{ book.ISBN }}</p>
-                        <p>Pages: {{ book.pages }}</p>
-                        <p>Language: {{ book.language }}</p>
-                        <p>Rating: {% if book.rating %}{{ book.rating }}{% else %}N/A{% endif %}</p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </section>
 
     <aside>
         <article>
