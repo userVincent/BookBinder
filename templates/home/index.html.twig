@@ -11,16 +11,43 @@
 {% endblock %}
 
 {% block main %}
-    <h2>Find Books and Book Lovers!!</h2>
-
-    <div class="search-wrapper">
-        <input id="input" class="search" placeholder="Search here..." type="text" >
-        <button id="search-button" onclick="getBooks()">Search</button>
-    </div>
-    <div id="output">
 
 
-    </div>
+    <section id="upper_main">
+        <h2 id="catchphrase">Find Books and Book Lovers!!</h2>
+
+        <img id="top_image" src="{{ asset('images/top_image.png') }}" alt="Top Image">
+
+        <div class="search-wrapper">
+            <input id="input" class="search" placeholder="Search here..." type="text" >
+            <button id="search-button" onclick="getBooks()">Search</button>
+        </div>
+        <div id="output">
+
+        </div>
+    </section>
+
+
+    {#
+    <section id="trending-books">
+        <h2>Trending Books</h2>
+        <div>
+            {% for book in trending_books %}
+                <div class="book" style="display: flex; width: 100%; margin-bottom: 20px;">
+                    <div class="placeholder-image" style="flex: 0 0 30%; height: 200px; background-color: gray; margin-right: 20px;"></div>
+                    <div class="book-info" style="flex: 1;">
+                        <h3>Title: {{ book.title }}</h3>
+                        <p>Author: {{ book.author }}</p>
+                        <p>ISBN: {{ book.ISBN }}</p>
+                        <p>Pages: {{ book.pages }}</p>
+                        <p>Language: {{ book.language }}</p>
+                        <p>Rating: {% if book.rating %}{{ book.rating }}{% else %}N/A{% endif %}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    #}
 
 
     <aside>
