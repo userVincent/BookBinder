@@ -9,13 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BookController extends AbstractController
 {
-    #[Route('/book', name: 'app_book')]
-    public function index(BookRepository $bookRepository): Response
-    {
-        $books = $bookRepository->findAll();
-        return $this->render('book/index.html.twig', [
-            'controller_name' => 'BookController',
-            'books' => $books,
-        ]);
-    }
+//    #[Route('/book', name: 'app_book')]
+//    public function index(BookRepository $bookRepository): Response
+//    {
+////        $books = $bookRepository->findAll();
+////        return $this->render('book/index.html.twig', [
+////            'controller_name' => 'BookController',
+////            'books' => $books,
+////        ]);
+//    }
 }

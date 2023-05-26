@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="Bookprofile">
-      <change afterPath="$PROJECT_DIR$/public/css/meetup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/MeetupController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/meetup/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bookBinder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bookBinder.iml" afterDir="false" />
+    <list default="true" id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="commit before pulling from shusaku_segawa branch">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_21_2023_6_03_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_21_2023_6_03_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_21_2023_6_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_21_2023_6_16_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bookprofile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bookprofile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookprofileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookprofileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bookprofile/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookprofile/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,24 +18,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
-  </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="login_register" />
+        <entry key="$PROJECT_DIR$" value="book-features" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -166,94 +158,98 @@
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
-      <path value="$PROJECT_DIR$/../../../../../../../../Program Files/php-8.2.5-nts-Win32-vs16-x64" />
     </include_path>
   </component>
-  <component name="ProjectId" id="2PgsYxBUZ8GxnMROpTZxPXTdQKd" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2PjrLFUh7AC0HbUlWWTu7CYV2wN" />
   <component name="ProjectViewState">
-    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/bookprofile" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Tomas\OneDrive\Documenten\3de BAC\Semester_2\Software_Engineering_and_Web_Technology\a22web38\templates\bookprofile" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Tomas\OneDrive\Documenten\3de BAC\Semester_2\Software_Engineering_and_Web_Technology\a22web38\public\images" />
-      <recent name="C:\Users\Tomas\OneDrive\Documenten\3de BAC\Semester_2\Software_Engineering_and_Web_Technology\a22web38\public\css" />
-    </key>
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/segas/IdeaProjects/a22web38/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager">
-    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" />
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Bookbinder" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Bookbinder" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="webserver" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8080">
       <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="" />
-      <created>1683890111222</created>
+      <changelist id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging." />
+      <created>1683981277641</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1683890111222</updated>
-      <workItem from="1683890113574" duration="3344000" />
-      <workItem from="1684495984680" duration="195000" />
-      <workItem from="1684496898681" duration="1762000" />
-      <workItem from="1684499284943" duration="554000" />
-      <workItem from="1684499901473" duration="1715000" />
-      <workItem from="1684501781303" duration="6360000" />
-      <workItem from="1685007840825" duration="296000" />
-      <workItem from="1685008411013" duration="15575000" />
-      <workItem from="1685046395852" duration="986000" />
-      <workItem from="1685049746618" duration="1427000" />
-      <workItem from="1685097401249" duration="1219000" />
-      <workItem from="1685098685414" duration="37000" />
-      <workItem from="1685098922602" duration="1601000" />
+      <updated>1683981277641</updated>
+      <workItem from="1683981280725" duration="1379000" />
+      <workItem from="1683982679549" duration="3024000" />
+      <workItem from="1684493711287" duration="14150000" />
+      <workItem from="1684681844946" duration="1937000" />
+      <workItem from="1684686289784" duration="5199000" />
+      <workItem from="1684915388295" duration="42374000" />
+      <workItem from="1685009438327" duration="13106000" />
+      <workItem from="1685095924305" duration="2617000" />
     </task>
-    <task id="LOCAL-00001" summary="fixing init">
-      <created>1684502369339</created>
+    <task id="LOCAL-00001" summary="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design.">
+      <created>1684503691014</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1684502369339</updated>
+      <updated>1684503691014</updated>
     </task>
-    <task id="LOCAL-00002" summary="Bookprofile">
-      <created>1684506941073</created>
+    <task id="LOCAL-00002" summary="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required.">
+      <created>1684504092512</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1684506941073</updated>
+      <updated>1684504092512</updated>
     </task>
-    <task id="LOCAL-00003" summary="Bookprofile">
-      <created>1685009074249</created>
+    <task id="LOCAL-00003" summary="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging.">
+      <created>1684685914099</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1685009074249</updated>
+      <updated>1684685914099</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Home page improved design.&#10;4 books in each row with a line break.&#10;Color contrast readjusted.&#10;Image is added as a design.">
+      <created>1685019639438</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685019639438</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered.">
+      <created>1685022906187</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685022906187</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,16 +265,14 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixing init" />
-    <MESSAGE value="Bookprofile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bookprofile" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design." />
+    <MESSAGE value="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required." />
+    <MESSAGE value="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging." />
+    <MESSAGE value="connected the book search function with controler.&#10;&#10;It passes down the book information to book profile twig, when specific book is clicked. &#10;&#10;The home screen design is adjusted to use space better, also with better color contrast" />
+    <MESSAGE value="Home page improved design.&#10;4 books in each row with a line break.&#10;Color contrast readjusted.&#10;Image is added as a design." />
+    <MESSAGE value="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered." />
+    <option name="LAST_COMMIT_MESSAGE" value="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered." />
   </component>
 </project>

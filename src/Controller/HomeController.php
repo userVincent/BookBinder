@@ -13,28 +13,28 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(BookRepository $bookRepository): Response
     {
-        $books = $bookRepository->findBy([], null, 10);
+        //$books = $bookRepository->findBy([], null, 10);
         $user = $this->getUser();
 
         //dd($books);
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'trending_books' => $books,
+            //'trending_books' => $books,
             'user' => $user,
         ]);
     }
 
-    #[Route('/search-books', name: 'app_search_books')]
-    public function searchBooks(Request $request, BookRepository $bookRepository): Response
-    {
-        $query = $request->query->get('query');
-        $books = $bookRepository->searchBooks($query);
-
-        //dd($books);
-
-        return $this->render('book/index.html.twig', [
-            'books' => $books,
-        ]);
-    }
+//    #[Route('/search-books', name: 'app_search_books')]
+//    public function searchBooks(Request $request, BookRepository $bookRepository): Response
+//    {
+//        $query = $request->query->get('query');
+//        $books = $bookRepository->searchBooks($query);
+//
+//        //dd($books);
+//
+//        return $this->render('book/index.html.twig', [
+//            'books' => $books,
+//        ]);
+//    }
 }
