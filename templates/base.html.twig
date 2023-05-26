@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> {% block head %}
         <meta charset="UTF-8">
         <meta name="keywords" content="Book Binder" />
         <title>{% block title %}Book Binder{% endblock %}</title>
@@ -14,8 +14,8 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-    </head>
-    <body>
+    {% endblock %}</head>
+    <body> {% block body %}
         <header class="flex-container">
             <div id="logo">
                 <img src="{{ asset('images/logo.jpg') }}" width = "80" alt="db layout"/>
@@ -37,6 +37,7 @@
         </header>
 
         <main>
+            {% block search %}{% endblock %}
             {% block main %}{% endblock %}
         </main>
 
@@ -49,8 +50,5 @@
                 </p>
             </div>
         </footer>
-    </body>
-<body>
-{% block body %}{% endblock %}
-</body>
+    {% endblock %}</body>
 </html>

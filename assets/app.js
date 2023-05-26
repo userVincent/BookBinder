@@ -9,6 +9,8 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/login_register.css';
 import './styles/home.css';
+import './styles/bookprofile.css';
+import './styles/meetup.css';
 
 // start the Stimulus application
 import './bootstrap';

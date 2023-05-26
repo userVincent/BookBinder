@@ -115,8 +115,8 @@ footer {
 }
 
 img {
-    width: 50px;
     border-radius: 10px;
+    position: center;
 }
 
 #trending-books {
@@ -163,10 +163,5 @@ img {
 
     #logo {
         align-items: center;
-    }
-
-    img {
-        width: 50px;
-        position: center;
     }
 }
