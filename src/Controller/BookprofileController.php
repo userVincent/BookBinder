@@ -37,7 +37,6 @@ class BookprofileController extends AbstractController
         return $this->render('bookprofile/index.html.twig', [
             'controller_name' => 'BookprofileController',
             'title' => $title,
-
             'isbn' => $isbn,
 
 
