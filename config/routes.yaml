@@ -35,3 +35,8 @@ book_profile:
     path: /book_profile/{title}/{isbn}
     controller: App\Controller\BookprofileController::bookProfile
     methods: GET
+#
+#app_favorite-book:
+#    path: '/favorite-book/{bookId}'
+#    controller: 'App\Controller\HomeController::favoriteAction'
+#    methods: ['POST']

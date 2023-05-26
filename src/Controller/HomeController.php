@@ -42,7 +42,7 @@ class HomeController extends AbstractController
 //    }
 
     //To add a book to favorites or to remove it
-    #[Route('/favorite-book/{bookId}', name: 'app_favorite-book')]
+    #[Route('/favorite-book/{bookId}', name: 'app_favorite-book', methods: ['POST'])]
     public function favoriteAction(String $bookId, EntityManagerInterface $entityManager): JsonResponse
     {
         // Retrieve the current user from the session or authentication context

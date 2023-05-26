@@ -19,7 +19,7 @@
 
         <div>
             <img id="book_img" alt="Book cover">
-            <button id="favorite_button">Favorite!!</button>
+            <button id="favorite_button" onclick="handleFavorite('{{ isbn }}', this)">Favorite!!</button>
         </div>
 
 
@@ -219,6 +219,34 @@
                 })
                 .catch(error => console.log(error));
         });
+
+        function handleFavorite(bookId, buttonElement) {
+            // Send HTTP POST request to your Symfony backend endpoint
+            fetch(`/favorite-book/${bookId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ bookId: bookId }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Check the response message and update the button accordingly
+                    if (data.message === 'Book favorited successfully') {
+                        buttonElement.textContent = 'Unfavorite';
+                        // Add any additional styling or behavior changes as needed
+                    } else if (data.message === 'Book unfavorited successfully') {
+                        buttonElement.textContent = 'Favorite';
+                        // Add any additional styling or behavior changes as needed
+                    } else {
+                        // Handle other possible response messages or errors
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the request
+                });
+        }
+
     </script>
 
 {% endblock %}

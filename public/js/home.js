@@ -17,7 +17,6 @@ window.onclick = function(event) {
         }
     }
 }
-
 function getBooks() {
     document.getElementById('output').innerHTML = "";
     fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
@@ -26,6 +25,8 @@ function getBooks() {
             for (var i = 0; i <20; i += 4) {
                 const book1 = data.items[i].volumeInfo;
                 const book2 = data.items[i + 1].volumeInfo;
+                const book3 = data.items[i + 2].volumeInfo;
+                const book4 = data.items[i + 3].volumeInfo;
 
                 const title1 = book1.title;
                 const author1 = book1.authors ? book1.authors[0] : "Unknown";
@@ -115,42 +116,14 @@ function getBooks() {
                         </section>
                         
                     </div>
-                    
+                    </div>
                 `;
 
                 document.getElementById("output").innerHTML += booksHTML;
-                // Attach the loadMoreBooks function to the scroll event of the results container
-                document.getElementById("output").addEventListener("scroll", loadMoreBooks);
             }
         });
 }
 
-function handleFavorite(bookId, buttonElement) {
-    // Send HTTP POST request to your Symfony backend endpoint
-    fetch(`favorite-book/${bookId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ bookId: bookId }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Check the response message and update the button accordingly
-            if (data.message === 'Book favorited successfully') {
-                buttonElement.textContent = 'Unfavorite';
-                // Add any additional styling or behavior changes as needed
-            } else if (data.message === 'Book unfavorited successfully') {
-                buttonElement.textContent = 'Favorite';
-                // Add any additional styling or behavior changes as needed
-            } else {
-                // Handle other possible response messages or errors
-            }
-        })
-        .catch(error => {
-            // Handle any errors that occur during the request
-        });
-}
 
 // Function to check the favorite status of a book
 function checkFavoriteStatus(bookId, buttonElement) {
