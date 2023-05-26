@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\integration;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -11,73 +10,39 @@ class PageRouteTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/home');
-        // $this->assertTrue($client->getResponse()->isSuccessful());
-        // Or with the WebTestCase helper method :
+
         $this->assertResponseIsSuccessful();
-
-
-        // $this->assertTrue(
-        //     str_contains(
-        //         $crawler->filter('section > h2')->innerText(),
-        //         'Welcome to the CouBooks website'
-        //     )
-        // );
-        // Or with the WebTestCase helper method :
-        $this->assertSelectorTextContains('section > h2', 'Welcome to the CouBooks website');
+        $this->assertSelectorTextContains('section > h2', 'Trending Books');
+        $this->assertSelectorTextContains('main > h2', 'Find Books and Book Lovers!!');
     }
 
-    public function testRouteAbout(): void
+    public function testRouteLogin(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/about');
-        $this->assertResponseIsSuccessful();
+        $crawler = $client->request('GET', '/login');
 
-        $this->assertSelectorTextContains('section > h2', 'About this website...');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('form >main>section>div>label', 'Email');
     }
 
-    public function testRouteCourses(): void
+    public function testRouteRegister(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/courses');
+        $crawler = $client->request('GET', '/register');
+
         $this->assertResponseIsSuccessful();
-
-        $bookItems = $crawler->filter('li.bookItem');
-        $this->assertEquals(11, $bookItems->count());
-
-        $this->assertEquals(
-            "Design with Operational Amplifiers and Analog Integrated Circuits",
-            $bookItems->last()->innerText()
-        );
+        $this->assertSelectorTextContains('form', 'Email');
     }
 
-    public function testRouteFeedback(): void
+    public function testRouteBook(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/feedback');
+        $crawler = $client->request('GET', '/book');
+
         $this->assertResponseIsSuccessful();
-
-        $this->assertSelectorTextContains('section > h3', 'add feedback...');
-
-        // fill out and submit a form
-        $form = $crawler->selectButton('Submit Feedback')->form();
-        $form['form[author]'] = 'Koen';
-        $form['form[text]'] = "Demo";
-        $client->submit($form);
-        $this->assertResponseRedirects('/');
-        $crawler = $client->followRedirect();
-
-        // check that the new feedback is present on the main page
-        $lastFeedback = $crawler->filter('aside');
-        $this->assertStringContainsString("Demo (Koen)", $lastFeedback->text());
+        $this->assertSelectorTextContains('main>h1', 'All Books');
     }
 
-    public function testRouteReservation(): void
-    {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/reservation');
-        $this->assertResponseIsSuccessful();
 
-        $this->assertSelectorTextContains('section > h3', 'Book reservation');
-    }
 
 }
