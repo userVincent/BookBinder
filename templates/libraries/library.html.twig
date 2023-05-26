@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ library.name }}{% endblock %}
+
+{% block main %}
+<h1>{{ library.name }}</h1>
+<p>Latitude: {{ library.latitude }}</p>
+<p>Longitude: {{ library.longitude }}</p>
+<p id="address">Loading address...</p>
+<div id="mapid" style="height: 360px;"></div>
+
+<script>
+    var map = L.map('mapid').setView([{{ library.latitude }}, {{ library.longitude }}], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18
+    }).addTo(map);
+
+    L.marker([{{ library.latitude }}, {{ library.longitude }}]).addTo(map)
+        .bindPopup('{{ library.name|escape('js') }}').openPopup();
+
+    var lat = {{ library.latitude }};
+    var lon = {{ library.longitude }};
+    
+    fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        document.getElementById('address').textContent = data.display_name; // Update the address
+    });
+</script>
+
+{% endblock %}
