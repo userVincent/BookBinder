@@ -119,7 +119,7 @@ section {
 }
 
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 255)), url('../images/img.png');
+    background-image: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 255)), url('public/images/login_register.png');
     background-position: center top;
     background-repeat: repeat;
     background-size: 100% auto, cover;

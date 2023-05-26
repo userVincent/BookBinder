@@ -8,7 +8,7 @@ nav {
 }
 
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 255)), url('../images/img.png');
+    background-image: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 255)), url('public/images/login_register.png');
     background-position: center top;
     background-repeat: repeat;
     background-size: 100% auto, cover;
@@ -18,7 +18,6 @@ body {
     color: black;
     z-index: -1;
 }
-
 
 #upper_main {
     position: relative;
@@ -37,10 +36,8 @@ body {
     left: 0;
     z-index: 1; /* Ensure the text is displayed above the image */
     font-family: 'Playfair', serif;
-
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
 }
-
 
 header {
     margin-top: 3%;
@@ -52,12 +49,12 @@ header {
     border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
 }
 
-header a{
+header a {
     text-decoration: none;
     color: black;
 }
 
-#profile_icon{
+#profile_icon {
     margin-top: auto;
 }
 
@@ -78,7 +75,7 @@ header a{
     position: absolute;
     background-color: antiquewhite;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
 }
@@ -90,13 +87,15 @@ header a{
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-
-#title{
-    margin-top: 10px
+.show {
+    display: block;
 }
 
-#subtitle{
+#title {
+    margin-top: 10px;
+}
+
+#subtitle {
     margin-top: -30px;
     margin-left: 50px;
     font-size: 20px;
@@ -107,7 +106,7 @@ header a{
     flex-direction: row;
 }
 
-.element{
+.element {
     margin-left: 30px;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -115,8 +114,7 @@ header a{
     color: black;
 }
 
-
-.menu{
+.menu {
     font-size: 15px;
 }
 
@@ -126,26 +124,21 @@ section {
     height: auto;
 }
 
-
-
-
 .search-wrapper {
     display: flex;
     align-items: center;
 }
 
-
-.books-results{
+.books-results {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-    gap: .25rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.25rem;
 }
 
 .row {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
-
+    border-bottom: 1px solid #000;
 }
 
 .grid-container {
@@ -168,7 +161,7 @@ section {
     height: 100%;
     border: 2px solid gray;
     background-color: darkgray;
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.7); /* Shadow around the book image */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.7);
 }
 
 .book-image img {
@@ -180,7 +173,6 @@ section {
 .book-info {
     margin-top: 10px;
     width: 250%;
-
 }
 
 .book-info a {
@@ -196,13 +188,13 @@ section {
     margin: 0;
 }
 
-.hide{
-    display:None;
+.hide {
+    display: none;
 }
 
 .search {
     flex: 1;
-    height: 40px; /* Adjust the height as desired */
+    height: 40px;
     padding: 10px;
     margin-right: 10px;
     border: none;
@@ -210,7 +202,7 @@ section {
 }
 
 #search-button {
-    height: 40px; /* Adjust the height to match the search input */
+    height: 40px;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -219,7 +211,8 @@ section {
     cursor: pointer;
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -231,8 +224,8 @@ input[type=text], input[type=password] {
 }
 
 .book a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Use the default text color */
+    text-decoration: none;
+    color: inherit;
 }
 
 footer {
@@ -240,14 +233,9 @@ footer {
     border-radius: 5px;
     padding: 30px 20px;
     color: white;
-
-    /* Remove box shadow */
     box-shadow: none;
-
-    /* Add transparency to the background */
-    background-color: #ADD8E6; /* Light blue */
+    background-color: #ADD8E6;
 }
-
 
 .footer-container {
     display: flex;
@@ -270,6 +258,7 @@ footer {
     justify-content: center;
     margin-bottom: 20px;
 }
+
 .book {
     width: 150px;
     margin-right: 20px;
@@ -281,30 +270,25 @@ footer {
 }
 
 /* Styles for screen widths up to 900px */
-
-@media screen and (max-width:900px) {
-    /* Styles for the header */
-    header.flex-container{
+@media screen and (max-width: 900px) {
+    header.flex-container {
         display: revert;
     }
-    .flex-container{
+    .flex-container {
         display: revert;
     }
-    .footer-container{
+    .footer-container {
         flex-direction: column;
     }
-    .element{
+    .element {
         margin-top: 30px;
         margin-bottom: 30px;
         text-align: center;
     }
-    #logo{
+    #logo {
         align-items: center;
     }
-
     img {
         width: 50px;
-        position: center;
-        }
-
+    }
 }
