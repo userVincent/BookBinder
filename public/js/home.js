@@ -18,49 +18,14 @@ window.onclick = function(event) {
     }
 }
 
-let currentPage = 1;
-
-function loadMoreBooks() {
-    const resultsContainer = document.getElementById("output");
-    const scrollPosition = resultsContainer.scrollTop + resultsContainer.clientHeight;
-    const containerHeight = resultsContainer.scrollHeight;
-
-    if (scrollPosition >= containerHeight) {
-        currentPage++;
-        getBooks();
-    }
-}
-
-const container = document.getElementById('output');
-
-
-function fetchFromAPI(searchString, maxResults = 40) {
-    const URL = "https://www.googleapis.com/books/v1/volumes?q="
-
-    const apiUrl = URL + searchString + "&maxResults=" + maxResults ;
-
-    return fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`API request failed with status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.error('An error occurred while fetching data from the API:', error);
-            throw error;
-        });
-}
-function getBooks(numBooks = 8) {
+function getBooks() {
     document.getElementById('output').innerHTML = "";
-    const maxResults = 8; // Number of additional results to fetch
-    fetchFromAPI(document.getElementById('input').value, numBooks)
+    fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
+        .then(response => response.json())
         .then(data => {
-            for (var i = 0; i <numBooks; i += 4) {
+            for (var i = 0; i <20; i += 4) {
                 const book1 = data.items[i].volumeInfo;
                 const book2 = data.items[i + 1].volumeInfo;
-                const book3 = data.items[i + 2].volumeInfo;
-                const book4 = data.items[i + 3].volumeInfo;
 
                 const title1 = book1.title;
                 const author1 = book1.authors ? book1.authors[0] : "Unknown";
@@ -150,7 +115,7 @@ function getBooks(numBooks = 8) {
                         </section>
                         
                     </div>
-                    </div>
+                    
                 `;
 
                 document.getElementById("output").innerHTML += booksHTML;
