@@ -42,6 +42,11 @@ test-job:
     - php bin/console doctrine:fixtures:load -n
     # run the tests (using the temporary database)
     - php bin/phpunit
+  artifacts:
+    when: always
+    reports:
+    junit: report.xml
+
 deploy-job:
 # run this job only when there is a push on the master branch 
     only:
