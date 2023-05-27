@@ -29,7 +29,7 @@ test-job:
     MYSQL_ROOT_PASSWORD: root_pass
     MYSQL_PASSWORD: root_pass
     # set the correct DSN in Symfony to connect to the temporary database
-    DATABASE_URL: "mysql://root:root_pass@mysql/a22web38_test"
+    DATABASE_URL: "mysql://root:root_pass@mysql/a22web38_test?serverVersion=8&charset=utf8mb4"
   # before starting the test scripts, add specific software to the container (only for this job)
   before_script:
       # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
