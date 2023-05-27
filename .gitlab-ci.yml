@@ -42,6 +42,8 @@ test-job:
     - php bin/console doctrine:fixtures:load -n
     # run the tests (using the temporary database)
     - php bin/phpunit
+    #generate report
+    - vendor/bin/phpunit --log-junit report.xml
   artifacts:
     when: always
     reports:
