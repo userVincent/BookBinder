@@ -10,56 +10,62 @@
 
 {% block main %}
 
-    <h2>Meetups</h2>
+    <h1>Meetups</h1>
 
     <div class="tab">
-        <button class="tablinks" onclick="openMeetups(event, 'UpcomingMeetups')" id="UpcomingMeetups">Upcoming meetups</button>
+        <button class="tablinks" onclick="openMeetups(event, 'UpcomingMeetups')" id="defaultOpen">Upcoming meetups</button>
         <button class="tablinks" onclick="openMeetups(event, 'PastMeetups')">Past meetups</button>
         <button class="tablinks" onclick="openMeetups(event, 'PendingRequests')">Pending requests</button>
     </div>
 
     <div id="UpcomingMeetups" class="tabcontent">
-        <h3>Upcoming meetups</h3>
         <div class="profile">
-            <img src="img.jpg" alt="John" style="width:100%">
-            <h1>John Doe</h1>
-            <a href="#library page" class="Library">Bib Tweebronnen</a>
-            <p>Meetup time</p>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <p><button>Cancel meetup</button></p>
+            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+            <div class="person">
+                <h2>John Doe</h2>
+                <a href="#library page" class="Library">Bib Tweebronnen</a><br><br>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                <button type="button" class="cancel"> Cancel meetup</button>
+            </div>
+            <div class="date">
+                <p><b>Meetup time</b></p>
+            </div>
         </div>
     </div>
 
     <div id="PastMeetups" class="tabcontent">
-        <h3>Past meetups</h3>
         <div class="profile">
-            <img src="img.jpg" alt="John" style="width:100%">
-            <h1>John Doe</h1>
-            <a href="#library page" class="Library">Bib Tweebronnen</a>
-            <p>date</p>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <p><button>Request other meetup</button></p>
+            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+            <div class="person">
+                <h2>John Doe</h2>
+                <a href="#library page" class="Library">Bib Tweebronnen</a><br><br>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                <button type="button" class="request"> Request new meetup</button>
+            </div>
+            <div class="date">
+                <p><b>Meetup time</b></p>
+            </div>
         </div>
     </div>
 
     <div id="PendingRequests" class="tabcontent">
-        <h3>Pending requests</h3>
         <div class="profile">
-            <img src="img.jpg" alt="John" style="width:100%">
-            <h1>John Doe</h1>
-            <a href="#library page" class="Library">Bib Tweebronnen</a>
-            <p>Date the request was send</p>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <p><button>Cancel Request</button></p>
+            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+            <div class="person">
+                <h2>John Doe</h2>
+                <a href="#library page" class="Library">Bib Tweebronnen</a><br><br>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                <button type="button" class="cancel"> Cancel Request</button>
+            </div>
+            <div class="date">
+                <p><b>Date request send</b></p>
+            </div>
         </div>
     </div>
 
@@ -80,7 +86,7 @@
 
         // Get the element with id="UpcomingMeetups" and click on it
         // Doesn't work?
-        document.getElementById("UpcomingMeetups").click();
+        document.getElementById("defaultOpen").click();
     </script>
 
 {% endblock %}
