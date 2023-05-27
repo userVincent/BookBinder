@@ -1,0 +1,86 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}Meetup{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/meetup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block main %}
+
+    <h2>Meetups</h2>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openMeetups(event, 'UpcomingMeetups')" id="UpcomingMeetups">Upcoming meetups</button>
+        <button class="tablinks" onclick="openMeetups(event, 'PastMeetups')">Past meetups</button>
+        <button class="tablinks" onclick="openMeetups(event, 'PendingRequests')">Pending requests</button>
+    </div>
+
+    <div id="UpcomingMeetups" class="tabcontent">
+        <h3>Upcoming meetups</h3>
+        <div class="profile">
+            <img src="img.jpg" alt="John" style="width:100%">
+            <h1>John Doe</h1>
+            <a href="#library page" class="Library">Bib Tweebronnen</a>
+            <p>Meetup time</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Cancel meetup</button></p>
+        </div>
+    </div>
+
+    <div id="PastMeetups" class="tabcontent">
+        <h3>Past meetups</h3>
+        <div class="profile">
+            <img src="img.jpg" alt="John" style="width:100%">
+            <h1>John Doe</h1>
+            <a href="#library page" class="Library">Bib Tweebronnen</a>
+            <p>date</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Request other meetup</button></p>
+        </div>
+    </div>
+
+    <div id="PendingRequests" class="tabcontent">
+        <h3>Pending requests</h3>
+        <div class="profile">
+            <img src="img.jpg" alt="John" style="width:100%">
+            <h1>John Doe</h1>
+            <a href="#library page" class="Library">Bib Tweebronnen</a>
+            <p>Date the request was send</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Cancel Request</button></p>
+        </div>
+    </div>
+
+    <script>
+        function openMeetups(evt, meetups) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(meetups).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="UpcomingMeetups" and click on it
+        // Doesn't work?
+        document.getElementById("UpcomingMeetups").click();
+    </script>
+
+{% endblock %}

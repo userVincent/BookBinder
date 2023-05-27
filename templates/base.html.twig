@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> {% block head %}
         <meta charset="UTF-8">
         <meta name="keywords" content="Book Binder" />
         <title>{% block title %}Book Binder{% endblock %}</title>
@@ -14,8 +14,8 @@
         {% block javascripts %}
             <script src="{{ asset('js/home.js') }}"></script>
         {% endblock %}
-    </head>
-    <body>
+    {% endblock %}</head>
+    <body>{% block body %}
     <header class="flex-container">
         <a href="{{ path('app_home') }}">
             <div id="logo">
@@ -35,7 +35,7 @@
             <ul style="list-style-type:none" id="hypertext" class="flex-container">
                 <li class="element"><a href="{{ path('app_home') }}">Home</a></li>
                 <li class="element"><a href="">Favorite</a></li>
-                <li class="element"><a href="">Meetup</a></li>
+                <li class="element"><a href="{{ path('app_meetup') }}">Meetup</a></li>
                 <li class="element" id="profile_icon">
                     <a href="#">
                         <img id="profile_img" onclick="toggleMenu()" class="dropbtn" src="{{ asset('images/profile_icon.png') }}" alt="db layout">
@@ -66,5 +66,5 @@
                 </p>
             </div>
         </footer>
-    </body>
+    {% endblock %}</body>
 </html>
