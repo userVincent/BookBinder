@@ -6,26 +6,39 @@
     <link rel="stylesheet" href="{{ asset('css/user_profile.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
 {% block main %}
 
 
     <section id="upper_main">
         <div class="picture">
             <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
-            <h1 class="user-name">USER NAME</h1>
+            <h1 class="user-name">{{ firstname ~ " " ~ lastname }}</h1>
         </div>
 
         <div class="profile-details">
-            <h1 class="user-name">USER NAME</h1>
             <div class="personal-info">
+                <h1 class="user-name">{{ firstname ~ " " ~ lastname }}</h1>
                 <p class="info-label">Email:</p>
-                <p class="info-value">segashu0214@gmail.com</p>
+                <p class="info-value">{{ email }}</p>
                 <p class="info-label">Address:</p>
-                <p class="info-value">AndreasVessaliusstraat 45</p>
+                <p class="info-value">{{ address }}</p>
                 <p class="info-label">Birthday:</p>
-                <p class="info-value">Feb 14, 2002</p>
+                <p class="info-value">{{ birthday }}</p>
+            </div>
+            <div class="Description">
+                <h1 id="description">Description:</h1>
+                <p>
+                    Hey there! I'm Jane, a book lover extraordinaire and an enthusiastic
+                    user of the Book Binder app. With a passion for literature that knows
+                    no bounds, I find joy in immersing myself in captivating stories and exploring diverse genres.
+                </p>
             </div>
         </div>
+
     </section>
 
     <div class="section-heading">

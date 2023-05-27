@@ -27,6 +27,6 @@ book_profile:
     methods: GET
 
 user_profile:
-    path: /userprofile/
-    controller: App\Controller\UserProfileController::index
+    path: /profile/
+    controller: App\Controller\HomeController::getProfile
     methods: GET

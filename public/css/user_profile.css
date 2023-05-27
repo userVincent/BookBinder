@@ -66,6 +66,10 @@ header a {
     border-radius: 5px;
 }
 
+.show {
+    display: block;
+}
+
 #title {
     margin-top: 10px;
 }
@@ -142,6 +146,8 @@ footer {
 }
 
 .profile-details {
+    display: flex;
+    flex-direction: row;
     flex: 0 0 70%;
     padding: 20px;
     border: 1px solid #ccc;
@@ -150,6 +156,17 @@ footer {
     background-color: aliceblue;
 }
 
+.Description{
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#description{
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 
 .profile-picture {
     width: 200px;
