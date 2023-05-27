@@ -45,7 +45,7 @@ test-job:
   artifacts:
     when: always
     reports:
-    junit: report.xml
+      junit: report.xml
 
 deploy-job:
 # run this job only when there is a push on the master branch 
