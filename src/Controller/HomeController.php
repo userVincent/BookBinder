@@ -19,7 +19,7 @@ class HomeController extends AbstractController
     {
         //$books = $bookRepository->findBy([], null, 10);
         $user = $this->getUser();
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
         //dd($books);
 
         return $this->render('home/index.html.twig', [
