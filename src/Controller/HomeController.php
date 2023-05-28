@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use App\Entity\User;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,18 +29,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-//    #[Route('/search-books', name: 'app_search_books')]
-//    public function searchBooks(Request $request, BookRepository $bookRepository): Response
-//    {
-//        $query = $request->query->get('query');
-//        $books = $bookRepository->searchBooks($query);
-//
-//        //dd($books);
-//
-//        return $this->render('book/index.html.twig', [
-//            'books' => $books,
-//        ]);
-//    }
+
 
     //To add a book to favorites or to remove it
     #[Route('/favorite-book/{bookId}', name: 'app_favorite-book', methods: ['POST'])]
@@ -112,5 +102,12 @@ class HomeController extends AbstractController
         }
 
         return new JsonResponse(['message' => $message]);
+    }
+
+    #[Route('/logout', name: 'app_logout', methods: ['GET'])]
+    public function logout()
+    {
+        // controller can be blank: it will never be called!
+        throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
 }

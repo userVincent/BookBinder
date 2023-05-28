@@ -185,6 +185,10 @@
         window.addEventListener('DOMContentLoaded', function() {
             var isbn = "{{ isbn }}";  // Replace with your ISBN
 
+            // check if the book has already been favorited and set the text on the button based on that
+            const fav_button = document.getElementById("favorite_button");
+            checkFavoriteStatus('{{ isbn }}', fav_button);
+
             // Fetch the book image from Google Books API
             fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
                 .then(response => response.json())
@@ -236,6 +240,30 @@
                         buttonElement.textContent = 'Unfavorite';
                         // Add any additional styling or behavior changes as needed
                     } else if (data.message === 'Book unfavorited successfully') {
+                        buttonElement.textContent = 'Favorite';
+                        // Add any additional styling or behavior changes as needed
+                    } else {
+                        // Handle other possible response messages or errors
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the request
+                });
+        }
+
+        // Function to check the favorite status of a book
+        function checkFavoriteStatus(bookId, buttonElement) {
+            fetch(`/check-favorite-book/${bookId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Book already favorited') {
+                        buttonElement.textContent = 'Unfavorite';
+                    } else if (data.message === 'Book not favorited') {
                         buttonElement.textContent = 'Favorite';
                         // Add any additional styling or behavior changes as needed
                     } else {

@@ -125,29 +125,7 @@ function getBooks() {
 }
 
 
-// Function to check the favorite status of a book
-function checkFavoriteStatus(bookId, buttonElement) {
-    fetch(`check-favorite-book/${bookId}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Book already favorited') {
-                buttonElement.textContent = 'Unfavorite';
-            } else if (data.message === 'Book not favorited') {
-                buttonElement.textContent = 'Favorite';
-                // Add any additional styling or behavior changes as needed
-            } else {
-                // Handle other possible response messages or errors
-            }
-        })
-        .catch(error => {
-            // Handle any errors that occur during the request
-        });
-}
+
 
 
 // Get the input field and search button elements
