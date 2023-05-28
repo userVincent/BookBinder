@@ -17,6 +17,7 @@ window.onclick = function(event) {
         }
     }
 }
+
 function getBooks() {
     document.getElementById('output').innerHTML = "";
     fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
@@ -128,15 +129,12 @@ function getBooks() {
 
 
 
-// Get the input field and search button elements
-const input = document.getElementById('input');
-const searchButton = document.getElementById('search-button');
 
-// Add event listener to the input field for keyup event
-input.addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-        // Trigger search function
-        getBooks();
+
+document.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById('search-button').click();
     }
 });
 
