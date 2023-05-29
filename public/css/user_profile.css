@@ -19,26 +19,6 @@ body {
     z-index: -1;
 }
 
-#upper_main {
-    position: relative;
-}
-
-#top_image {
-    width: 100%; /* Set the width to match the parent container */
-}
-
-#catchphrase {
-    position: absolute;
-    margin-top: 80px;
-    margin-left: 70px;
-    font-size: 30px;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Ensure the text is displayed above the image */
-    font-family: 'Playfair', serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
-}
-
 header {
     margin-top: 3%;
     color: black;
@@ -86,7 +66,6 @@ header a {
     border-radius: 5px;
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
     display: block;
 }
@@ -118,16 +97,112 @@ header a {
     font-size: 15px;
 }
 
-section {
+#upper_main {
     padding: 20px;
-    border-radius: 10px;
     height: auto;
 }
 
-.search-wrapper {
+.section-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 35px;
+    background-color: #ADD8E6;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.section-heading h2 {
+    margin: auto;
+}
+
+
+footer {
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 30px 20px;
+    color: white;
+    box-shadow: none;
+    background-color: #ADD8E6;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#profile_img {
+    width: 50px;
+    border-radius: 10px;
+}
+
+#upper_main {
     display: flex;
     align-items: center;
 }
+
+.profile-details {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 70%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: aliceblue;
+}
+
+.Description{
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#description{
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.picture {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.personal-info{
+    font-size: 20px;
+}
+
+.info-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    margin-bottom: 10px;
+    margin-left: 25px;
+}
+
 
 .books-results {
     display: grid;
@@ -192,63 +267,11 @@ section {
     display: none;
 }
 
-.search {
-    flex: 1;
-    height: 40px;
-    padding: 10px;
-    margin-right: 10px;
-    border: none;
-    outline: none;
-}
-
-#search-button {
-    height: 40px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-size: 16px;
-}
 
 .book a {
     text-decoration: none;
     color: inherit;
 }
-
-footer {
-    margin-top: 10px;
-    border-radius: 5px;
-    padding: 30px 20px;
-    color: white;
-    box-shadow: none;
-    background-color: #ADD8E6;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#profile_img {
-    width: 50px;
-    border-radius: 10px;
-}
-
-
 
 .row {
     display: flex;
@@ -265,6 +288,7 @@ footer {
 .book img {
     width: 100%;
 }
+
 
 /* Styles for screen widths up to 900px */
 @media screen and (max-width: 900px) {

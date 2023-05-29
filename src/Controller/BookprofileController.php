@@ -19,7 +19,6 @@ class BookprofileController extends AbstractController
         ]);
     }
 
-    #[Route('/search-books', name: 'app_search_books')]
     public function searchBooks(Request $request, BookRepository $bookRepository): Response
     {
         $query = $request->query->get('query');
@@ -32,6 +31,7 @@ class BookprofileController extends AbstractController
         ]);
     }
 
+
     public function bookProfile(Request $request, $title, $isbn): Response
     {
 
@@ -43,4 +43,7 @@ class BookprofileController extends AbstractController
 
         ]);
     }
+
 }
+
+
