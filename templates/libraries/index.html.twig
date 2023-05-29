@@ -12,6 +12,9 @@
     <script>
         let currentPage = 1;
         const pageSize = 10;
+        {% if userIdMeetup is defined %}
+            var userIdMeetup = {{ userIdMeetup }};
+        {% endif %}
 
         function fetchLibraries() {
                 fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
@@ -28,7 +31,7 @@
                 const libraryElement = document.createElement('div');
                 libraryElement.innerHTML = `
                     <h2>
-                        <a href="/library/${library.id}">
+                        <a href="/library/${library.id}${userIdMeetup ? '?userIdMeetup=' + userIdMeetup : ''}">
                             ${library.name}
                         </a>
                     </h2>

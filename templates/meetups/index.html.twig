@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Your Meetups{% endblock %}
+
+{% block main %}
+<div>
+    <h1>Your Meetups</h1>
+    {% if meetups %}
+    <ul>
+        {% for meetup in meetups %}
+            <li>
+                <p>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</p>
+                <p>Attendees:
+                    <ul>
+                        <li>{{ meetup.person1.firstName }}</li>
+                        <li>{{ meetup.person2.firstName }}</li>
+                    </ul>
+                </p>
+                <p>Location: {{ meetup.library.name }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No meetups yet. Go schedule one!</p>
+    {% endif %}
+</div>
+{% endblock %}

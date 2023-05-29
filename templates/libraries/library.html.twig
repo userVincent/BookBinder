@@ -10,6 +10,16 @@
 <p>House Number: {{ library.HouseNumber }}</p>
 <div id="mapid" style="height: 360px;"></div>
 
+{% if userIdMeetup > -1 %}
+    <form method="post" action="{{ path('app_meetup_create', {user1Id: app.user.id, user2Id: userIdMeetup, libraryId: library.id}) }}">
+        <button type="submit" class="btn btn-primary">Arrange Meetup</button>
+    </form>
+{% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+
 <script>
     var address = '{{ library.StreetName }} {{ library.HouseNumber }}, {{ library.PostalCode }} {{ library.Town }}';
 

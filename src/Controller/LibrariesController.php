@@ -44,17 +44,25 @@ class LibrariesController extends AbstractController
     }
 
     #[Route('/libraries', name: 'app_libraries')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $userIdMeetup = $request->query->getInt('userIdMeetup', 0);
+        
         // Render the HTML page
-        return $this->render('libraries/index.html.twig');
+        return $this->render('libraries/index.html.twig', [
+            'userIdMeetup' => $userIdMeetup > 0,
+        ]);
     }
 
     #[Route('/library/{id}', name: 'library_show')]
-    public function show(Library $library): Response
+    public function show(Request $request, Library $library): Response
     {
+        $userIdMeetup = $request->query->getInt('userIdMeetup', -1);
+        //dump($userIdMeetup);
+
         return $this->render('libraries/library.html.twig', [
         'library' => $library,
+        'userIdMeetup' => $userIdMeetup,
     ]);
     }
 }

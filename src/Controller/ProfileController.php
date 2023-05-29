@@ -37,24 +37,21 @@ class ProfileController extends AbstractController
     #[Route('/meetups/arrange/{userId}', name: 'app_meetup_arrange')]
     public function arrangeMeetup(int $userId, LibraryRepository $libraryRepository): Response
     {
-        $libraries = $libraryRepository->findAll();
-
-        return $this->render('meetups/arrange.html.twig', [
-            'libraries' => $libraries,
-            'userId' => $userId,
+        return $this->render('libraries/index.html.twig', [
+            'userIdMeetup' => $userId,
         ]);
     }
 
     #[Route('/meetups/create/{user1Id}/{user2Id}/{libraryId}', name: 'app_meetup_create', methods: ['POST'])]
     public function createMeetup(EntityManagerInterface $entityManager, UserRepository $userRepository, LibraryRepository $libraryRepository, int $user1Id, int $user2Id, int $libraryId): Response
     {
-        $user1 = $this->getUser();
+        $user1 = $userRepository->find($user1Id);
         $user2 = $userRepository->find($user2Id);
         $library = $libraryRepository->find($libraryId);
 
         if (!$user1 || !$user2 || !$library) {
             throw $this->createNotFoundException(
-                'No user/library found for id '.$user1.'/'.$user2->getFirstName().'/'.$library->getName()
+                'No user/library found for id '.$user1->getId().'/'.$user2->getId().'/'.$library->getId()
             );
         }
 
