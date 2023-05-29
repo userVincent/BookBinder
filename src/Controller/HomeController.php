@@ -122,6 +122,7 @@ class HomeController extends AbstractController
             'user' => $user,
             'firstname' => $user->getFirstName(),
             'lastname' => $user->getLastName(),
+            'profilePictureFilename' => $user->getProfilepicFilename(),
             'email' => $user->getEmail(),
             'address' => $user->getAddress(),
             'birthday' => $user->getBirthday()->format('Y-m-d'),

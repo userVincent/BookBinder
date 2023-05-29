@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}BookBinder_Profile{% endblock %}
 
 {% block stylesheets %}
@@ -15,7 +16,11 @@
 
     <section id="upper_main">
         <div class="picture">
-            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
+            {% if profilePictureFilename %}
+                <img src="{{ asset('uploads/profilepics/' ~ profilePictureFilename) }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+                <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
+            {% endif %}
             <h1 class="user-name">{{ firstname ~ " " ~ lastname }}</h1>
 
         </div>
