@@ -26,12 +26,13 @@ default_path:
 #    path: /login
 #    methods: GET
 
-app_search_books:
-    path: /search-books
-    controller: App\Controller\HomeController::searchBooks
-    methods: GET
 
 book_profile:
     path: /book_profile/{title}/{isbn}
     controller: App\Controller\BookprofileController::bookProfile
+    methods: GET
+
+user_profile:
+    path: /profile/
+    controller: App\Controller\HomeController::getProfile
     methods: GET

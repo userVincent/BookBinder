@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Entity\User;
 use App\Repository\BookRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -109,5 +110,51 @@ class HomeController extends AbstractController
     {
         // controller can be blank: it will never be called!
         throw new \Exception('Don\'t forget to activate logout in security.yaml');
+    }
+
+    #[Route('/profile', name: 'app_user_profile')]
+    public function getProfile(Request $request, UserRepository $userRepository): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('user_profile_private/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'user' => $user,
+            'firstname' => $user->getFirstName(),
+            'lastname' => $user->getLastName(),
+            'email' => $user->getEmail(),
+            'address' => $user->getAddress(),
+            'birthday' => $user->getBirthday()->format('Y-m-d'),
+        ]);
+    }
+
+    #[Route('/profile/public', name: 'app_user_profile_public')]
+    public function getProfilePublic(Request $request, UserRepository $userRepository): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('user_profile_public/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'user' => $user,
+            'firstname' => $user->getFirstName(),
+            'lastname' => $user->getLastName(),
+            'email' => $user->getEmail(),
+            'address' => $user->getAddress(),
+            'birthday' => $user->getBirthday()->format('Y-m-d'),
+        ]);
+    }
+
+    #[Route('/peoplelist/{isbn}', name: 'app_user_peoplelist')]
+    public function getPeopleList(Request $request, $isbn, BookRepository $bookRepository): Response
+    {
+        // Assuming there is a method to find the book by ISBN in your repository
+        $book = $bookRepository->findOneBy(['ISBN' => $isbn]);
+
+
+        return $this->render('people_list/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'isbn' => $isbn,
+            'users' => $book->getUsers(),
+        ]);
     }
 }
