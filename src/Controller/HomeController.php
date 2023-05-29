@@ -55,4 +55,20 @@ class HomeController extends AbstractController
             'birthday' => $user->getBirthday()->format('Y-m-d'),
         ]);
     }
+
+    #[Route('/profile/public', name: 'app_user_profile_public')]
+    public function getProfilePublic(Request $request, UserRepository $userRepository): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('user_profile_public/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'user' => $user,
+            'firstname' => $user->getFirstName(),
+            'lastname' => $user->getLastName(),
+            'email' => $user->getEmail(),
+            'address' => $user->getAddress(),
+            'birthday' => $user->getBirthday()->format('Y-m-d'),
+        ]);
+    }
 }
