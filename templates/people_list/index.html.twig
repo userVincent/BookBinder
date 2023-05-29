@@ -3,20 +3,15 @@
 {% block title %}Bookprofile{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/bookprofile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/peoplelist.css') }}">
 {% endblock %}
 
 {% block main %}
 
-
     <section class="Book">
-
         <div>
             <img id="book_img" alt="Book cover">
-            <button id="favorite_button" onclick="handleFavorite('{{ isbn }}', this)">Favorite!!</button>
         </div>
-
 
         <div class="Information">
             <h2 id="book_title"></h2>
@@ -26,12 +21,6 @@
             <div class="Genres">
                 <p id="genres">Young Adult, Fiction</p>
             </div>
-
-            <div class="Description">
-                <h4>Description</h4>
-                <p id="description"></p>
-            </div>
-
 
             <div class="Details">
                 <div class="row">
@@ -52,120 +41,32 @@
                         <p id="language"></p>
                     </div>
                 </div>
-
-
-
-            </div>
-
-            <a href="/peoplelist/{{ isbn }}"><button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who liked this book</b>  </button></a>
-            <button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who are reading this book</b>  </button>
-
-            <div class="Reviews">
-
-                <div class="user_rating">
-                    <h4>Reviews</h4>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <p>4.1 average based on 254 reviews.</p>
-
-                    <div class="bars">
-                        <div class="side">
-                            <div>5 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-5"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>150</div>
-                        </div>
-                        <div class="side">
-                            <div>4 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-4"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>63</div>
-                        </div>
-                        <div class="side">
-                            <div>3 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-3"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>15</div>
-                        </div>
-                        <div class="side">
-                            <div>2 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-2"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>6</div>
-                        </div>
-                        <div class="side">
-                            <div>1 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-1"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>20</div>
-                        </div>
-                    </div>
-
-                    <button onclick="openForm()" type="button" style="font-size: 15px"> <i class='fas fa-quote-left'></i> <b> Schrijf een review</b>  <i class='fas fa-quote-right'></i> </button>
-
-                    <script>
-                        function openForm() {
-                            document.getElementById("inputReview").style.display = "block";
-                        }
-                    </script>
-                    <div class="reviewForm" id="inputReview">
-                        <form action="/action_page.php" class="form-container">
-                            <label for="overall-rating">Overall Rating:</label>
-                            <select id="overall-rating" name="overall-rating">
-                                <option value="5">5 stars</option>
-                                <option value="4">4 stars</option>
-                                <option value="3">3 stars</option>
-                                <option value="2">2 stars</option>
-                                <option value="1">1 star</option>
-                            </select><br>
-
-                            <label for="review-text">Review Text:</label>
-                            <textarea id="review-text" name="review-text"></textarea><br>
-
-                            <input type="submit" value="Submit Review">
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
+    </section>
 
-        <i style="font-size: 50px" onclick="likeDislike(this)" class="far fa-heart"></i>
-
-        <!-- Does not work? -->
-        <script>
-            function likeDislike(x) {
-                x.classList.toggle("fas fa-heart");
-            }
-        </script>
-
+    <section class="LikedBy">
+        <h4>People who also liked this book</h4>
+        <div class="PeopleList">
+            {% for user in users %}
+                {% if loop.index0 % 4 == 0 %}
+                    <div class="Row">
+                {% endif %}
+                <div class="Person">
+                    <div class="PersonContainer">
+                        <div class="ProfileBox">
+                            <img class="ProfileImg" src="" alt="Profile picture">
+                        </div>
+                        <div class="PersonInfo">
+                            <p class="PersonName">{{ user.getFirstName() ~ " " ~ user.getLastName() }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if loop.index0 % 4 == 1 or loop.last %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </section>
 
 
@@ -187,10 +88,10 @@
                     const title = book.title;
                     const author = book.authors ? book.authors[0] : "Unknown";
                     const genres = book.categories ? book.categories.join(', ') : "Unknown";
-                    const description = book.description ? book.description : "No description available";
                     const pages = book.pageCount ? book.pageCount : "Unknown";
                     const publicationDate = book.publishedDate ? book.publishedDate : "Unknown";
                     const language = book.language ? book.language : "Unknown";
+                    const readingAge = book.readingModes ? book.readingModes.ageGroup : "Unknown";
 
                     var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
 
@@ -203,10 +104,10 @@
                     document.getElementById('book_title').textContent = title;
                     document.getElementById('author').textContent = "Author: " + author;
                     document.getElementById('genres').textContent =  genres;
-                    document.getElementById('description').textContent = description;
                     document.getElementById('pages').textContent = pages;
                     document.getElementById('publication_date').textContent = publicationDate;
                     document.getElementById('language').textContent = language;
+                    document.getElementById('reading_age').textContent = readingAge;
                 })
                 .catch(error => console.log(error));
         });

@@ -143,4 +143,18 @@ class HomeController extends AbstractController
             'birthday' => $user->getBirthday()->format('Y-m-d'),
         ]);
     }
+
+    #[Route('/peoplelist/{isbn}', name: 'app_user_peoplelist')]
+    public function getPeopleList(Request $request, $isbn, BookRepository $bookRepository): Response
+    {
+        // Assuming there is a method to find the book by ISBN in your repository
+        $book = $bookRepository->findOneBy(['ISBN' => $isbn]);
+
+
+        return $this->render('people_list/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'isbn' => $isbn,
+            'users' => $book->getUsers(),
+        ]);
+    }
 }
