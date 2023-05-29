@@ -51,12 +51,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'person', targetEntity: Meetup::class)]
     private Collection $meetups;
 
+    /**
+     * Many Users have Many Groups.
+     * @var Collection<Book>
+     */
+    #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'users')]
+    #[ORM\JoinTable(name: 'user_favorite_books')]
+    private Collection $favoriteBooks;
+
     public function __construct()
     {
         $this->libraries = new ArrayCollection();
         $this->meetups = new ArrayCollection();
+        $this->favoriteBooks = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -257,4 +265,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<Book>
+     */
+    public function getFavoriteBooks(): Collection
+    {
+        return $this->favoriteBooks;
+    }
+
+    public function addFavoriteBook(Book $book): self
+    {
+        if (!$this->favoriteBooks->contains($book)) {
+            $this->favoriteBooks[] = $book;
+            $book->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteBook(Book $book): self
+    {
+        if ($this->favoriteBooks->removeElement($book)) {
+            $book->removeUser($this);
+        }
+
+        return $this;
+    }
+
 }
