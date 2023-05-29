@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -63,6 +65,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name: 'user_favorite_books')]
     private Collection $favoriteBooks;
 
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png'],
+        mimeTypesMessage: 'Please upload a valid JPG or PNG image'
+    )]
     #[Vich\UploadableField(mapping: 'users', fileNameProperty: 'profilepicFilename', size: 'profilepicSize')]
     private ?File $profilepicFile = null;
 
