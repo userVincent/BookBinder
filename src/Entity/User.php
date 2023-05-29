@@ -9,10 +9,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[Vich\Uploadable]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -58,6 +62,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'users')]
     #[ORM\JoinTable(name: 'user_favorite_books')]
     private Collection $favoriteBooks;
+
+    #[Vich\UploadableField(mapping: 'users', fileNameProperty: 'profilepicFilename', size: 'profilepicSize')]
+    private ?File $profilepicFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profilepicFilename = null;
+
+
+    #[ORM\Column(nullable: true)]
+    private ?int $profilepicSize = null;
+
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeInterface $updatedAt = null;
 
     public function __construct()
     {
@@ -289,6 +306,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if ($this->favoriteBooks->removeElement($book)) {
             $book->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getProfilepicFilename(): ?string
+    {
+        return $this->profilepicFilename;
+    }
+
+    public function setProfilepicFilename(?string $profilepicFilename): self
+    {
+        $this->profilepicFilename = $profilepicFilename;
+
+        return $this;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $profilepicFile
+     */
+    public function setProfilepicFile(?File $profilepicFile = null): void
+    {
+        $this->profilepicFile = $profilepicFile;
+
+        if (null !== $profilepicFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function getProfilepicFile(): ?File
+    {
+        return $this->profilepicFile;
+    }
+
+    public function getProfilepicSize(): ?int
+    {
+        return $this->profilepicSize;
+    }
+
+    public function setProfilepicSize(?int $profilepicSize): self
+    {
+        $this->profilepicSize = $profilepicSize;
 
         return $this;
     }

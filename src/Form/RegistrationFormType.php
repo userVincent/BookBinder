@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 //use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -14,6 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -65,6 +67,15 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Address',
                 'required' => true,
             ])
+//            ->add('profilePicture', FileType::class, [
+//                'label' => 'Profile Picture',
+//                'required' => false, // Set it to true if the picture is mandatory
+//                'mapped' => false, // This field is not mapped to the User entity
+//            ])
+            ->add('profilepicFile', VichImageType::class, [
+                'required' => false
+            ]);
+
 
         ;
     }
