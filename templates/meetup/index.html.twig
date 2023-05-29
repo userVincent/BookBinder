@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/meetup.js') }}"></script>
+{% endblock %}
+
 {% block main %}
 
     <h1>Meetups</h1>
@@ -19,20 +24,7 @@
     </div>
 
     <div id="UpcomingMeetups" class="tabcontent">
-        <div class="profile">
-            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
-            <div class="person">
-                <h2>John Doe</h2>
-                <a href="#library page" class="Library">Bib Tweebronnen</a><br><br>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                <button type="button" class="cancel"> Cancel meetup</button>
-            </div>
-            <div class="date">
-                <p><b>Meetup time</b></p>
-            </div>
-        </div>
+        <script>getUpcomingMeetups();</script>
     </div>
 
     <div id="PastMeetups" class="tabcontent">
@@ -68,25 +60,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function openMeetups(evt, meetups) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(meetups).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-
-        // Get the element with id="UpcomingMeetups" and click on it
-        // Doesn't work?
-        document.getElementById("defaultOpen").click();
-    </script>
 
 {% endblock %}
