@@ -26,8 +26,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "bootstrap": "^5.2.3",
         "@symfony/stimulus-bridge": "^3.2.2",
-        "@symfony/webpack-encore": "^4.3.0"
+        "@symfony/webpack-encore": "^4.3.0",
+        "bootstrap": "^5.2.3",
+        "jquery": "^3.7.0"
     }
 }

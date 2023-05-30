@@ -21,7 +21,6 @@ class UserTest extends TestCase
         $user->setLastName('Zhao');
         $user->setEmail('aocheng.zhao@test.com');
         $user->setAddress('Leuven');
-        $user->setIsVerified(true);
         $birthday = new DateTime('1990-01-01'); // Replace with the desired birthday date
         $user->setBirthday($birthday);
         $user->setPassword('Abc123456');
@@ -42,7 +41,6 @@ class UserTest extends TestCase
         $lastName = $user->getLastName();
         $email = $user->getEmail();
         $address = $user->getAddress();
-        $isVerified = $user->isVerified();
         $gotBirthday = $user->getBirthday();
         $password = $user->getPassword();
         $gotRoles = $user->getRoles();
@@ -58,7 +56,6 @@ class UserTest extends TestCase
         $this->assertEquals('Zhao', $lastName);
         $this->assertEquals('aocheng.zhao@test.com', $email);
         $this->assertEquals('Leuven', $address);
-        $this->assertEquals(true, $isVerified);
         $this->assertEquals($birthday, $gotBirthday);
         $this->assertEquals('Abc123456', $password);
         $this->assertEquals($roles, $gotRoles);

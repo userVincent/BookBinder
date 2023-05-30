@@ -31,6 +31,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -55,6 +56,7 @@ class RegistrationController extends AbstractController
                     ->subject('Welcome to Bookbinder!')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
+            $this->addFlash('success', 'Registration successful!');
             return $this->redirectToRoute('app_login');
         }
 

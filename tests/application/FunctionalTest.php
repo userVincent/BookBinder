@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\integration;
+namespace App\Tests\application;
 
 class FunctionalTest
 {

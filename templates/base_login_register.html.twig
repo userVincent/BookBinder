@@ -18,6 +18,21 @@
 </head>
 
 <body>
+<script>
+    // $(document).ready(function(){
+    //     $('div.alert.alert-success').fadeIn().delay(3000).fadeOut();
+    // });
+    $(function() {
+        $('#flash').delay(500).fadeIn('normal', function() {
+            $(this).delay(2500).fadeOut();
+        });
+    });
+</script>
+{% for message in app.flashes('success') %}
+    <div id="flash" class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
 
 <header>
     <img src="{{ asset('images/logo.jpg') }}" width="100" alt="db layout"/>
