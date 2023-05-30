@@ -1,0 +1,303 @@
+#logo {
+    margin-top: -4px;
+    margin-right: 20px;
+}
+
+nav {
+    margin-left: auto;
+}
+
+header {
+    margin-top: 3%;
+    color: black;
+    padding: 20px;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
+}
+
+header a{
+    text-decoration: none;
+    color: black;
+}
+
+#profile_img {
+    width: 50px;
+    border-radius: 10px;
+}
+
+
+
+#profile_icon{
+    margin-top: auto;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+#subtitle{
+    margin-top: -30px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.element{
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    color: black;
+}
+
+.menu{
+    font-size: 15px;
+}
+
+section {
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+}
+
+#book_img {
+    width: 400px;
+    position: center;
+}
+
+#favorite_button {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(255, 165, 0, 1); /* Orange with full opacity */
+    color: white;
+    border: 2px solid orange;
+    padding: 10px;
+    transition: background-color 0.3s;
+    font-family: 'Playfair', serif;
+    font-weight: bold; /* Make the letter thicker */
+    font-size: 16px; /* Adjust the font size as desired */
+}
+
+/* Change the background color on hover */
+#favorite_button:hover {
+    background-color: hotpink;
+    color: white;
+    border: 2px solid deeppink;
+}
+
+body {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    color: black;
+    z-index: -1;
+}
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+footer {
+    margin-top: 40px;
+    border-radius: 5px;
+    padding: 30px 20px;
+    color: white;
+
+    /* Remove box shadow */
+    box-shadow: none;
+
+    /* Add transparency to the background */
+    background-color: #ADD8E6; /* Light blue */
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Book {
+    display: flex;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.Book > div {
+    width: auto;
+    padding: 10px;
+}
+
+.Information {
+    height:636px;
+    overflow-y:scroll;
+}
+
+.far, .fas {
+    cursor: pointer;
+    user-select: none;
+    margin: 15px;
+}
+
+.far:hover, .fas:hover {
+    color: #316764;
+}
+
+.Details, .user_rating {
+    background-color: #ADD8E6; /* Light blue */
+    border-radius: 30px;
+    width: 500px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.Specifications {
+    text-align: center;
+    width: 240px;
+}
+
+button {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.user_rating {
+    padding: 1px 20px 20px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.bars:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #ff9800;}
+.bar-4 {width: 30%; height: 18px; background-color: #ff9800;}
+.bar-3 {width: 10%; height: 18px; background-color: #ff9800;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #ff9800;}
+
+.ReviewForm {
+    display: none;
+}
+
+/* Styles for screen widths up to 900px */
+
+@media screen and (max-width:900px) {
+    /* Styles for the header */
+    header.flex-container{
+        display: revert;
+    }
+    .flex-container{
+        display: revert;
+    }
+    .footer-container{
+        flex-direction: column;
+    }
+    .element{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    #logo{
+        align-items: center;
+    }
+
+    #book_img {
+        width: 50px;
+        position: center;
+    }
+
+}

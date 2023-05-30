@@ -4,35 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="">
+    <list default="true" id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_login_register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_login_register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/FunctionalTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/FunctionalTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/PageRouteTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/PageRouteTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="login_register" />
+        <entry key="$PROJECT_DIR$" value="shusaku_segawa" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,7 +34,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.2">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/flex" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
@@ -158,54 +152,120 @@
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
-      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
     </include_path>
   </component>
-  <component name="ProjectId" id="2PgsYxBUZ8GxnMROpTZxPXTdQKd" />
+  <component name="ProjectId" id="2PjrLFUh7AC0HbUlWWTu7CYV2wN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/segas/IdeaProjects/a22web38/public&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager">
-    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <CommandLine>
-        <PhpTestInterpreterSettings>
-          <option name="interpreterName" value="PHP 8.2" />
-        </PhpTestInterpreterSettings>
-      </CommandLine>
-      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" use_alternative_configuration_file="true" />
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Bookbinder" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Bookbinder" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="webserver" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8080">
       <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="" />
-      <created>1683890111222</created>
+      <changelist id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging." />
+      <created>1683981277641</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1683890111222</updated>
-      <workItem from="1683890113574" duration="3344000" />
-      <workItem from="1684503807339" duration="11072000" />
-      <workItem from="1685055853723" duration="7037000" />
-      <workItem from="1685094139454" duration="13957000" />
-      <workItem from="1685296445520" duration="18334000" />
-      <workItem from="1685433417747" duration="4314000" />
+      <updated>1683981277641</updated>
+      <workItem from="1683981280725" duration="1379000" />
+      <workItem from="1683982679549" duration="3024000" />
+      <workItem from="1684493711287" duration="14150000" />
+      <workItem from="1684681844946" duration="1937000" />
+      <workItem from="1684686289784" duration="5199000" />
+      <workItem from="1684915388295" duration="42374000" />
+      <workItem from="1685009438327" duration="13106000" />
+      <workItem from="1685095924305" duration="2617000" />
+      <workItem from="1685103790314" duration="18983000" />
     </task>
+    <task id="LOCAL-00001" summary="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design.">
+      <created>1684503691014</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684503691014</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required.">
+      <created>1684504092512</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684504092512</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging.">
+      <created>1684685914099</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684685914099</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Home page improved design.&#10;4 books in each row with a line break.&#10;Color contrast readjusted.&#10;Image is added as a design.">
+      <created>1685019639438</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685019639438</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered.">
+      <created>1685022906187</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685022906187</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updates&#10;- Login, register, home redesigned&#10;- Book search&#10;- Book profile functioning">
+      <created>1685100347486</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685100347486</updated>
+    </task>
+    <task id="LOCAL-00007" summary="People's profile design&#10;- Image&#10;- Personal info&#10;- Favorite books&#10;&#10;to be added&#10;- person's description&#10;- profile photo editing feature">
+      <created>1685111062326</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685111062326</updated>
+    </task>
+    <task id="LOCAL-00008" summary="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio.">
+      <created>1685198887689</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685198887689</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,11 +282,16 @@
       </map>
     </option>
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/bookBinder@phpunit_xml_dist.xml" NAME="phpunit.xml.dist Coverage Results" MODIFIED="1685317046414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design." />
+    <MESSAGE value="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required." />
+    <MESSAGE value="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging." />
+    <MESSAGE value="connected the book search function with controler.&#10;&#10;It passes down the book information to book profile twig, when specific book is clicked. &#10;&#10;The home screen design is adjusted to use space better, also with better color contrast" />
+    <MESSAGE value="Home page improved design.&#10;4 books in each row with a line break.&#10;Color contrast readjusted.&#10;Image is added as a design." />
+    <MESSAGE value="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered." />
+    <MESSAGE value="Updates&#10;- Login, register, home redesigned&#10;- Book search&#10;- Book profile functioning" />
+    <MESSAGE value="People's profile design&#10;- Image&#10;- Personal info&#10;- Favorite books&#10;&#10;to be added&#10;- person's description&#10;- profile photo editing feature" />
+    <MESSAGE value="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio." />
+    <option name="LAST_COMMIT_MESSAGE" value="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio." />
   </component>
 </project>

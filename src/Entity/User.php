@@ -58,7 +58,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -123,12 +122,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials():void
+    public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
 
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
     public function getLastName(): ?string
     {
         return $this->LastName;

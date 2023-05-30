@@ -1,0 +1,302 @@
+Index: templates/base_login_register.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>{% block title %}Welcome!{% endblock %}</title>\r\n    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">\r\n    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}\r\n    {% block stylesheets %}\r\n        <link rel=\"stylesheet\" href=\"{{ asset('css/login_register.css') }}\">\r\n    {% endblock %}\r\n\r\n    {% block javascripts %}\r\n        {{ encore_entry_script_tags('app') }}\r\n    {% endblock %}\r\n</head>\r\n\r\n<body>\r\n\r\n<header>\r\n    <img src=\"{{ asset('images/logo.jpg') }}\" width=\"100\" alt=\"db layout\"/>\r\n    <div id=\"logo\">\r\n        <h1>{% block h1 %}Sign in to BookBinder{% endblock %}</h1>\r\n    </div>\r\n</header>\r\n\r\n{% block main_footer %}{% endblock %}\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/base_login_register.html.twig b/templates/base_login_register.html.twig
+--- a/templates/base_login_register.html.twig	(revision 082053d10c77a52dfeba60883b37bb166be79bd4)
++++ b/templates/base_login_register.html.twig	(date 1683889569940)
+@@ -10,7 +10,7 @@
+     {% endblock %}
+ 
+     {% block javascripts %}
+-        {{ encore_entry_script_tags('app') }}
++        {{ encore_entry_script_tags('app')}}
+     {% endblock %}
+ </head>
+ 
+Index: templates/base.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n    <head>\r\n        <meta charset=\"UTF-8\">\r\n        <meta name=\"keywords\" content=\"Book Binder\" />\r\n        <title>{% block title %}Book Binder{% endblock %}</title>\r\n        <link href=\"https://fonts.googleapis.com/css?family=Dosis:400,500,600,700\" rel=\"stylesheet\">\r\n        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">\r\n        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}\r\n        {% block stylesheets %}\r\n            <link rel=\"stylesheet\" href=\"{{ asset('css/home.css') }}\">\r\n        {% endblock %}\r\n\r\n        {% block javascripts %}\r\n            {{ encore_entry_script_tags('app') }}\r\n        {% endblock %}\r\n    </head>\r\n    <body>\r\n        <header class=\"flex-container\">\r\n            <div id=\"logo\">\r\n                <img src=\"{{ asset('images/logo.jpg') }}\" width = \"80\" alt=\"db layout\"/>\r\n            </div>\r\n            <div>\r\n                <h1>Book Binder</h1>\r\n                <h2 id=\"subtitle\">Meet book lovers</h2>\r\n            </div>\r\n\r\n            <nav>\r\n                <ul style=\"list-style-type:none\" id=\"hypertext\" class=\"flex-container\">\r\n                    <li class=\"element\"><a href=\"\">Home</a></li>\r\n                    <li class=\"element\"><a href=\"\">Trending</a></li>\r\n                    <li class=\"element\"><a href=\"\">Meetup</a></li>\r\n                    <li class=\"element\"><a href=\"\">Setting</a></li>\r\n                </ul>\r\n            </nav>\r\n            </div>\r\n        </header>\r\n\r\n        <main>\r\n            {% block main %}{% endblock %}\r\n        </main>\r\n\r\n        <footer>\r\n            <div class=\"footer-container\">\r\n                <img src=\"{{ asset('images/logo.jpg') }}\" width = \"20\" alt=\"db layout\"/>\r\n\r\n                <p>Copyright &copy; 2022 BookBinder.\r\n                    <a href=\"#\">Privacy Policy</a> | <a href=\"#\">Terms of Use</a>\r\n                </p>\r\n            </div>\r\n        </footer>\r\n    </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+--- a/templates/base.html.twig	(revision 082053d10c77a52dfeba60883b37bb166be79bd4)
++++ b/templates/base.html.twig	(date 1683553399731)
+@@ -12,7 +12,7 @@
+         {% endblock %}
+ 
+         {% block javascripts %}
+-            {{ encore_entry_script_tags('app') }}
++            <script src="{{ asset('js/home.js') }}"></script>
+         {% endblock %}
+     </head>
+     <body>
+@@ -30,10 +30,22 @@
+                     <li class="element"><a href="">Home</a></li>
+                     <li class="element"><a href="">Trending</a></li>
+                     <li class="element"><a href="">Meetup</a></li>
+-                    <li class="element"><a href="">Setting</a></li>
++                    <li class="element" id="profile_icon">
++                        <a href="#">
++                            <img onclick="toggleMenu()" class="dropbtn" src="{{ asset('images/profile_icon.png') }}" alt="db layout">
++                        </a>
++                        <div class="dropdown">
++                            <div id="myDropdown" class="dropdown-content">
++                                <a class="menu" href="">Profile Settings</a>
++                                <a class="menu" href="">Notification</a>
++                            </div>
++                        </div>
++                    </li>
+                 </ul>
+             </nav>
+             </div>
++
++
+         </header>
+ 
+         <main>
+Index: templates/home/index.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% extends 'base.html.twig' %}\r\n\r\n{% block title %}BookBinder_Home{% endblock %}\r\n\r\n    {% block stylesheets %}\r\n        <link rel=\"stylesheet\" href=\"{{ asset('css/home.css') }}\">\r\n\r\n    {% endblock %}\r\n\r\n{% block main %}\r\n    <h2>Find Books and Book Lovers!!</h2>\r\n    <section>\r\n        <form action=\"/action_page.php\">\r\n            <div class=\"wrapper\">\r\n                <img class=\"search-icon\" src=\"data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K\" />\r\n                <input class=\"search\" placeholder=\"Search Books\" type=\"text\" >\r\n            </div>\r\n        </form>\r\n    </section>\r\n\r\n    <section id=\"trending-books\">\r\n        <h2>Trending Books</h2>\r\n        <div class=\"row\">\r\n            <div class=\"book\">\r\n                <img src=\"book1.jpg\" alt=\"Book 1\">\r\n                <h3>Book 1 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book2.jpg\" alt=\"Book 2\">\r\n                <h3>Book 2 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book3.jpg\" alt=\"Book 3\">\r\n                <h3>Book 3 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book4.jpg\" alt=\"Book 4\">\r\n                <h3>Book 4 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book5.jpg\" alt=\"Book 5\">\r\n                <h3>Book 5 Title</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"book\">\r\n                <img src=\"book6.jpg\" alt=\"Book 6\">\r\n                <h3>Book 6 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book7.jpg\" alt=\"Book 7\">\r\n                <h3>Book 7 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book8.jpg\" alt=\"Book 8\">\r\n                <h3>Book 8 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book9.jpg\" alt=\"Book 9\">\r\n                <h3>Book 9 Title</h3>\r\n            </div>\r\n            <div class=\"book\">\r\n                <img src=\"book10.jpg\" alt=\"Book 10\">\r\n                <h3>Book 10 Title</h3>\r\n            </div>\r\n        </div>\r\n\r\n    </section>\r\n\r\n\r\n    <aside>\r\n        <article>\r\n\r\n        </article>\r\n        <article>\r\n\r\n\r\n\r\n        </article>\r\n    </aside>\r\n{% endblock %}\r\n\r\n{#{% block body %}#}\r\n{#<style>#}\r\n{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}\r\n{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}\r\n{#</style>#}\r\n\r\n{#<div class=\"example-wrapper\">#}\r\n{#    <h1>Hello {{ controller_name }}! ✅</h1>#}\r\n\r\n{#    This friendly message is coming from:#}\r\n{#    <ul>#}\r\n{#        <li>Your controller at <code><a href=\"{{ 'C:/Users/Hassin/Desktop/WebTechBookBinder/bookbinder/Bookbinder/src/Controller/HomeController.php'|file_link(0) }}\">src/Controller/HomeController.php</a></code></li>#}\r\n{#        <li>Your template at <code><a href=\"{{ 'C:/Users/Hassin/Desktop/WebTechBookBinder/bookbinder/Bookbinder/templates/home/index.html.twig'|file_link(0) }}\">templates/home/index.html.twig</a></code></li>#}\r\n{#    </ul>#}\r\n{#</div>#}\r\n{#{% endblock %}#}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/home/index.html.twig b/templates/home/index.html.twig
+--- a/templates/home/index.html.twig	(revision 082053d10c77a52dfeba60883b37bb166be79bd4)
++++ b/templates/home/index.html.twig	(date 1683898718825)
+@@ -7,65 +7,21 @@
+ 
+     {% endblock %}
+ 
++    {% block javascripts %}
++        <script src="{{ asset('js/home.js') }}"></script>
++    {% endblock %}
++
+ {% block main %}
+     <h2>Find Books and Book Lovers!!</h2>
+-    <section>
+-        <form action="/action_page.php">
+-            <div class="wrapper">
+-                <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+-                <input class="search" placeholder="Search Books" type="text" >
+-            </div>
+-        </form>
+-    </section>
+-
+-    <section id="trending-books">
+-        <h2>Trending Books</h2>
+-        <div class="row">
+-            <div class="book">
+-                <img src="book1.jpg" alt="Book 1">
+-                <h3>Book 1 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book2.jpg" alt="Book 2">
+-                <h3>Book 2 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book3.jpg" alt="Book 3">
+-                <h3>Book 3 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book4.jpg" alt="Book 4">
+-                <h3>Book 4 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book5.jpg" alt="Book 5">
+-                <h3>Book 5 Title</h3>
+-            </div>
+-        </div>
+-        <div class="row">
+-            <div class="book">
+-                <img src="book6.jpg" alt="Book 6">
+-                <h3>Book 6 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book7.jpg" alt="Book 7">
+-                <h3>Book 7 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book8.jpg" alt="Book 8">
+-                <h3>Book 8 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book9.jpg" alt="Book 9">
+-                <h3>Book 9 Title</h3>
+-            </div>
+-            <div class="book">
+-                <img src="book10.jpg" alt="Book 10">
+-                <h3>Book 10 Title</h3>
+-            </div>
+-        </div>
++
++    <div class="search-wrapper">
++        <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
++        <input id="input" class="search" placeholder="Search here..." type="text" >
++        <button onclick="getbooks()">Search</button>
++    </div>
++    <div id="output"></div>
+ 
+-    </section>
++
+ 
+ 
+     <aside>
+Index: public/css/home.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#logo {\r\n    margin-top: 10px;\r\n    margin-right: 20px;\r\n}\r\n\r\nnav {\r\n    margin-left: auto;\r\n}\r\n\r\nheader{\r\n    margin-top: 3%;\r\n    background-color: #316764;\r\n    color: mintcream;\r\n    border-radius: 25px;\r\n    padding: 20px;\r\n    height: 15%;\r\n\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\nheader a{\r\n    text-decoration: none;\r\n    color: mintcream;\r\n}\r\n\r\n#subtitle{\r\n    margin-top: -30px;\r\n    margin-left: 50px;\r\n    font-size: 20px;\r\n}\r\n\r\n.flex-container {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.element{\r\n    margin-left: 30px;\r\n    margin-top: 30px;\r\n    margin-bottom: 30px;\r\n    font-size: 25px;\r\n}\r\n\r\nsection {\r\n    padding: 20px;\r\n    border-radius: 10px;\r\n    height: auto;\r\n}\r\n\r\n\r\nbody {\r\n    background-color: #A7DDBC;\r\n    color: #5C4033;\r\n    width: 80%;\r\n    margin: auto;\r\n    font-family: Arial, Helvetica, sans-serif;\r\n\r\n}\r\n\r\n.wrapper {\r\n    position: relative;\r\n    display: flex;\r\n    min-width: 70%;\r\n\r\n}\r\n\r\n\r\n\r\n.search {\r\n    border: 1px solid grey;\r\n    border-radius: 5px;\r\n    height: 50px;\r\n    width: 100%;\r\n    padding: 2px 23px 2px 30px;\r\n    outline: 0;\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    right: 10px; /* adjust the right position to move the icon to the right place */\r\n    width: 20px;\r\n}\r\n\r\ninput[type=text], input[type=password] {\r\n    width: 100%;\r\n    padding: 12px 20px;\r\n    margin: 8px 0;\r\n    display: inline-block;\r\n    border: 1px solid #ccc;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\nfooter {\r\n    margin-top: 10px;\r\n    border-radius: 10px;\r\n    padding: 30px 20px;\r\n    background-color: #316764;\r\n    color: white;\r\n}\r\n\r\n\r\n.footer-container {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\nimg {\r\n    width: 50px;\r\n    border-radius: 10px;\r\n}\r\n\r\n#trending-books {\r\n    margin-top: 30px;\r\n    text-align: center;\r\n}\r\n\r\n.row {\r\n    display: flex;\r\n    justify-content: center;\r\n    margin-bottom: 20px;\r\n}\r\n.book {\r\n    width: 150px;\r\n    margin-right: 20px;\r\n    text-align: center;\r\n}\r\n\r\n.book img {\r\n    width: 100%;\r\n}\r\n\r\n/* Styles for screen widths up to 900px */\r\n\r\n@media screen and (max-width:900px) {\r\n    /* Styles for the header */\r\n    header.flex-container{\r\n        display: revert;\r\n    }\r\n    .flex-container{\r\n        display: revert;\r\n    }\r\n    .footer-container{\r\n        flex-direction: column;\r\n    }\r\n    .element{\r\n        margin-top: 30px;\r\n        margin-bottom: 30px;\r\n        text-align: center;\r\n    }\r\n    #logo{\r\n        align-items: center;\r\n    }\r\n\r\n    img {\r\n        width: 50px;\r\n        position: center;\r\n        }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/css/home.css b/public/css/home.css
+--- a/public/css/home.css	(revision 082053d10c77a52dfeba60883b37bb166be79bd4)
++++ b/public/css/home.css	(date 1683888408974)
+@@ -24,6 +24,42 @@
+     color: mintcream;
+ }
+ 
++#profile_icon{
++    margin-top: 20px;
++}
++
++.dropdown {
++    position: relative;
++    display: inline-block;
++}
++
++.dropdown-content a {
++    color: black;
++    padding: 12px 16px;
++    text-decoration: none;
++    display: block;
++}
++
++.dropdown-content {
++    display: none;
++    position: absolute;
++    background-color: antiquewhite;
++    min-width: 160px;
++    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
++    z-index: 1;
++    border-radius: 5px;
++}
++
++/* Change color of dropdown links on hover */
++.dropdown-content a:hover {
++    background-color: #ddd;
++    border-radius: 5px;
++}
++
++/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
++.show {display:block;}
++
++
+ #subtitle{
+     margin-top: -30px;
+     margin-left: 50px;
+@@ -42,6 +78,10 @@
+     font-size: 25px;
+ }
+ 
++.menu{
++    font-size: 15px;
++}
++
+ section {
+     padding: 20px;
+     border-radius: 10px;
+@@ -55,14 +95,32 @@
+     width: 80%;
+     margin: auto;
+     font-family: Arial, Helvetica, sans-serif;
+-
+ }
+ 
+-.wrapper {
++.search-wrapper {
+     position: relative;
+     display: flex;
+     min-width: 70%;
++}
++
++.books-results{
++    display: grid;
++    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
++    gap: .25rem;
++}
+ 
++.book{
++    border: 1px solid black;
++    background-color: white;
++    padding: .5rem;
++}
++
++.book > .title{
++    margin-bottom: .25rem;
++}
++
++.hide{
++    display:None;
+ }
+ 
+ 
+@@ -157,6 +215,7 @@
+         margin-bottom: 30px;
+         text-align: center;
+     }
++
+     #logo{
+         align-items: center;
+     }
+Index: public/js/home.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/js/home.js b/public/js/home.js
+new file mode 100644
+--- /dev/null	(date 1683901074400)
++++ b/public/js/home.js	(date 1683901074400)
+@@ -0,0 +1,35 @@
++/* When the user clicks on the button,
++toggle between hiding and showing the dropdown content */
++function toggleMenu() {
++    document.getElementById("myDropdown").classList.toggle("show");
++}
++
++// Close the dropdown menu if the user clicks outside of it
++window.onclick = function(event) {
++    if (!event.target.matches('.dropbtn')) {
++        var dropdowns = document.getElementsByClassName("dropdown-content");
++        var i;
++        for (i = 0; i < dropdowns.length; i++) {
++            var openDropdown = dropdowns[i];
++            if (openDropdown.classList.contains('show')) {
++                openDropdown.classList.remove('show');
++            }
++        }
++    }
++}
++
++function getbooks() {
++    document.getElementById('output').innerHTML = "";
++    fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value)
++        .then(response => response.json())
++        .then(data => {
++            for (var i = 0; i < 10; i++) {
++                var title = data.items[i].volumeInfo.title;
++
++                var bookHTML = "<h2>" + title + "</h2>";
++                document.getElementById("output").innerHTML += bookHTML;
++            }
++        });
++}
++
++

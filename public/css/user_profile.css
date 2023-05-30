@@ -1,0 +1,315 @@
+#logo {
+    margin-top: -4px;
+    margin-right: 20px;
+}
+
+nav {
+    margin-left: auto;
+}
+
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 255)), url('public/images/login_register.png');
+    background-position: center top;
+    background-repeat: repeat;
+    background-size: 100% auto, cover;
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    color: black;
+    z-index: -1;
+}
+
+header {
+    margin-top: 3%;
+    color: black;
+    padding: 20px;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+#profile_icon {
+    margin-top: auto;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.show {
+    display: block;
+}
+
+#title {
+    margin-top: 10px;
+}
+
+#subtitle {
+    margin-top: -30px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.element {
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    color: black;
+}
+
+.menu {
+    font-size: 15px;
+}
+
+#upper_main {
+    padding: 20px;
+    height: auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 35px;
+    background-color: #ADD8E6;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.section-heading h2 {
+    margin: auto;
+}
+
+
+footer {
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 30px 20px;
+    color: white;
+    box-shadow: none;
+    background-color: #ADD8E6;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#profile_img {
+    width: 50px;
+    border-radius: 10px;
+}
+
+#upper_main {
+    display: flex;
+    align-items: center;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 70%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: aliceblue;
+}
+
+.Description{
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#description{
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.picture {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.personal-info{
+    font-size: 20px;
+}
+
+.info-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    margin-bottom: 10px;
+    margin-left: 25px;
+}
+
+
+.books-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.25rem;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #000;
+}
+
+.grid-container {
+    margin-top: 50px;
+    margin-left: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 25px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.book-image {
+    width: 150px;
+    height: 100%;
+    border: 2px solid gray;
+    background-color: darkgray;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.7);
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.book-info {
+    margin-top: 10px;
+    width: 250%;
+}
+
+.book-info a {
+    color: black;
+    text-decoration: none;
+}
+
+.book-info h3 {
+    margin: 0;
+}
+
+.book-info p {
+    margin: 0;
+}
+
+.hide {
+    display: none;
+}
+
+
+.book a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.book {
+    width: 150px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.book img {
+    width: 100%;
+}
+
+
+/* Styles for screen widths up to 900px */
+@media screen and (max-width: 900px) {
+    header.flex-container {
+        display: revert;
+    }
+    .flex-container {
+        display: revert;
+    }
+    .footer-container {
+        flex-direction: column;
+    }
+    .element {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    #logo {
+        align-items: center;
+    }
+    img {
+        width: 50px;
+    }
+}

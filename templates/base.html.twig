@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> {% block head %}
         <meta charset="UTF-8">
         <meta name="keywords" content="Book Binder" />
         <title>{% block title %}Book Binder{% endblock %}</title>
@@ -12,29 +12,46 @@
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('js/home.js') }}"></script>
         {% endblock %}
-    </head>
-    <body>
-        <header class="flex-container">
+    {% endblock %}</head>
+    <body>{% block body %}
+    <header class="flex-container">
+        <a href="{{ path('app_home') }}">
             <div id="logo">
                 <img src="{{ asset('images/logo.jpg') }}" width = "80" alt="db layout"/>
             </div>
+        </a>
+        <a href="{{ path('app_home') }}">
             <div>
-                <h1>Book Binder</h1>
+                <h1 id="title">Book Binder</h1>
                 <h2 id="subtitle">Meet book lovers</h2>
             </div>
+        </a>
 
-            <nav>
-                <ul style="list-style-type:none" id="hypertext" class="flex-container">
-                    <li class="element"><a href="">Home</a></li>
-                    <li class="element"><a href="">Trending</a></li>
-                    <li class="element"><a href="">Meetup</a></li>
-                    <li class="element"><a href="">Setting</a></li>
-                </ul>
-            </nav>
-            </div>
-        </header>
+
+
+        <nav>
+            <ul style="list-style-type:none" id="hypertext" class="flex-container">
+                <li class="element"><a href="{{ path('app_home') }}">Home</a></li>
+                <li class="element"><a href="">Favorite</a></li>
+                <li class="element"><a href="{{ path('app_meetup') }}">Meetup</a></li>
+                <li class="element" id="profile_icon">
+                    <a href="#">
+                        <img id="profile_img" onclick="toggleMenu()" class="dropbtn" src="{{ asset('images/profile_icon.png') }}" alt="db layout">
+                    </a>
+                    <div class="dropdown">
+                        <div id="myDropdown" class="dropdown-content">
+                            <a class="menu" href="{{ path('app_user_profile') }}">Profile</a>
+                            <a class="menu" href="">Notification</a>
+                            <a class="menu" href="{{ path('app_login') }}">Log out</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
 
         <main>
             {% block main %}{% endblock %}
@@ -49,5 +66,5 @@
                 </p>
             </div>
         </footer>
-    </body>
+    {% endblock %}</body>
 </html>

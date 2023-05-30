@@ -1,0 +1,221 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}Bookprofile{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bookprofile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block main %}
+    <section>
+        <form  action="{{ path('app_search_books') }}" method="get"></form>
+    </section>
+
+    <section class="Book">
+
+        <div>
+            <img id="book_img" alt="Book cover">
+            <button id="favorite_button">Favorite!!</button>
+        </div>
+
+
+        <div class="Information">
+            <h2 id="book_title"></h2>
+            <h3 id="author"></h3>
+
+            <h4>Genres</h4>
+            <div class="Genres">
+                <p id="genres">Young Adult, Fiction</p>
+            </div>
+
+            <div class="Description">
+                <h4>Description</h4>
+                <p id="description"></p>
+            </div>
+
+
+            <div class="Details">
+                <div class="row">
+                    <div class="Specifications">
+                        <h5>ISBN</h5>
+                        <p id="isbn">{{ isbn }}</p>
+                    </div>
+                    <div class="Specifications">
+                        <h5>Print length</h5>
+                        <p id="pages"></p>
+                    </div>
+                    <div class="Specifications">
+                        <h5>Publication date</h5>
+                        <p id="publication_date"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="Specifications">
+                        <h5>Language</h5>
+                        <p id="language"></p>
+                    </div>
+
+                    <div class="Specifications">
+                        <h5>Reading age</h5>
+                        <p id="reading_age">14-17 years</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who liked this book</b>  </button>
+            <button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who are reading this book</b>  </button>
+
+            <div class="Reviews">
+
+                <div class="user_rating">
+                    <h4>Reviews</h4>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <p>4.1 average based on 254 reviews.</p>
+
+                    <div class="bars">
+                        <div class="side">
+                            <div>5 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-5"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>150</div>
+                        </div>
+                        <div class="side">
+                            <div>4 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-4"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>63</div>
+                        </div>
+                        <div class="side">
+                            <div>3 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-3"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>15</div>
+                        </div>
+                        <div class="side">
+                            <div>2 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-2"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>6</div>
+                        </div>
+                        <div class="side">
+                            <div>1 star</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-1"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>20</div>
+                        </div>
+                    </div>
+
+                    <button onclick="openForm()" type="button" style="font-size: 15px"> <i class='fas fa-quote-left'></i> <b> Schrijf een review</b>  <i class='fas fa-quote-right'></i> </button>
+
+                    <script>
+                        function openForm() {
+                            document.getElementById("inputReview").style.display = "block";
+                        }
+                    </script>
+                    <div class="reviewForm" id="inputReview">
+                        <form action="/action_page.php" class="form-container">
+                            <label for="overall-rating">Overall Rating:</label>
+                            <select id="overall-rating" name="overall-rating">
+                                <option value="5">5 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="2">2 stars</option>
+                                <option value="1">1 star</option>
+                            </select><br>
+
+                            <label for="review-text">Review Text:</label>
+                            <textarea id="review-text" name="review-text"></textarea><br>
+
+                            <input type="submit" value="Submit Review">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <i style="font-size: 50px" onclick="likeDislike(this)" class="far fa-heart"></i>
+
+        <!-- Does not work? -->
+        <script>
+            function likeDislike(x) {
+                x.classList.toggle("fas fa-heart");
+            }
+        </script>
+
+    </section>
+
+
+    <script>
+        // Call the function when the page is loaded
+        window.addEventListener('DOMContentLoaded', function() {
+            var isbn = "{{ isbn }}";  // Replace with your ISBN
+
+            // Fetch the book image from Google Books API
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the image links from the API response
+                    const book = data.items[0].volumeInfo;
+                    const title = book.title;
+                    const author = book.authors ? book.authors[0] : "Unknown";
+                    const genres = book.categories ? book.categories.join(', ') : "Unknown";
+                    const description = book.description ? book.description : "No description available";
+                    const pages = book.pageCount ? book.pageCount : "Unknown";
+                    const publicationDate = book.publishedDate ? book.publishedDate : "Unknown";
+                    const language = book.language ? book.language : "Unknown";
+                    const readingAge = book.readingModes ? book.readingModes.ageGroup : "Unknown";
+
+                    var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+
+                    // Modify the URL to increase the resolution
+                    imageLink = imageLink.replace('&edge=curl', '&printsec=frontcover&img=1&zoom=5');
+
+                    // Update the image source in the HTML
+                    document.getElementById('book_img').src = imageLink;
+
+                    document.getElementById('book_title').textContent = title;
+                    document.getElementById('author').textContent = "Author: " + author;
+                    document.getElementById('genres').textContent =  genres;
+                    document.getElementById('description').textContent = description;
+                    document.getElementById('pages').textContent = pages;
+                    document.getElementById('publication_date').textContent = publicationDate;
+                    document.getElementById('language').textContent = language;
+                    document.getElementById('reading_age').textContent = readingAge;
+                })
+                .catch(error => console.log(error));
+        });
+    </script>
+
+{% endblock %}
