@@ -1,0 +1,254 @@
+#logo {
+    margin-top: -4px;
+    margin-right: 20px;
+}
+
+nav {
+    margin-left: auto;
+}
+
+header {
+    margin-top: 3%;
+    color: black;
+    padding: 20px;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000; /* Add a 1px solid black line at the bottom */
+}
+
+header a{
+    text-decoration: none;
+    color: black;
+}
+
+#profile_img {
+    width: 50px;
+    border-radius: 10px;
+}
+
+#profile_icon{
+    margin-top: auto;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+#subtitle{
+    margin-top: -30px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.element{
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    color: black;
+}
+
+.menu{
+    font-size: 15px;
+}
+
+section {
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+}
+
+#book_img {
+    margin-top: 28px;
+    width: 200px;
+    position: center;
+}
+
+body {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    color: black;
+    z-index: -1;
+}
+
+footer {
+    margin-top: 40px;
+    border-radius: 5px;
+    padding: 30px 20px;
+    color: white;
+
+    /* Remove box shadow */
+    box-shadow: none;
+
+    /* Add transparency to the background */
+    background-color: #ADD8E6; /* Light blue */
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.Book {
+    display: flex;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.Book img#book_img {
+    width: 200px;
+    margin-right: 20px;
+}
+
+.Information {
+    flex-grow: 1;
+    font-size:20px ;
+}
+
+.Details .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Details .Specifications {
+    flex: 0 0 50%;
+    max-width: 50%;
+    font-size: 20px;
+}
+
+.Specifications h5, .Specifications p {
+    margin: 5px 0;
+}
+
+section.LikedBy {
+    margin-top: 20px;
+}
+
+section.LikedBy h4 {
+    margin-bottom: 10px;
+}
+
+div.Person {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+div.PersonContainer {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding:5px;
+    width: 280px;
+}
+
+div.ProfileBox {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    border: 2px solid #ddd;
+}
+
+img.ProfileImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+div.PersonInfo {
+    flex-grow: 1;
+    text-align: left;
+}
+
+p.PersonName {
+    margin: 0;
+    font-weight: bold;
+}
+
+.PeopleList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.Person {
+    width: 48%; /* Adjust this value as needed */
+    /* Add any other styling for the Person class */
+}
+
+
+
+/* Styles for screen widths up to 900px */
+
+@media screen and (max-width:900px) {
+    /* Styles for the header */
+    header.flex-container{
+        display: revert;
+    }
+    .flex-container{
+        display: revert;
+    }
+    .footer-container{
+        flex-direction: column;
+    }
+    .element{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    #logo{
+        align-items: center;
+    }
+
+    #book_img {
+        width: 50px;
+        position: center;
+    }
+
+}

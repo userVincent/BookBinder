@@ -24,6 +24,7 @@
                         {{ form_row(registrationForm.birthday, { 'label': 'Birthday:', 'attr': {'required': true, 'id': 'birthday'} }) }}
                         {#added the name property of 'password'#}
                         {{ form_row(registrationForm.plainPassword, { 'label': 'Password', 'attr': {'placeholder': 'Enter Password', 'required': true, 'id': 'password','name': '_password'} }) }}
+                        {{ form_row(registrationForm.profilepicFile) }}
                         {{ form_row(registrationForm.agreeTerms) }}
 
 

@@ -1,0 +1,227 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"bccc6749-9c85-4ed0-8397-f9b9390964be\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/config/routes.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config/routes.yaml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Controller/RegistrationController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Controller/RegistrationController.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\" doNotAsk=\"true\">\r\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"PHP 8.2\">\r\n    <include_path>\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/flex\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-exporter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/config\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dotenv\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/filesystem\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/runtime\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/framework-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php83\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dependency-injection\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/string\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/yaml\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/maker-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/persistence\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/deprecations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/dbal\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/event-manager\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/collections\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/stopwatch\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/common\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/sql-formatter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/migrations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/doctrine-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/orm\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/password-hasher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-info\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-http\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-core\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-csrf\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-access\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/form\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/options-resolver\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/validator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/twig/twig\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/annotations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/data-fixtures\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/fakerphp/faker\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/asset\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/web-profiler-bundle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/myclabs/deep-copy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-timer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-code-coverage\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-invoker\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/phpunit\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-text-template\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/theseer/tokenizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-file-iterator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-enumerator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-reflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/comparator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/global-state\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/diff\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/recursion-context\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/complexity\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/version\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/cli-parser\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/lines-of-code\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/type\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/exporter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/resource-operations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/environment\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/masterminds/html5\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/browser-kit\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dom-crawler\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/css-selector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/phpunit-bridge\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/manifest\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/version\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/panther\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/process\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/php-webdriver/webdriver\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/dbrekelmans/bdi\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mime\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mailer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/google-mailer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpseclib/phpseclib\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/constant_time_encoding\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/random_compat\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/ralouphie/getallheaders\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-factory\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-client\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-message\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/firebase/php-jwt\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/google/auth\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/google/apiclient-services\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/guzzle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/psr7\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/promises\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/google/apiclient\" />\r\n    </include_path>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2PjrLFUh7AC0HbUlWWTu7CYV2wN\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,\r\n    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,\r\n    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/segas/IdeaProjects/a22web38/public&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"Bookbinder\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"Bookbinder\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"webserver\" type=\"PhpBuiltInWebServerConfigurationType\" factoryName=\"PHP Built-in Web Server\" document_root=\"$PROJECT_DIR$/public\" port=\"8080\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"bccc6749-9c85-4ed0-8397-f9b9390964be\" name=\"Changes\" comment=\"\" />\r\n      <created>1683981277641</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1683981277641</updated>\r\n      <workItem from=\"1683981280725\" duration=\"1379000\" />\r\n      <workItem from=\"1683982679549\" duration=\"3024000\" />\r\n      <workItem from=\"1684493711287\" duration=\"9488000\" />\r\n      <workItem from=\"1684752072241\" duration=\"5059000\" />\r\n      <workItem from=\"1684797340221\" duration=\"668000\" />\r\n      <workItem from=\"1684842399439\" duration=\"71254000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6f494b1f24a6c3ee0acbd9e57c7e63f86d26299b)
++++ b/.idea/workspace.xml	(date 1685363604936)
+@@ -4,10 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="">
++    <list default="true" id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="Top image height is shortened to make better use of space.&#10;&#10;Second version of User Profile created.&#10;&#10;1. User profile public&#10;2. User profile private">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -17,11 +15,18 @@
+   <component name="ComposerSettings" doNotAsk="true">
+     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+     <execution />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="JavaScript File" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="shusaku_segawa" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -29,7 +34,7 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.2">
++  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+     <include_path>
+       <path value="$PROJECT_DIR$/vendor/symfony/flex" />
+       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+@@ -147,25 +152,9 @@
+       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
+       <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
+-      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+-      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+-      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+-      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+-      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+-      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+-      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+-      <path value="$PROJECT_DIR$/vendor/google/auth" />
+-      <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+-      <path value="$PROJECT_DIR$/vendor/google/apiclient" />
+     </include_path>
+   </component>
+   <component name="ProjectId" id="2PjrLFUh7AC0HbUlWWTu7CYV2wN" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -175,19 +164,12 @@
+   &quot;keyToString&quot;: {
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+     &quot;last_opened_file_path&quot;: &quot;C:/Users/segas/IdeaProjects/a22web38/public&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+@@ -212,18 +194,101 @@
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="" />
++      <changelist id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging." />
+       <created>1683981277641</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1683981277641</updated>
+       <workItem from="1683981280725" duration="1379000" />
+       <workItem from="1683982679549" duration="3024000" />
+-      <workItem from="1684493711287" duration="9488000" />
+-      <workItem from="1684752072241" duration="5059000" />
+-      <workItem from="1684797340221" duration="668000" />
+-      <workItem from="1684842399439" duration="71254000" />
++      <workItem from="1684493711287" duration="14150000" />
++      <workItem from="1684681844946" duration="1937000" />
++      <workItem from="1684686289784" duration="5199000" />
++      <workItem from="1684915388295" duration="42374000" />
++      <workItem from="1685009438327" duration="13106000" />
++      <workItem from="1685095924305" duration="2617000" />
++      <workItem from="1685103790314" duration="18983000" />
++      <workItem from="1685309526400" duration="2013000" />
++      <workItem from="1685360930121" duration="2464000" />
++    </task>
++    <task id="LOCAL-00001" summary="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design.">
++      <created>1684503691014</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1684503691014</updated>
++    </task>
++    <task id="LOCAL-00002" summary="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required.">
++      <created>1684504092512</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1684504092512</updated>
++    </task>
++    <task id="LOCAL-00003" summary="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging.">
++      <created>1684685914099</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1684685914099</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Home page improved design.&#10;4 books in each row with a line break.&#10;Color contrast readjusted.&#10;Image is added as a design.">
++      <created>1685019639438</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1685019639438</updated>
++    </task>
++    <task id="LOCAL-00005" summary="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered.">
++      <created>1685022906187</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1685022906187</updated>
++    </task>
++    <task id="LOCAL-00006" summary="Updates&#10;- Login, register, home redesigned&#10;- Book search&#10;- Book profile functioning">
++      <created>1685100347486</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1685100347486</updated>
++    </task>
++    <task id="LOCAL-00007" summary="People's profile design&#10;- Image&#10;- Personal info&#10;- Favorite books&#10;&#10;to be added&#10;- person's description&#10;- profile photo editing feature">
++      <created>1685111062326</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1685111062326</updated>
+     </task>
++    <task id="LOCAL-00008" summary="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio.">
++      <created>1685198887689</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1685198887689</updated>
++    </task>
++    <task id="LOCAL-00009" summary="Top image height is shortened to make better use of space.&#10;&#10;Second version of User Profile created.&#10;&#10;1. User profile public&#10;2. User profile private">
++      <created>1685362602488</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1685362602488</updated>
++    </task>
++    <task id="LOCAL-00010" summary="Top image height is shortened to make better use of space.&#10;&#10;Second version of User Profile created.&#10;&#10;1. User profile public&#10;2. User profile private">
++      <created>1685362611176</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1685362611176</updated>
++    </task>
++    <task id="LOCAL-00011" summary="Top image height is shortened to make better use of space.&#10;&#10;Second version of User Profile created.&#10;&#10;1. User profile public&#10;2. User profile private">
++      <created>1685362619964</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1685362619964</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -240,8 +305,17 @@
+       </map>
+     </option>
+   </component>
+-  <component name="XSLT-Support.FileAssociations.UIState">
+-    <expand />
+-    <select />
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design." />
++    <MESSAGE value="Creating new branch for book-features.&#10;Book Search functioning with Google API.&#10;Connection with the back-end required." />
++    <MESSAGE value="commiting before pulling Book profile to my own branch.&#10;To remove error of uncommited changes before merging." />
++    <MESSAGE value="connected the book search function with controler.&#10;&#10;It passes down the book information to book profile twig, when specific book is clicked. &#10;&#10;The home screen design is adjusted to use space better, also with better color contrast" />
++    <MESSAGE value="Home page improved design.&#10;4 books in each row with a line break.&#10;Color contrast readjusted.&#10;Image is added as a design." />
++    <MESSAGE value="bookprofile page also modified to adjust with the home page design. &#10;Favorite button also added.&#10;Changes color from orange to pink when its hovered." />
++    <MESSAGE value="Updates&#10;- Login, register, home redesigned&#10;- Book search&#10;- Book profile functioning" />
++    <MESSAGE value="People's profile design&#10;- Image&#10;- Personal info&#10;- Favorite books&#10;&#10;to be added&#10;- person's description&#10;- profile photo editing feature" />
++    <MESSAGE value="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio." />
++    <MESSAGE value="Top image height is shortened to make better use of space.&#10;&#10;Second version of User Profile created.&#10;&#10;1. User profile public&#10;2. User profile private" />
++    <option name="LAST_COMMIT_MESSAGE" value="Top image height is shortened to make better use of space.&#10;&#10;Second version of User Profile created.&#10;&#10;1. User profile public&#10;2. User profile private" />
+   </component>
+ </project>
+\ No newline at end of file
