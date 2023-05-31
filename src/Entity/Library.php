@@ -16,7 +16,7 @@ class Library
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 8)]
@@ -33,6 +33,24 @@ class Library
 
     #[ORM\OneToMany(mappedBy: 'library', targetEntity: Meetup::class)]
     private Collection $meetups;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Town = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Year = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Type = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $StreetName = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $HouseNumber = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $PostalCode = null;
 
     public function __construct()
     {
@@ -51,7 +69,7 @@ class Library
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -156,6 +174,78 @@ class Library
                 $meetup->setLibrary(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->Town;
+    }
+
+    public function setTown(?string $Town): self
+    {
+        $this->Town = $Town;
+
+        return $this;
+    }
+
+    public function getYear(): ?string
+    {
+        return $this->Year;
+    }
+
+    public function setYear(?string $Year): self
+    {
+        $this->Year = $Year;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->Type;
+    }
+
+    public function setType(?string $Type): self
+    {
+        $this->Type = $Type;
+
+        return $this;
+    }
+
+    public function getStreetName(): ?string
+    {
+        return $this->StreetName;
+    }
+
+    public function setStreetName(?string $StreetName): self
+    {
+        $this->StreetName = $StreetName;
+
+        return $this;
+    }
+
+    public function getHouseNumber(): ?string
+    {
+        return $this->HouseNumber;
+    }
+
+    public function setHouseNumber(?string $HouseNumber): self
+    {
+        $this->HouseNumber = $HouseNumber;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->PostalCode;
+    }
+
+    public function setPostalCode(?string $PostalCode): self
+    {
+        $this->PostalCode = $PostalCode;
 
         return $this;
     }

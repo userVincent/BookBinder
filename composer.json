@@ -14,6 +14,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
         "fakerphp/faker": "^1.21",
+        "phpoffice/phpspreadsheet": "^1.28",
         "symfony/asset": "6.3.*",
         "symfony/console": "6.3.*",
         "symfony/dotenv": "6.3.*",

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Libraries Page{% endblock %}
+
+{% block main %}
+<div>
+    <h1>Libraries</h1>
+    <div id="librariesContainer">
+        <!-- Libraries data will be appended here -->
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const pageSize = 10;
+        {% if userIdMeetup is defined %}
+            var userIdMeetup = {{ userIdMeetup }};
+        {% endif %}
+
+        function fetchLibraries() {
+                fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
+                .then(response => response.json())
+                .then(data => {
+                    appendLibraries(data.data);
+                    currentPage++;
+                });
+        }
+
+        function appendLibraries(libraries) {
+            const container = document.getElementById('librariesContainer');
+            libraries.forEach(library => {
+                const libraryElement = document.createElement('div');
+                libraryElement.innerHTML = `
+                    <h2>
+                        <a href="/library/${library.id}${userIdMeetup ? '?userIdMeetup=' + userIdMeetup : ''}">
+                            ${library.name}
+                        </a>
+                    </h2>
+                    <p>Town: ${library.Town}</p>
+                    <p>Street: ${library.StreetName}</p>
+                    <p>House Number: ${library.HouseNumber}</p>
+                    <p>Postal Code: ${library.PostalCode}</p>
+                `;
+                container.appendChild(libraryElement);
+            });
+        }
+
+        function scrollHandler() {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                fetchLibraries();
+            }
+        }
+
+        window.addEventListener('scroll', scrollHandler);
+        fetchLibraries(); // Fetch initial data
+
+    </script>
+</div>
+{% endblock %}
+
