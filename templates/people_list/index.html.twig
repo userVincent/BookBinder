@@ -46,27 +46,72 @@
     </section>
 
     <section class="LikedBy">
-        <h4>People who also liked this book</h4>
-        <div class="PeopleList">
-            {% for user in users %}
-                {% if loop.index0 % 4 == 0 %}
-                    <div class="Row">
-                {% endif %}
-                <div class="Person">
-                    <div class="PersonContainer">
-                        <div class="ProfileBox">
-                            <img class="ProfileImg" src="" alt="Profile picture">
+        <h1>People who also liked this book</h1>
+        <div class="people-liked-container">
+            {% for person in users %}
+                <div class="person-card">
+{#                    <div class="user-profile-picture">#}
+{#                        <img src="{{ asset('uploads/profilepics/' ~ person.getProfilepicFilename()) }}" alt="Profile Picture" class="profile-picture">#}
+{#                        <h3>{{ person.getFirstname }} {{ person.getLastname }}</h3>#}
+{#                    </div>#}
+                    <div class="user-profile-pic">
+                        {% if person.getProfilepicFilename() %}
+                            <img src="{{ asset('uploads/profilepics/' ~ person.getProfilepicFilename() ) }}" alt="Profile Picture" class="profile-picture">
+                        {% else %}
+                            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
+                        {% endif %}
+                    </div>
+                    <div class="user-info">
+                        <div class="data-user-name">
+                            <h3>{{ person.getFirstname ~ " " ~ person.getLastname }}</h3>
                         </div>
-                        <div class="PersonInfo">
-                            <p class="PersonName">{{ user.getFirstName() ~ " " ~ user.getLastName() }}</p>
+                        <div class="data-user-age">
+                            <p><b>Age: </b>25</p>
+                        </div>
+                        <div class="data-user-city">
+                            <h4>City: </h4>
+                            <p>Leuven</p>
+                        </div>
+                        <div class="data-user-interests">
+                            <h4>Interests: </h4>
+                            <p>Football, tennis, hockey</p>
+                        </div>
+                        <div class="data-user-liked-books">
+                            <h4>Liked Books:</h4>
+                            <ul>
+                                {% for book in person.getFavoriteBooks() %}
+                                    <li>{{ book.getISBN() }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
-                {% if loop.index0 % 4 == 1 or loop.last %}
-                    </div>
-                {% endif %}
             {% endfor %}
         </div>
+{#        <div class="PeopleList">#}
+{#            {% for user in users %}#}
+{#                {% if loop.index0 % 4 == 0 %}#}
+{#                    <div class="Row">#}
+{#                {% endif %}#}
+{#                <div class="Person">#}
+{#                    <div class="PersonContainer">#}
+{#                        <div class="ProfileBox">#}
+{#                            {% if user.getProfilepicFilename() %}#}
+{#                                <img src="{{ asset('uploads/profilepics/' ~ user.getProfilepicFilename() ) }}" alt="Profile Picture" class="profile-picture">#}
+{#                            {% else %}#}
+{#                                <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                        <div class="PersonInfo">#}
+{#                            <p class="PersonName">{{ user.getFirstName() ~ " " ~ user.getLastName() }}</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                {% if loop.index0 % 4 == 1 or loop.last %}#}
+{#                    </div>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#        </div>#}
     </section>
 
 

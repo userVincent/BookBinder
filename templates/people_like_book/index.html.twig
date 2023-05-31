@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PeopleLikeBookController!{% endblock %}
+
+{% block body %}
+    <div class="people-liked-container">
+        {% for person in people %}
+            <div class="person-card">
+                <div class="person-profile">
+                    <img src="{{ asset('uploads/profilepics/' ~ person.profilePictureFilename) }}" alt="Profile Picture" class="profile-picture">
+                    <h3>{{ person.firstname }} {{ person.lastname }}</h3>
+                </div>
+                <div class="liked-books">
+                    <h4>Liked Books:</h4>
+                    <ul>
+                        {% for book in person.getFavoriteBooks %}
+                            <li>{{ book.title }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="person-description">
+                    <h4>About {{ person.firstname }}:</h4>
+{#                    <p>{{ person.description }}</p>#}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

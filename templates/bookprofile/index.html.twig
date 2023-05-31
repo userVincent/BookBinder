@@ -58,6 +58,7 @@
             </div>
 
             <a href="/peoplelist/{{ isbn }}"><button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who liked this book</b>  </button></a>
+{#            <a href="/people-like/{{ isbn }}"><button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who liked this book</b>  </button></a>#}
             <button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who are reading this book</b>  </button>
 
             <div class="Reviews">
@@ -210,6 +211,7 @@
                 })
                 .catch(error => console.log(error));
         });
+
 
         function handleFavorite(bookId, buttonElement) {
             // Send HTTP POST request to your Symfony backend endpoint

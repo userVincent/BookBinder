@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/user_profile.css') }}">
 {% endblock %}
 
-{% block javascripts %}
-    <script src="{{ asset('js/home.js') }}"></script>
-{% endblock %}
 
 {% block main %}
 
@@ -59,7 +56,7 @@
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             document.getElementById('output').innerHTML = "";
-            fetch("https://www.googleapis.com/books/v1/volumes?q=" + "Great Gatsby" + "&maxResults=40")
+            fetch("https://www.googleapis.com/books/v1/volumes?q=" + "Great Gatsby" + "&maxResults=20")
                 .then(response => response.json())
                 .then(data => {
                     for (var i = 0; i <20; i += 4) {

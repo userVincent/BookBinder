@@ -170,56 +170,89 @@ div.Person {
     margin-bottom: 10px;
 }
 
-div.PersonContainer {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    overflow: hidden;
+/*div.PersonContainer {*/
+/*    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);*/
+/*    border-radius: 5px;*/
+/*    overflow: hidden;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    padding:5px;*/
+/*    width: 280px;*/
+/*}*/
+
+/*div.ProfileBox {*/
+/*    width: 500px;*/
+/*    height: 100px;*/
+/*    border-radius: 50%;*/
+/*    overflow: hidden;*/
+/*    margin-right: 10px;*/
+/*    border: 2px solid #ddd;*/
+/*}*/
+
+/*img.ProfileImg {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    object-fit: cover;*/
+/*}*/
+
+/*div.PersonInfo {*/
+/*    flex-grow: 1;*/
+/*    text-align: left;*/
+/*}*/
+
+/*p.PersonName {*/
+/*    margin: 0;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.PeopleList {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*.Row {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-between;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.Person {*/
+/*    width: 48%; !* Adjust this value as needed *!*/
+/*    !* Add any other styling for the Person class *!*/
+/*}*/
+
+.people-liked-container {
+    border-style: solid;
+    border-color: black;
+}
+.person-card {
     display: flex;
-    align-items: center;
-    padding:5px;
-    width: 280px;
+    flex-direction: row;
 }
 
-div.ProfileBox {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+
+.user-profile-pic {
+    width: 200px;
+    height: 200px;
     overflow: hidden;
-    margin-right: 10px;
-    border: 2px solid #ddd;
 }
 
-img.ProfileImg {
+.user-profile-pic img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-div.PersonInfo {
-    flex-grow: 1;
-    text-align: left;
+.user-info {
+    margin-left: 50px;
 }
 
-p.PersonName {
-    margin: 0;
-    font-weight: bold;
-}
-
-.PeopleList {
+/*Styling all the user info */
+[class^="data"] {
+    /* Your styles here */
     display: flex;
-    flex-wrap: wrap;
-}
-
-.Row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.Person {
-    width: 48%; /* Adjust this value as needed */
-    /* Add any other styling for the Person class */
+    flex-direction: row;
 }
 
 
