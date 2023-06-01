@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/people_like_book.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bookprofile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bookprofile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/peoplelist.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/peoplelist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/user_profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/user_profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bookprofile/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookprofile/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookprofileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookprofileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/people_list/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/people_list/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_profile_private/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_profile_private/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +237,7 @@
       <workItem from="1684797340221" duration="668000" />
       <workItem from="1684842399439" duration="85869000" />
       <workItem from="1685368539238" duration="3387000" />
-      <workItem from="1685386754317" duration="18386000" />
+      <workItem from="1685386754317" duration="21301000" />
     </task>
     <servers />
   </component>
