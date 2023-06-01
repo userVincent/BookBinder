@@ -6,7 +6,6 @@
         <title>{% block title %}Book Binder{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -38,7 +37,7 @@
             <ul style="list-style-type:none" id="hypertext" class="flex-container">
                 <li class="element"><a href="{{ path('app_home') }}">Home</a></li>
                 <li class="element"><a href="">Favorite</a></li>
-                <li class="element"><a href="{{ path('app_meetup') }}">Meetup</a></li>
+                <li class="element"><a href="{{ path('app_meetups') }}">Meetups</a></li>
                 <li class="element"><a href="">Libraries</a></li>
                 <li class="element" id="profile_icon">
                     <a href="#">

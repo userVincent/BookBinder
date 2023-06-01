@@ -31,6 +31,8 @@
 .tabcontent {
     padding: 6px;
     border: 1px solid #ccc;
+    overflow-y: scroll;
+    height: 600px;
 }
 
 #profile_picture {
@@ -74,4 +76,29 @@
 .date {
     padding-left: 20px;
     font-size: 20px;
+}
+
+.newMeetupButton {
+    position: sticky;
+    top: 0;
+    left: 100%;
+    display: block;
+    padding: 10px;
+    background-color: #3e88ff;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.newMeetupButton:hover {
+    background-color: skyblue;
+}
+
+a {
+    text-decoration: none;
 }
