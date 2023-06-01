@@ -42,22 +42,22 @@ function displayTrendingBooks() {
                 const title1 = book1.title;
                 const author1 = book1.author;
                 const isbn1 = book1.primary_isbn13;
-                const imageLinks1 = book1.book_image ? book1.book_image : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks1 = book1.book_image ? book1.book_image : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 const title2 = book2.title;
                 const author2 = book2.author;
                 const isbn2 = book2.primary_isbn13;
-                const imageLinks2 = book2.book_image ? book2.book_image : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks2 = book2.book_image ? book2.book_image : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 const title3 = book3.title;
                 const author3 = book3.author;
                 const isbn3 = book3.primary_isbn13;
-                const imageLinks3 = book3.book_image ? book3.book_image : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks3 = book3.book_image ? book3.book_image : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 const title4 = book4.title;
                 const author4 = book4.author;
                 const isbn4 = book4.primary_isbn13;
-                const imageLinks4 = book4.book_image ? book4.book_image : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks4 = book4.book_image ? book4.book_image : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 // Create the HTML
                 var booksHTML = `
@@ -151,22 +151,22 @@ function getBooks() {
                 const title1 = book1.title;
                 const author1 = book1.authors ? book1.authors[0] : "Unknown";
                 const isbn1 = book1.industryIdentifiers ? book1.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 const title2 = book2.title;
                 const author2 = book2.authors ? book2.authors[0] : "Unknown";
                 const isbn2 = book2.industryIdentifiers ? book2.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks2 = book2.imageLinks ? book2.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks2 = book2.imageLinks ? book2.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 const title3 = book3.title;
                 const author3 = book3.authors ? book3.authors[0] : "Unknown";
                 const isbn3 = book3.industryIdentifiers ? book3.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks3 = book3.imageLinks ? book3.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks3 = book3.imageLinks ? book3.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 const title4 = book4.title;
                 const author4 = book4.authors ? book4.authors[0] : "Unknown";
                 const isbn4 = book4.industryIdentifiers ? book4.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks4 = book4.imageLinks ? book4.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+                const imageLinks4 = book4.imageLinks ? book4.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
                 var booksHTML = `
                     <div class="row">
