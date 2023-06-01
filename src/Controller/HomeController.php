@@ -158,4 +158,37 @@ class HomeController extends AbstractController
             'users' => $book->getUsers(),
         ]);
     }
+
+    #[Route('/peopleselect', name: 'app_people_select')]
+    public function selectPeople(Request $request, UserRepository $userRepository): Response
+    {
+
+        return $this->render('meetup/people_select.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+
+    #[Route('/searchProfiles', name: 'app_people_search', methods: ['GET', 'POST'])]
+    public function getPeople(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $searchQuery = $request->request->get('searchQuery');
+        $users = $userRepository->searchUsers($searchQuery);
+
+        if (empty($users)) {
+            return new JsonResponse([]);
+        }
+
+        $results = [];
+        foreach ($users as $user) {
+            $results[] = [
+                'firstname' => $user->getFirstName(),
+                'lastname' => $user->getLastName(),
+                'address' => $user->getAddress(),
+                'email' => $user->getEmail(),
+            ];
+        }
+
+        return new JsonResponse($results);
+    }
 }

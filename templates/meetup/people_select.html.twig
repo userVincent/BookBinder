@@ -1,0 +1,29 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}Meetup{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/meetup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/meetup.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+
+    <h2>Search for a Book Lover!!</h2>
+    <div class="search-wrapper">
+        <input id="input" class="search" placeholder="people name" type="text" >
+        <button id="search-button" onclick="selectPeople()">Search</button>
+    </div>
+
+    <div id="output">
+
+    </div>
+
+
+
+{% endblock %}
