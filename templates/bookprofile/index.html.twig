@@ -192,10 +192,8 @@
                     const publicationDate = book.publishedDate ? book.publishedDate : "Unknown";
                     const language = book.language ? book.language : "Unknown";
 
-                    var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
+                    imageLink = book.imageLinks ? book.imageLinks.thumbnail : asset('images/no-image-available.png');
 
-                    // Modify the URL to increase the resolution
-                    imageLink = imageLink.replace('&edge=curl', '&printsec=frontcover&img=1&zoom=5');
 
                     // Update the image source in the HTML
                     document.getElementById('book_img').src = imageLink;
