@@ -73,7 +73,9 @@
                         <div class="data-user-liked-books">
                             <ul class="liked-books-list"><b>Liked books:</b>
                                 {% for book in person.getFavoriteBooks() %}
-                                    <li>{{ book.getISBN() }}</li>
+                                    <li>
+                                        <a href="{{ path('book_profile', {'title': 'a', 'isbn': book.getISBN()}) }}">{{ book.getISBN() }}</a>
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>
