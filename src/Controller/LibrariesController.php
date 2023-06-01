@@ -46,11 +46,8 @@ class LibrariesController extends AbstractController
     #[Route('/libraries', name: 'app_libraries')]
     public function index(Request $request): Response
     {
-        $userIdMeetup = $request->query->getInt('userIdMeetup', 0);
-        
         // Render the HTML page
         return $this->render('libraries/index.html.twig', [
-            'userIdMeetup' => $userIdMeetup > 0,
         ]);
     }
 
