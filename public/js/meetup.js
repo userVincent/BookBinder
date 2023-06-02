@@ -1,4 +1,8 @@
 
+document.addEventListener('DOMContentLoaded', function() {
+    loadPreviousData();
+});
+
 function selectPeople() {
 
     var searchQuery = document.getElementById('input').value;
@@ -29,14 +33,27 @@ function displaySearchResults(results) {
     }
 
     var resultHTML = '';
-    for (var i = 0; i < results.length; i++) {
+    resultHTML += '<div class="profile-row">';
+    for (var i = 0; i < results.length; i += 1) {
         var result = results[i];
-        resultHTML += '<div class="profile">';
-        resultHTML += '<h3>' + result.firstname + result.lastname + '</h3>';
-        resultHTML += '<h3>' + result.address + '</h3>';
-        resultHTML += '<h3>' + result.email + '</h3>'; // Adjust the property name if needed resultHTML += '<h3>' + result.name + '</h3>
+        resultHTML += '<a class="check-profile" href="/profile/public/' + result.id + '"><div class="profile">';
+            resultHTML += '<div class="profile-content">';
+                resultHTML += '<div class="ProfileBox"><img class="profile-img" src="' + result.image + '" alt="Profile picture"></div>';
+                resultHTML += '<div><h3>' + result.firstname + ' ' + result.lastname + '</h3></div>';
+            resultHTML += '</div></a>';
+            resultHTML += '<div><button class="send-request-btn">Select</button></div>'
         resultHTML += '</div>';
     }
-
+    resultHTML += '</div>';
     outputElement.innerHTML = resultHTML;
+    sessionStorage.setItem('searchResults', JSON.stringify(results));
+
+}
+
+function loadPreviousData(){
+    var savedResults = sessionStorage.getItem('searchResults');
+    if (savedResults) {
+        var results = JSON.parse(savedResults);
+        displaySearchResults(results);
+    }
 }

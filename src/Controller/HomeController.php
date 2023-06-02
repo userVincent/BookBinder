@@ -129,10 +129,10 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/public', name: 'app_user_profile_public')]
-    public function getProfilePublic(Request $request, UserRepository $userRepository): Response
+    #[Route('/profile/public/{id}', name: 'app_user_profile_public')]
+    public function getProfilePublic(Request $request, $id, UserRepository $userRepository): Response
     {
-        $user = $this->getUser();
+        $user = $userRepository->find($id);
 
         return $this->render('user_profile_public/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -184,8 +184,7 @@ class HomeController extends AbstractController
             $results[] = [
                 'firstname' => $user->getFirstName(),
                 'lastname' => $user->getLastName(),
-                'address' => $user->getAddress(),
-                'email' => $user->getEmail(),
+                'id' => $user->getId(),
             ];
         }
 

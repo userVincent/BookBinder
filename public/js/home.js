@@ -19,7 +19,7 @@ window.onclick = function(event) {
 }
 
 window.onload = function() {
-    displayTrendingBooks();
+    loadPreviousData();
 };
 
 
@@ -138,6 +138,10 @@ function displayTrendingBooks() {
 
 
 function getBooks() {
+    if(!document.getElementById('input').value){
+        displayTrendingBooks();
+        return;
+    }
     document.getElementById('output').innerHTML = "";
     fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
         .then(response => response.json())
@@ -242,7 +246,17 @@ function getBooks() {
                 document.getElementById("output").innerHTML += booksHTML;
             }
         });
+    sessionStorage.setItem('searchResults', JSON.stringify(results));
 }
+
+function loadPreviousData() {
+    var savedResults = sessionStorage.getItem('searchResults');
+    if (savedResults) {
+        var results = JSON.parse(savedResults);
+        getBooks(results);
+    }
+}
+
 
 
 
