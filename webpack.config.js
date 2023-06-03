@@ -1,23 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
-
-Encore
-    .setOutputPath('public/build/')
-    .setPublicPath('/build')
-    .addEntry('app', './assets/js/app.js')
-    .enableSingleRuntimeChunk()
-    .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
-    .enableVersioning(Encore.isProduction())
-;
-
-module.exports = Encore.getWebpackConfig();
-
-// Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
-if (!Encore.isRuntimeEnvironmentConfigured()) {
-    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
-}
+const {loader} = require("mini-css-extract-plugin");
 
 Encore
     // directory where compiled assets will be stored
@@ -31,12 +13,12 @@ Encore
      * ENTRY CONFIG
      *
      * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+     * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
-    .enableStimulusBridge('./assets/controllers.json')
+    //.enableStimulusBridge('./assets/controllers.json')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -69,7 +51,21 @@ Encore
     })
 
 // enables Sass/SCSS support
-//.enableSassLoader()
+
+    .enableSassLoader(function (options) {
+        options.implementation = require('sass');
+        options.sassOptions = {
+            includePaths: ['node_modules'],
+        };
+    })
+    .enablePostCssLoader((options) => {
+        options.postcssOptions = {
+            plugins: [
+                require('autoprefixer'),
+            ],
+        };
+    })
+
 
 // uncomment if you use TypeScript
 //.enableTypeScriptLoader()

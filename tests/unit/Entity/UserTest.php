@@ -5,6 +5,7 @@ namespace App\Tests\unit\Entity;
 use App\Entity\Library;
 use App\Entity\User;
 use App\Entity\Meetup;
+use App\Repository\MeetupRepository;
 use PHPUnit\Framework\TestCase;
 use DateTime;
 
@@ -46,7 +47,7 @@ class UserTest extends TestCase
         $gotRoles = $user->getRoles();
         $gotLibraries = $user->getLibraries();
         $meetups = $user->getMeetups();
-        // Call the addMeetup() method
+
 
 
 
@@ -70,6 +71,11 @@ class UserTest extends TestCase
         $this->assertEquals($person2,$meetup->getPerson2());
         $this->assertEquals($date,$meetup->getDate());
         $this->assertEquals($time,$meetup->getTime());
+
+        //test remove meetup
+//        $meetupRepository = new MeetupRepository();
+//        $user->removeMeetup($meetup,$meetupRepository);
+
 
         //test remove lib
         $gotLibraries = $user->removeLibrary($library)->getLibraries();
