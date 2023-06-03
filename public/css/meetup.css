@@ -3,11 +3,16 @@
 }
 
 .profile {
-    border: 1px solid #ccc;
-    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    border: 2px solid #cccccc;
+    border-radius: 20px;
+    width: 50%;
+    align-items: center;
 }
 
 /* Style the buttons inside the tab */
@@ -47,16 +52,6 @@
     padding: 10px;
     border-radius: 20px;
     width: 160px;
-}
-
-.profile {
-    display: flex;
-    flex-direction: row;
-    background-color: aliceblue;
-    border: 2px solid #cccccc;
-    border-radius: 20px;
-    width: 50%;
-    align-items: center;
 }
 
 .cancel {

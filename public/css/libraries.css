@@ -1,0 +1,23 @@
+.library {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: aliceblue;
+    border: 2px solid #cccccc;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.librariesContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 3 columns with equal width */
+    grid-gap: 10px; /* Adds a 10px gap between grid items */
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
