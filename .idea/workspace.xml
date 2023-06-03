@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="getting rid of errors">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_29_2023_4_05_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_29_2023_4_05_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_11_39_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_11_39_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_29_2023_11_07_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_29_2023_11_07_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_11_39_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_11_39_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_12_30_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_12_30_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="Search result is saved. When the user returns to search page, the results is still tehre. &#10;&#10;People select page. &#10;User can view other users profiles.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_26_2023_1_27_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_26_2023_1_27_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/meetup.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/meetup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/meetup.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/meetup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_profile_public/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_profile_public/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +229,8 @@
       <workItem from="1685386754317" duration="6305000" />
       <workItem from="1685612107334" duration="6721000" />
       <workItem from="1685643328351" duration="476000" />
-      <workItem from="1685694491323" duration="10569000" />
+      <workItem from="1685694491323" duration="10814000" />
+      <workItem from="1685792040790" duration="660000" />
     </task>
     <task id="LOCAL-00001" summary="Search result design is fixed.&#10;Better alignment, no overlap between the titles.&#10;no-image-available.png is also shown in case image is not available.">
       <created>1685578100677</created>
@@ -246,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685578100677</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Search result is saved. When the user returns to search page, the results is still tehre. &#10;&#10;People select page. &#10;User can view other users profiles.">
+      <created>1685709316592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685709316592</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +257,13 @@
       <map>
         <entry key="33ae7c44-b1f9-4755-86fb-b638cb8e83d6">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
         <entry key="MAIN">
@@ -287,7 +293,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Search result design is fixed.&#10;Better alignment, no overlap between the titles.&#10;no-image-available.png is also shown in case image is not available." />
-    <option name="LAST_COMMIT_MESSAGE" value="Search result design is fixed.&#10;Better alignment, no overlap between the titles.&#10;no-image-available.png is also shown in case image is not available." />
+    <MESSAGE value="Search result is saved. When the user returns to search page, the results is still tehre. &#10;&#10;People select page. &#10;User can view other users profiles." />
+    <option name="LAST_COMMIT_MESSAGE" value="Search result is saved. When the user returns to search page, the results is still tehre. &#10;&#10;People select page. &#10;User can view other users profiles." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
