@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="430ed443-603e-4f54-b8ae-3b1759ccf529" name="Changes" comment="People's profile &#10;- retrieves user's information and shows personal data. &#10;- Description still needs to be added. Register page needs to be changed so user can put description/bio.">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_5_30,_11_54_AM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_5_30,_11_54_AM_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_5_30__11_54_AM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_5_30__11_54_AM__Changes_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/application/Controller/RegistrationControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/application/Panther/RegistrationPostTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/Repository/LibraryRepositoryTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/Repository/MeetupRepositoryTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/Entity/BookTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
@@ -2652,7 +2661,7 @@
       <workItem from="1685103790314" duration="18983000" />
       <workItem from="1685517180048" duration="9076000" />
       <workItem from="1685563629288" duration="11189000" />
-      <workItem from="1685639938879" duration="45922000" />
+      <workItem from="1685639938879" duration="46849000" />
     </task>
     <task id="LOCAL-00001" summary="Book search with Google Books API functioning.&#10;Home page design improved with Vincent's design.">
       <created>1684503691014</created>
