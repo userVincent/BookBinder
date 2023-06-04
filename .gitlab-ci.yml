@@ -35,6 +35,8 @@ test-job:
     # - apt-get install ./google-chrome-stable_current_amd64.deb -y
     # Retrieve Google Chrome version
     - apt-get install chromium-browser chromium-chromedriver -y
+    - which chromedriver
+    - cp /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
     # - CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}')
     # # Construct ChromeDriver download URL
     # - CHROMEDRIVER_URL="https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip"
@@ -44,7 +46,7 @@ test-job:
     # - mv chromedriver /usr/bin/chromedriver
     - export PANTHER_NO_SANDBOX=1
     - export PANTHER_WEB_SERVER_PORT=9080
-    - export PANTHER_CHROME_DRIVER_BINARY=/usr/lib/chromium-browser/chromedriver
+    - export PANTHER_CHROME_DRIVER_BINARY=/usr/bin/chromedriver
     - export DATABASE_URL=mysql://test_user:test_pass@mysql/a22web38_test?serverVersion=8&charset=utf8mb4
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
