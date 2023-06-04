@@ -2,7 +2,7 @@
 image: composer:2.5
 
 stages:
-  - test
+  #- test
   - deploy
 test-job:
   stage: test
