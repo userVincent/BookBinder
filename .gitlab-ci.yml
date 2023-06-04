@@ -25,7 +25,7 @@ test-job:
     - apt-get update
     - apt-get install software-properties-common -y
     - ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-    - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb chromium-chromedriver chromium-browser php-mysql -y -qq
+    - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb chromium-chromedriver php-mysql -y -qq
     - export PANTHER_NO_SANDBOX=1
     - export PANTHER_WEB_SERVER_PORT=9080
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -33,6 +33,9 @@ test-job:
     - php -r "unlink('composer-setup.php');"
     - composer install
     # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
+    # Install chromium snap package
+    - apt-get install snapd -y
+    - snap install chromium
 
   script:
     - composer install
@@ -51,32 +54,31 @@ test-job:
       junit: report.xml
 
 deploy-job:
-  # run this job only when there is a push on the master branch
-  stage: deploy
-  only:
-    - master
-  image: composer:2.5
+# run this job only when there is a push on the master branch
+    stage: deploy
+    only:
+        - master
+    image: composer:2.5
   # Before we start any job, prepare the container with some extra configuration
   # e.g. setting the ssh credentials, so we can later copy to shell.studev.groept.be
-  before_script:
-    # create a local .ssh folder in the container
-    - mkdir -p ~/.ssh
-    # start the ssh-agent and add the private key to the system
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | ssh-add -
-    # add the fingerprint for shell.studev.groept.be as a trusted host
-    - ssh-keyscan shell.studev.groept.be > ~/.ssh/known_hosts
-    # install rsync to copy files to the web server
-    # this container runs Alpine Linux, where apk is the package manager (not apt-get)
-    - apk add rsync
+    before_script:
+      # create a local .ssh folder in the container
+      - mkdir -p ~/.ssh
+      # start the ssh-agent and add the private key to the system
+      - eval $(ssh-agent -s)
+      - echo "$SSH_PRIVATE_KEY" | ssh-add -
+      # add the fingerprint for shell.studev.groept.be as a trusted host
+      - ssh-keyscan shell.studev.groept.be > ~/.ssh/known_hosts
+      # install rsync to copy files to the web server
+      # this container runs Alpine Linux, where apk is the package manager (not apt-get)
+      - apk add rsync
   # Every job will start a container with a clone from the current repo
-  script:
-    - composer install
-    # rsync is a copy/sync tool we use to copy the current folder ./ to studev
-    # we ignore the .git folder and the .env file
-    # we delete the files on the remote server that are not present in the local copy
-    - rsync -rv --exclude=".git/"
-      --exclude=".env"
-      --delete
-      ./ a22web38@shell.studev.groept.be:/var/www/html
-
+    script:
+        - composer install
+# rsync is a copy/sync tool we use to copy the current folder ./ to studev
+# we ignore the .git folder and the .env file
+# we delete the files on the remote server that are not present in the local copy 
+        - rsync -rv --exclude=".git/"
+                    --exclude=".env"
+                    --delete
+                    ./ a22web38@shell.studev.groept.be:/var/www/html
