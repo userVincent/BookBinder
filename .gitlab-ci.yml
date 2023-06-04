@@ -26,7 +26,7 @@ test-job:
     - apt-get update
     - apt-get install software-properties-common -y
     - ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-    - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb unzip -y -qq
+    - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb unzip gnupg snapd -y -qq
     # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
     # Install chromium snap package
     - apt-get install php-mysql -y
@@ -34,7 +34,9 @@ test-job:
     # - wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     # - apt-get install ./google-chrome-stable_current_amd64.deb -y
     # Retrieve Google Chrome version
-    - apt-get install chromium-browser chromium-chromedriver -y
+    - snap install core -y
+    - snap install chromium -y
+    - apt-get install chromium-chromedriver -y
     - which chromedriver
     # - cp /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
     # - CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}')
