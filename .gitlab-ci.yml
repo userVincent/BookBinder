@@ -26,7 +26,7 @@ test-job:
     - apt-get update
     - apt-get install software-properties-common -y
     - ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-    - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb unzip gnupg snapd -y -qq
+    - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb unzip -y -qq
     # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
     # Install chromium snap package
     - apt-get install php-mysql -y
@@ -34,7 +34,13 @@ test-job:
     # - wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     # - apt-get install ./google-chrome-stable_current_amd64.deb -y
     # Retrieve Google Chrome version
-    - apt-get install chromium-browser -y
+    - apt remove chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
+    - apt-key adv --fetch-keys "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xea6e302dc78cc4b087cfc3570ebea9b02842f111"
+    - echo 'deb http://ppa.launchpad.net/chromium-team/beta/ubuntu bionic main ' >> /etc/apt/sources.list.d/chromium-team-beta.list
+    - apt update
+    - export DEBIAN_FRONTEND=noninteractive
+    - export DEBCONF_NONINTERACTIVE_SEEN=true
+    - apt-get -y install chromium-browser
     - chromium-browser --version
     - CHROMIUM_VERSION=$(chromium-browser --version | awk '{print $2}')
     # - apt-get install chromium-chromedriver -y
