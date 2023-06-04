@@ -110,6 +110,7 @@ test-job:
     - apk add --no-cache zip unzip
     - apk add --no-cache libsodium-dev
     - apk add --no-cache libzip-dev
+    - apk add --no-cache php7-mysqli
     - docker-php-ext-install zip sodium
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
