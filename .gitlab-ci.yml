@@ -33,8 +33,10 @@ test-job:
     - php -r "unlink('composer-setup.php');"
     - composer install
     # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
+
     # Install chromium snap package
     - snap install chromium
+
 
   script:
     - composer install
@@ -81,3 +83,4 @@ deploy-job:
       --exclude=".env"
       --delete
       ./ a22web38@shell.studev.groept.be:/var/www/html
+
