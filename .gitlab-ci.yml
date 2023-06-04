@@ -39,6 +39,7 @@ test-job:
     - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
     - php -r "unlink('composer-setup.php');"
     - composer install
+    - uname -m
 
 
 
