@@ -29,7 +29,7 @@ test-job:
     - apt-get install curl wget php php-cli php8.1 php8.1-common php8.1-curl php8.1-intl php8.1-xml php8.1-opcache php8.1-mbstring php8.1-zip libfontconfig1 fontconfig libxrender-dev libfreetype6 libxrender1 zlib1g-dev xvfb -y -qq
     # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
     # Install chromium snap package
-    - apt-get install chromium-chromebrowser chromium-chromedriver php-mysql -y
+    - apt-get install chromium-browser chromium-chromedriver php-mysql -y
     - export PANTHER_NO_SANDBOX=1
     - export PANTHER_WEB_SERVER_PORT=9080
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
