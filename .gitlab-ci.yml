@@ -107,6 +107,9 @@ test-job:
     - export PANTHER_CHROME_DRIVER_BINARY=/usr/bin/chromedriver
     - export DATABASE_URL=mysql://test_user:test_pass@mysql/a22web38_test?serverVersion=8&charset=utf8mb4
     - apk add --no-cache chromium chromium-chromedriver
+    - apk add --no-cache zip unzip
+    - apk add --no-cache libsodium-dev
+    - docker-php-ext-install zip sodium
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
     - php -r "unlink('composer-setup.php');"
