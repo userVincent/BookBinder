@@ -19,7 +19,7 @@ test-job:
     MYSQL_PASSWORD: test_pass
     # set the correct DSN in Symfony to connect to the temporary database
     DATABASE_URL: "mysql://test_user:test_pass@mysql/a22web38_test?serverVersion=8&charset=utf8mb4"
-    
+    PANTHER_CHROME_DRIVER_BINARY: /usr/lib/chromium-browser/chromedriver
 
   # before starting the test scripts, add specific software to the container (only for this job)
   before_script:
