@@ -34,10 +34,6 @@ test-job:
     - composer install
     # mysql PDO needs to be installed as a PHP extension in the container for the tests to run
 
-    # Install chromium snap package
-    - snap install chromium
-
-
   script:
     - composer install
     # run the migration on the temporary database
