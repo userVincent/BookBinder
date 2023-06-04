@@ -32,7 +32,7 @@ test-job:
     - apt-get install php-mysql -y
     - apt-get update
     - wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - apt-get install ./google-chrome-stable_current_amd64.deb
+    - apt-get install ./google-chrome-stable_current_amd64.deb -y
     - export PANTHER_NO_SANDBOX=1
     - export PANTHER_WEB_SERVER_PORT=9080
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
