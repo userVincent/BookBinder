@@ -36,7 +36,7 @@ test-job:
     # Retrieve Google Chrome version
     - apt-get install chromium-browser chromium-chromedriver -y
     - which chromedriver
-    - cp /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+    # - cp /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
     # - CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}')
     # # Construct ChromeDriver download URL
     # - CHROMEDRIVER_URL="https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip"
