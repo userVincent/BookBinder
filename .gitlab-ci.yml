@@ -34,8 +34,8 @@ test-job:
     # - wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     # - apt-get install ./google-chrome-stable_current_amd64.deb -y
     # Retrieve Google Chrome version
-    - snap install core -y
-    - snap install chromium -y
+    - snap install core 
+    - snap install chromium
     - apt-get install chromium-chromedriver -y
     - which chromedriver
     # - cp /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
