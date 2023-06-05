@@ -9,7 +9,7 @@
 {% block main %}
 
     <section class="Book">
-        <div>
+        <div class="profile-book-img">
             <img id="book_img" alt="Book cover">
         </div>
 
@@ -48,8 +48,10 @@
     <section class="LikedBy">
         <h1>People who also liked this book</h1>
         <div class="people-liked-container">
-            {% for person in users %}
+            <div class="person-card-row">
+                {% for person in users %}
                 <div class="person-card">
+                    <!-- User profile picture -->
                     <div class="user-profile-pic">
                         {% if person.getProfilepicFilename() %}
                             <img src="{{ asset('uploads/profilepics/' ~ person.getProfilepicFilename() ) }}" alt="Profile Picture" class="profile-picture">
@@ -57,33 +59,43 @@
                             <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
                         {% endif %}
                     </div>
+                    <!-- User info -->
                     <div class="user-info">
+                        <!-- User name -->
                         <div class="data-user-name">
                             <h3>{{ person.getFirstname ~ " " ~ person.getLastname }}</h3>
                         </div>
+                        <!-- User age -->
                         <div class="data-user-age">
                             <p><b>Age: </b>25</p>
                         </div>
+                        <!-- User city -->
                         <div class="data-user-city">
                             <p><b>City: </b>Leuven</p>
                         </div>
+                        <!-- User interests -->
                         <div class="data-user-interests">
                             <p><b>Interests: </b>Football, tennis, hockey</p>
                         </div>
+                        <!-- User liked books -->
                         <div class="data-user-liked-books">
                             <ul class="liked-books-list"><b>Liked books:</b>
                                 {% for book in person.getFavoriteBooks() %}
                                     <li>
-                                        <a href="{{ path('book_profile', {'title': 'a', 'isbn': book.getISBN()}) }}">{{ book.getISBN() }}</a>
+                                        <a href="{{ path('book_profile', {'title': book.getTitle(), 'isbn': book.getISBN()}) }}">{{ book.getTitle() }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
+                {% if loop.index is divisible by(2) or loop.last %}
+            </div>
+            <div class="person-card-row">
+                {% endif %}
+                {% endfor %}
+            </div>
         </div>
-
     </section>
 
 

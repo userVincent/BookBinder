@@ -14,7 +14,7 @@
 
         <div>
             <img id="book_img" alt="Book cover">
-            <button id="favorite_button" onclick="handleFavorite('{{ isbn }}', this)">Favorite!!</button>
+            <button id="favorite_button" onclick="handleFavorite('{{ isbn }}', '{{ title }}', this)">Favorite!!</button>
         </div>
 
 
@@ -213,9 +213,9 @@
         });
 
 
-        function handleFavorite(bookId, buttonElement) {
+        function handleFavorite(bookId, title, buttonElement) {
             // Send HTTP POST request to your Symfony backend endpoint
-            fetch(`/favorite-book/${bookId}`, {
+            fetch(`/favorite-book/${bookId}/${title}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

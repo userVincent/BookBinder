@@ -33,8 +33,8 @@ class HomeController extends AbstractController
 
 
     //To add a book to favorites or to remove it
-    #[Route('/favorite-book/{bookId}', name: 'app_favorite-book', methods: ['POST'])]
-    public function favoriteAction(String $bookId, EntityManagerInterface $entityManager): JsonResponse
+    #[Route('/favorite-book/{bookId}/{title}', name: 'app_favorite-book', methods: ['POST'])]
+    public function favoriteAction(String $bookId, String $title, EntityManagerInterface $entityManager): JsonResponse
     {
         // Retrieve the current user from the session or authentication context
         $user = $this->getUser();
@@ -50,6 +50,7 @@ class HomeController extends AbstractController
             // Book doesn't exist, create a new instance and set its ISBN
             $book = new Book();
             $book->setISBN($ISBN);
+            $book->setTitle($title);
             $entityManager->persist($book);
             $entityManager->flush();
 //            return new JsonResponse(['message' => 'Book not found'], 404);
@@ -152,6 +153,12 @@ class HomeController extends AbstractController
         $book = $bookRepository->findOneBy(['ISBN' => $isbn]);
         if ($book != null){
             $users = $book->getUsers();
+
+            //Ensure that if the user has favorited that book it doesn't show his own profile
+            $current_user = $this->getUser();
+            if ($users->contains($current_user)){
+                $users->removeElement($current_user);
+            }
         }
         else {
             $users = null;

@@ -136,6 +136,7 @@ section.Book {
     margin-right: 20px;
 }
 
+
 .Information {
     flex-grow: 1;
     font-size:20px ;
@@ -171,15 +172,25 @@ div.Person {
 }
 
 .people-liked-container {
-
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.person-card-row {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+
 .person-card {
     display: flex;
-    flex-direction: row;
+    flex-basis: 100%;
     margin: 10px;
     border-style: solid;
-    border-color: #ff9800;
+    border-color: darkgray;
+    box-sizing: border-box; /* Add this line to fix the layout */
 }
+
 
 
 .user-profile-pic {
