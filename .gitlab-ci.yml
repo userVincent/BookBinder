@@ -19,7 +19,7 @@ test-job:
     MYSQL_PASSWORD: test_pass
     # set the correct DSN in Symfony to connect to the temporary database
     DATABASE_URL: "mysql://test_user:test_pass@mysql/a22web38_test?serverVersion=8&charset=utf8mb4"
-    
+    PANTHER_CHROME_DRIVER_BINARY: /usr/lib/chromium-browser/chromedriver
 
   # before starting the test scripts, add specific software to the container (only for this job)
   before_script:
@@ -56,31 +56,31 @@ test-job:
       junit: report.xml
 
 deploy-job:
-# run this job only when there is a push on the master branch
-    stage: deploy
-    only:
-        - master
-    image: composer:2.5
+  # run this job only when there is a push on the master branch
+  stage: deploy
+  only:
+    - master
+  image: composer:2.5
   # Before we start any job, prepare the container with some extra configuration
   # e.g. setting the ssh credentials, so we can later copy to shell.studev.groept.be
-    before_script:
-      # create a local .ssh folder in the container
-      - mkdir -p ~/.ssh
-      # start the ssh-agent and add the private key to the system
-      - eval $(ssh-agent -s)
-      - echo "$SSH_PRIVATE_KEY" | ssh-add -
-      # add the fingerprint for shell.studev.groept.be as a trusted host
-      - ssh-keyscan shell.studev.groept.be > ~/.ssh/known_hosts
-      # install rsync to copy files to the web server
-      # this container runs Alpine Linux, where apk is the package manager (not apt-get)
-      - apk add rsync
+  before_script:
+    # create a local .ssh folder in the container
+    - mkdir -p ~/.ssh
+    # start the ssh-agent and add the private key to the system
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+    # add the fingerprint for shell.studev.groept.be as a trusted host
+    - ssh-keyscan shell.studev.groept.be > ~/.ssh/known_hosts
+    # install rsync to copy files to the web server
+    # this container runs Alpine Linux, where apk is the package manager (not apt-get)
+    - apk add rsync
   # Every job will start a container with a clone from the current repo
-    script:
-        - composer install
-# rsync is a copy/sync tool we use to copy the current folder ./ to studev
-# we ignore the .git folder and the .env file
-# we delete the files on the remote server that are not present in the local copy 
-        - rsync -rv --exclude=".git/"
-                    --exclude=".env"
-                    --delete
-                    ./ a22web38@shell.studev.groept.be:/var/www/html
+  script:
+    - composer install
+    # rsync is a copy/sync tool we use to copy the current folder ./ to studev
+    # we ignore the .git folder and the .env file
+    # we delete the files on the remote server that are not present in the local copy
+    - rsync -rv --exclude=".git/"
+      --exclude=".env"
+      --delete
+      ./ a22web38@shell.studev.groept.be:/var/www/html

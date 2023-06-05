@@ -41,9 +41,9 @@ class RegistrationPostTest extends PantherTestCase
         $email = $form['registration_form[email]']->getValue();
 
         $client->submit($form);
-        $this->assertSelectorTextContains('header>div>h1','Login');
         // Validate the response or perform assertions using WebDriver methods
         $client->waitFor('div.alert.alert-success',5); // Wait for success flash message to appear
+        $this->assertSelectorTextContains('header>div>h1','Login');
         $this->user = $this->userRepository->findOneByEmail($email);
 
     }
