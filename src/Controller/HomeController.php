@@ -130,10 +130,10 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/public', name: 'app_user_profile_public')]
-    public function getProfilePublic(Request $request, UserRepository $userRepository): Response
+    #[Route('/profile/public/{id}', name: 'app_user_profile_public')]
+    public function getProfilePublic(Request $request, $id, UserRepository $userRepository): Response
     {
-        $user = $this->getUser();
+        $user = $userRepository->find($id);
 
         return $this->render('user_profile_public/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -170,5 +170,37 @@ class HomeController extends AbstractController
             'isbn' => $isbn,
             'users' => $users,
         ]);
+    }
+
+    #[Route('/peopleselect', name: 'app_people_select')]
+    public function selectPeople(Request $request, UserRepository $userRepository): Response
+    {
+
+        return $this->render('meetup/people_select.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+
+    #[Route('/searchProfiles', name: 'app_people_search', methods: ['GET', 'POST'])]
+    public function getPeople(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $searchQuery = $request->request->get('searchQuery');
+        $users = $userRepository->searchUsers($searchQuery);
+
+        if (empty($users)) {
+            return new JsonResponse([]);
+        }
+
+        $results = [];
+        foreach ($users as $user) {
+            $results[] = [
+                'firstname' => $user->getFirstName(),
+                'lastname' => $user->getLastName(),
+                'id' => $user->getId(),
+            ];
+        }
+
+        return new JsonResponse($results);
     }
 }
