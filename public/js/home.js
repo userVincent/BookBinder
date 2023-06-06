@@ -132,43 +132,49 @@ function displayTrendingBooks() {
                 `;
 
                 document.getElementById("output").innerHTML += booksHTML;
+                document.getElementById('home-output-heading').textContent = 'Check out some of the trending books from this week!';
+
             }
         });
 }
 
 
 function getBooks() {
-    document.getElementById('output').innerHTML = "";
-    fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
-        .then(response => response.json())
-        .then(data => {
-            for (var i = 0; i <20; i += 4) {
-                const book1 = data.items[i].volumeInfo;
-                const book2 = data.items[i + 1].volumeInfo;
-                const book3 = data.items[i + 2].volumeInfo;
-                const book4 = data.items[i + 3].volumeInfo;
+    if (document.getElementById('input').value.trim() === "") {
+        displayTrendingBooks();
+    }
+    else {
+        document.getElementById('output').innerHTML = "";
+        fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
+            .then(response => response.json())
+            .then(data => {
+                for (var i = 0; i <20; i += 4) {
+                    const book1 = data.items[i].volumeInfo;
+                    const book2 = data.items[i + 1].volumeInfo;
+                    const book3 = data.items[i + 2].volumeInfo;
+                    const book4 = data.items[i + 3].volumeInfo;
 
-                const title1 = book1.title;
-                const author1 = book1.authors ? book1.authors[0] : "Unknown";
-                const isbn1 = book1.industryIdentifiers ? book1.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
+                    const title1 = book1.title;
+                    const author1 = book1.authors ? book1.authors[0] : "Unknown";
+                    const isbn1 = book1.industryIdentifiers ? book1.industryIdentifiers[0].identifier : "Not available";
+                    const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
-                const title2 = book2.title;
-                const author2 = book2.authors ? book2.authors[0] : "Unknown";
-                const isbn2 = book2.industryIdentifiers ? book2.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks2 = book2.imageLinks ? book2.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
+                    const title2 = book2.title;
+                    const author2 = book2.authors ? book2.authors[0] : "Unknown";
+                    const isbn2 = book2.industryIdentifiers ? book2.industryIdentifiers[0].identifier : "Not available";
+                    const imageLinks2 = book2.imageLinks ? book2.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
-                const title3 = book3.title;
-                const author3 = book3.authors ? book3.authors[0] : "Unknown";
-                const isbn3 = book3.industryIdentifiers ? book3.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks3 = book3.imageLinks ? book3.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
+                    const title3 = book3.title;
+                    const author3 = book3.authors ? book3.authors[0] : "Unknown";
+                    const isbn3 = book3.industryIdentifiers ? book3.industryIdentifiers[0].identifier : "Not available";
+                    const imageLinks3 = book3.imageLinks ? book3.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
-                const title4 = book4.title;
-                const author4 = book4.authors ? book4.authors[0] : "Unknown";
-                const isbn4 = book4.industryIdentifiers ? book4.industryIdentifiers[0].identifier : "Not available";
-                const imageLinks4 = book4.imageLinks ? book4.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
+                    const title4 = book4.title;
+                    const author4 = book4.authors ? book4.authors[0] : "Unknown";
+                    const isbn4 = book4.industryIdentifiers ? book4.industryIdentifiers[0].identifier : "Not available";
+                    const imageLinks4 = book4.imageLinks ? book4.imageLinks.thumbnail : "images/no-image-available.png"; // Default image if no thumbnail available
 
-                var booksHTML = `
+                    var booksHTML = `
                     <div class="row">
                     <div class="grid-container">
                         <section class="book_container">
@@ -239,12 +245,14 @@ function getBooks() {
                     </div>
                 `;
 
-                document.getElementById("output").innerHTML += booksHTML;
-                document.getElementById('home-output-heading').textContent = 'Showing search results for "' + document.getElementById('input').value + '"';
+                    document.getElementById("output").innerHTML += booksHTML;
+                    document.getElementById('home-output-heading').textContent = 'Showing search results for "' + document.getElementById('input').value + '"';
 
-            }
-        });
-    sessionStorage.setItem('searchResults', JSON.stringify(results));
+                }
+            });
+        sessionStorage.setItem('searchResults', JSON.stringify(results));
+    }
+
 }
 
 function loadPreviousData() {
