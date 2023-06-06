@@ -19,7 +19,7 @@ window.onclick = function(event) {
 }
 
 window.onload = function() {
-    loadPreviousData();
+    displayTrendingBooks();
 };
 
 
@@ -138,10 +138,6 @@ function displayTrendingBooks() {
 
 
 function getBooks() {
-    if(!document.getElementById('input').value){
-        displayTrendingBooks();
-        return;
-    }
     document.getElementById('output').innerHTML = "";
     fetch("https://www.googleapis.com/books/v1/volumes?q=" + document.getElementById('input').value + "&maxResults=40")
         .then(response => response.json())
