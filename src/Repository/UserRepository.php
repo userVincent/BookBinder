@@ -42,6 +42,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
+
+
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
@@ -56,6 +58,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($user, true);
     }
 
+    public function searchUsers(string $query): array
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.FirstName LIKE :query OR u.LastName LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
@@ -80,4 +90,16 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getOneOrNullResult()
         ;
     }
+
+
+//    public function findOneBySomeField($value): ?User
+//    {
+//        return $this->createQueryBuilder('u')
+//            ->andWhere('u.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
+
 }

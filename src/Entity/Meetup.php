@@ -32,6 +32,9 @@ class Meetup
     #[ORM\JoinColumn(nullable: false)]
     private ?Library $library = null;
 
+    #[ORM\Column]
+    private ?int $state = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +96,18 @@ class Meetup
     public function setLibrary(?Library $library): self
     {
         $this->library = $library;
+
+        return $this;
+    }
+
+    public function getState(): ?int
+    {
+        return $this->state;
+    }
+
+    public function setState(int $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }

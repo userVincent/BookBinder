@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Profiles{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1>User Profiles</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.FirstName }}</td>
+                <td>{{ user.LastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="{{ path('profile_show', {'id': user.id}) }}" class="btn btn-info">View</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No users found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

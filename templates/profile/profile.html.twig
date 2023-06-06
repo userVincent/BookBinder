@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.FirstName }}'s Profile{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1>{{ user.FirstName }}'s Profile</h1>
+    <p><strong>FirstName: </strong>{{ user.FirstName }}</p>
+    <p><strong>LastName: </strong>{{ user.LastName }}</p>
+    <p><strong>Email: </strong>{{ user.email }}</p>
+    <p>
+        <a href="{{ path('app_profiles') }}" class="btn btn-info">Back to Profiles List</a>
+    </p>
+    <p>
+    <a href="{{ path('app_meetup_arrange', {'userId': user.id}) }}" class="btn btn-primary">Arrange a Meetup</a>
+</p>
+</div>
+{% endblock %}

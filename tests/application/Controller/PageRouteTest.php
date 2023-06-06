@@ -2,6 +2,7 @@
 
 namespace App\Tests\application\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PageRouteTest extends WebTestCase
@@ -10,6 +11,17 @@ class PageRouteTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/home');
+        $userRepository = static::getContainer()->get(UserRepository::class);
+        $this->entityManager = $kernel->getContainer()
+            ->get('doctrine')
+            ->getManager();
+        $this->userRepository = $this->entityManager->getRepository(User::class);
+
+        // retrieve the test user
+        $testUser = $userRepository->findOneByEmail('aocheng.zhao@student.kuleuven.be');
+
+        // simulate $testUser being logged in
+        $client->loginUser($testUser);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('#subtitle','Meet book lovers');

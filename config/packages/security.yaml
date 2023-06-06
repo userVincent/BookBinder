@@ -26,6 +26,9 @@ security:
             logout:
                 path: app_logout
 
+#            entry_point: App\Security\AuthenticationEntryPoint
+
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -37,6 +40,10 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+#        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/, roles: ROLE_USER, requires_channel: https }
+
 
 when@test:
     security:

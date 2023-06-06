@@ -30,11 +30,3 @@ $(document).ready(function() {
         $(this).delay(3000).fadeOut(350);
     });
 });
-// $(function() {
-//     $('div.alert').not('.alert-important').delay(5000).fadeIn(500).delay(3000).fadeOut(350);
-// });
-// $(function() {
-//     $('#flash').delay(500).fadeIn('normal', function() {
-//         $(this).delay(2500).fadeOut();
-//     });
-// });

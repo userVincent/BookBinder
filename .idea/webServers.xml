@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7421c09f-a59c-44f1-9406-313f890fc4f6" name="Studev Server" url="https://a22web38.studev.groept.be/">
+        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="sftp.studev.groept.be" port="22" sshConfigId="3f4bcb0d-601e-45ca-917b-8013e06e5f21" sshConfig="a22web38@sftp.studev.groept.be:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -66,6 +66,27 @@ header a {
     border-radius: 5px;
 }
 
+#request_button {
+    width: 50%;
+    margin: 0 auto;
+    background-color: rgba(255, 165, 0, 1); /* Orange with full opacity */
+    color: white;
+    border: 2px solid orange;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    font-family: 'Playfair', serif;
+    font-weight: bold; /* Make the letter thicker */
+    font-size: 16px; /* Adjust the font size as desired */
+}
+
+/* Change the background color on hover */
+#request_button:hover {
+    background-color: hotpink;
+    color: white;
+    border: 2px solid hotpink;
+}
+
 .show {
     display: block;
 }
@@ -158,7 +179,7 @@ footer {
 
 .Description{
     font-size: 20px;
-    margin-top: 50px;
+    margin-top: 70px;
     margin-left: 50px;
 }
 
@@ -186,7 +207,7 @@ footer {
 
 .user-name {
     font-size: 26px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .personal-info{
@@ -196,11 +217,12 @@ footer {
 .info-label {
     font-weight: bold;
     margin-bottom: 5px;
+    margin-top: 36px;
 }
 
 .info-value {
     margin-bottom: 10px;
-    margin-left: 25px;
+    margin-left: 0px;
 }
 
 
