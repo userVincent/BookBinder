@@ -240,6 +240,8 @@ function getBooks() {
                 `;
 
                 document.getElementById("output").innerHTML += booksHTML;
+                document.getElementById('home-output-heading').textContent = 'Showing search results for "' + document.getElementById('input').value + '"';
+
             }
         });
     sessionStorage.setItem('searchResults', JSON.stringify(results));
