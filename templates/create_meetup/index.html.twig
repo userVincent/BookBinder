@@ -1,0 +1,26 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}Create Meetup{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/date.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block main %}
+    <h1>Pick a date</h1>
+
+    <form>
+        <label for="datetime"><b>Select Date and Time:</b></label>
+        <label class="calendar">
+            <input type="datetime-local" id="datetime" name="datetime">
+        </label>
+
+        <input class="nextButton" type="submit" value="Next">
+    </form>
+
+    <a href="{{ path('app_meetups') }}">
+        <button class="previousButton">Previous</button>
+    </a>
+
+{% endblock %}

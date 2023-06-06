@@ -73,6 +73,5 @@ function escapeHtml(text) {
     });
 }
 
-
 window.addEventListener('scroll', scrollHandler);
 fetchLibraries(); // Fetch initial data
