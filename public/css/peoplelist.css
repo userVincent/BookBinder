@@ -136,6 +136,7 @@ section.Book {
     margin-right: 20px;
 }
 
+
 .Information {
     flex-grow: 1;
     font-size:20px ;
@@ -170,56 +171,64 @@ div.Person {
     margin-bottom: 10px;
 }
 
-div.PersonContainer {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    overflow: hidden;
+.people-liked-container {
     display: flex;
-    align-items: center;
-    padding:5px;
-    width: 280px;
+    flex-wrap: wrap;
 }
 
-div.ProfileBox {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.person-card-row {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+
+.person-card {
+    display: flex;
+    flex-basis: 100%;
+    margin: 10px;
+    border-style: solid;
+    border-color: darkgray;
+    box-sizing: border-box; /* Add this line to fix the layout */
+}
+
+
+
+.user-profile-pic {
+    width: 200px;
+    height: 200px;
     overflow: hidden;
-    margin-right: 10px;
-    border: 2px solid #ddd;
 }
 
-img.ProfileImg {
+.user-profile-pic img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-div.PersonInfo {
-    flex-grow: 1;
-    text-align: left;
+.user-info {
+    margin-left: 50px;
 }
 
-p.PersonName {
+/*Styling all the user info */
+/*[class^="data"] {*/
+/*    !* Your styles here *!*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+/* Styling the liked books list */
+.liked-books-list {
+    list-style: none; /* Remove bullet points */
     margin: 0;
-    font-weight: bold;
+    padding: 0;
 }
 
-.PeopleList {
-    display: flex;
-    flex-wrap: wrap;
+.liked-books-list li {
+    display: inline; /* Display list items inline */
 }
 
-.Row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.Person {
-    width: 48%; /* Adjust this value as needed */
-    /* Add any other styling for the Person class */
+.liked-books-list li:not(:last-child)::after {
+    content: ", "; /* Add comma after each list item except the last one */
 }
 
 

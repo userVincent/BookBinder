@@ -74,7 +74,31 @@ class RegistrationFormType extends AbstractType
 //            ])
             ->add('profilepicFile', VichImageType::class, [
                 'required' => false
-            ]);
+            ])
+            ->add('Interests', TextType::class, [
+                'label' => 'Your Interests',
+                'required' => false,
+                'constraints' => [
+                    new Length([
+                        'max' => 100, // Set the maximum character limit as per your requirement
+                        'maxMessage' => 'Interests should not exceed {{ limit }} characters.',
+                    ]),
+                ],
+            ])
+            ->add('About', TextType::class, [
+                'label' => 'Your Interests',
+                'required' => false,
+                'constraints' => [
+                    new Length([
+                        'max' => 200, // Set the maximum character limit as per your requirement
+                        'maxMessage' => 'Interests should not exceed {{ limit }} characters.',
+                    ]),
+                ],
+            ])
+
+            ;
+
+
 
 
         ;

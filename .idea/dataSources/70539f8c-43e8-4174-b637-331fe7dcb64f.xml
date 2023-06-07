@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="webtech_project">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.23">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.45">
     <root id="1">
-      <ServerVersion>8.0.30</ServerVersion>
+      <DefaultCasing>exact</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <DefaultCasing>exact</DefaultCasing>
+      <ServerVersion>8.0.30</ServerVersion>
     </root>
     <schema id="2" parent="1" name="a22web38">
       <Current>1</Current>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="3" parent="1" name="information_schema">
-      <Collation>utf8mb3_general_ci</Collation>
+      <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="4" parent="1" name="performance_schema">
-      <Collation>utf8mb3_general_ci</Collation>
+      <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
   </database-model>
 </dataSource>

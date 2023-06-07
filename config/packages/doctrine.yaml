@@ -1,7 +1,6 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
-        password: '%env(DATABASE_PASSWORD)%'
         mapping_types:
             bit: boolean
         # IMPORTANT: You MUST configure your server version,

@@ -29,6 +29,9 @@ class Book
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteBooks')]
     private Collection $users;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title = null;
+
 
 
 
@@ -107,6 +110,18 @@ class Book
         if ($this->users->removeElement($user)) {
             $user->removeFavoriteBook($this);
         }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }
