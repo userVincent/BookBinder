@@ -1,10 +1,10 @@
-{% extends 'home/index.html.twig' %}
+{% extends 'libraries/index.html.twig' %}
 
 {% block title %}Libraries Page{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/libraries.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/library_select.css') }}">
+    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
@@ -20,6 +20,8 @@
     </div>
 
     <h1>Libraries</h1>
+
+    <input class="nextButton" type="submit" value="Next">
 
     <div id="librariesContainer" class="librariesContainer">
         <!-- Libraries data will be appended here -->

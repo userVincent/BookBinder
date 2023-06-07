@@ -27,97 +27,108 @@
         <a href="{{ path('app_create_meetup') }}">
             <button class="newMeetupButton">Create meetup</button>
         </a>
-
-        {% if meetups %}
-            {% for meetup in meetups %}
-                {% if meetup.state == 0 %}
-                    <div class="profile">
-                        <img id="profile_picture" src="{{ meetup.person2.profilepicFile }}" alt="Profile picture">
-                        <div class="person">
-                            <h2>{{ meetup.person2.firstName }}</h2>
-                            <a href="#library page" class="Library">Location: {{ meetup.library.name }}</a><br><br>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                            <button type="button" class="cancel"> Cancel Request</button>
+        <div class="profileGrid">
+            {% if meetups %}
+                {% set hasMeetupStateOne = false %}
+                {% for meetup in meetups %}
+                    {% if meetup.state == 0 %}
+                        {% set hasMeetupStateOne = true %}
+                        <div class="profile">
+                            <img id="profile_picture" src="{{ meetup.person2.profilepicFile }}" alt="Profile picture">
+                            <div class="person">
+                                <h2>{{ meetup.person2.firstName }}</h2>
+                                <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                            </div>
+                            <div class="date">
+                                <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
+                                <button type="button" class="cancel"> Cancel Request</button>
+                            </div>
                         </div>
-                        <div class="date">
-                            <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
-                        </div>
-                    </div>
-                {% else %}
+                    {% endif %}
+                {% endfor %}
+                {% if not hasMeetupStateOne %}
                     <p>No meetups yet. Go schedule one!</p>
                 {% endif %}
-
-            {% endfor %}
-        {% else %}
-            <p>No meetups yet. Go schedule one!</p>
-        {% endif %}
-
+            {% else %}
+                <p>No meetups yet. Go schedule one!</p>
+            {% endif %}
+        </div>
     </div>
 
     <div id="PastMeetups" class="tabcontent">
-        <a href="">
+        <a href="{{ path('app_create_meetup') }}">
             <button class="newMeetupButton">Create meetup</button>
         </a>
-
-        {% if meetups %}
-            {% for meetup in meetups %}
-                {% if meetup.state == 1 %}
-                    <div class="profile">
-                        <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
-                        <div class="person">
-                            <h2>{{ meetup.person1.firstName }}</h2>
-                            <a href="#library page" class="Library">Location: {{ meetup.library.name }}</a><br><br>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                            <button type="button" class="cancel"> Cancel Request</button>
+        <div class="profileGrid">
+            {% if meetups %}
+                {% set hasMeetupStateOne = false %}
+                {% for meetup in meetups %}
+                    {% if meetup.state == 1 %}
+                        {% set hasMeetupStateOne = true %}
+                        <div class="profile">
+                            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                            <div class="person">
+                                <h2>{{ meetup.person1.firstName }}</h2>
+                                <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                            </div>
+                            <div class="date">
+                                <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
+                                <button type="button" class="cancel">Cancel Request</button>
+                            </div>
                         </div>
-                        <div class="date">
-                            <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
-                        </div>
-                    </div>
-                {% else %}
+                    {% endif %}
+                {% endfor %}
+                {% if not hasMeetupStateOne %}
                     <p>No past meetups yet. Go schedule one!</p>
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            <p>No past meetups yet. Go schedule one!</p>
-        {% endif %}
+            {% else %}
+                <p>No past meetups yet. Go schedule one!</p>
+            {% endif %}
+        </div>
+
 
     </div>
 
     <div id="PendingRequests" class="tabcontent">
-        <a href="">
+        <a href="{{ path('app_create_meetup') }}">
             <button class="newMeetupButton">Create meetup</button>
         </a>
 
-        {% if meetups %}
-            {% for meetup in meetups %}
-                {% if meetup.state == 2 %}
-                    <div class="profile">
-                        <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
-                        <div class="person">
-                            <h2>{{ meetup.person1.firstName }}</h2>
-                            <a href="#library page" class="Library">Location: {{ meetup.library.name }}</a><br><br>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                            <button type="button" class="cancel"> Cancel Request</button>
+        <div class="profileGrid">
+            {% if meetups %}
+                {% set hasMeetupStateOne = false %}
+                {% for meetup in meetups %}
+                    {% if meetup.state == 2 %}
+                        {% set hasMeetupStateOne = true %}
+                        <div class="profile">
+                            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                            <div class="person">
+                                <h2>{{ meetup.person2.firstName }}</h2>
+                                <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                            </div>
+                            <div class="date">
+                                <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
+                                <button type="button" class="cancel"> Cancel Request</button>
+                            </div>
                         </div>
-                        <div class="date">
-                            <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
-                        </div>
-                    </div>
-                {% else %}
-                    <p>No meetups yet. Go schedule one!</p>
+                    {% endif %}
+                {% endfor %}
+                {% if not hasMeetupStateOne %}
+                    <p>No past meetups yet. Go schedule one!</p>
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            <p>No pending requests. Go schedule one!</p>
-        {% endif %}
-
+            {% else %}
+                <p>No pending requests. Go schedule one!</p>
+            {% endif %}
+        </div>
     </div>
 
     <script>document.getElementById("defaultOpen").click();</script>

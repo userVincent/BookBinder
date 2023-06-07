@@ -7,16 +7,21 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/create_meetup.js') }}"></script>
+{% endblock %}
+
 {% block main %}
     <h1>Pick a date</h1>
 
-    <form>
+    <form id="meetupDate" action="{{ path('library_select') }}" method="post">
         <label for="datetime"><b>Select Date and Time:</b></label>
         <label class="calendar">
             <input type="datetime-local" id="datetime" name="datetime">
         </label>
 
-        <input class="nextButton" type="submit" value="Next">
+        <input class="nextButton" type="button" value="Next" onclick="nextPage();">
     </form>
 
     <a href="{{ path('app_meetups') }}">

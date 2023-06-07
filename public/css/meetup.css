@@ -1,17 +1,11 @@
-.tab {
-    overflow: hidden;
-}
-
 .profile {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     background-color: aliceblue;
     border: 2px solid #cccccc;
     border-radius: 20px;
-    width: 50%;
     align-items: center;
 }
 
@@ -46,6 +40,12 @@
     border: 1px solid #ccc;
     overflow-y: scroll;
     height: 600px;
+}
+
+.profileGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
 }
 
 #profile_picture {
@@ -83,7 +83,7 @@
 
 .newMeetupButton {
     position: sticky;
-    top: 0;
+    top: 10px;
     left: 100%;
     display: block;
     padding: 10px;
@@ -94,7 +94,7 @@
     text-align: center;
     text-decoration: none;
     font-size: 18px;
-    margin: 4px;
+    margin: 10px;
     cursor: pointer;
 }
 

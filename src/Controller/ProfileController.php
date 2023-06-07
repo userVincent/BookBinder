@@ -37,7 +37,7 @@ class ProfileController extends AbstractController
     #[Route('/meetups/arrange/{userId}', name: 'app_meetup_arrange')]
     public function arrangeMeetup(int $userId, LibraryRepository $libraryRepository): Response
     {
-        return $this->render('libraries/index.html.twig', [
+        return $this->render('create_meetup/index.html.twig', [
             'userIdMeetup' => $userId,
         ]);
     }
