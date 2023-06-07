@@ -34,14 +34,6 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/meetups/arrange/{userId}', name: 'app_meetup_arrange')]
-    public function arrangeMeetup(int $userId, LibraryRepository $libraryRepository): Response
-    {
-        return $this->render('create_meetup/index.html.twig', [
-            'userIdMeetup' => $userId,
-        ]);
-    }
-
     #[Route('/meetups/create/{user1Id}/{user2Id}/{libraryId}', name: 'app_meetup_create', methods: ['POST'])]
     public function createMeetup(EntityManagerInterface $entityManager, UserRepository $userRepository, LibraryRepository $libraryRepository, int $user1Id, int $user2Id, int $libraryId): Response
     {

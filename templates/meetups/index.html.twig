@@ -34,17 +34,31 @@
                     {% if meetup.state == 0 %}
                         {% set hasMeetupStateOne = true %}
                         <div class="profile">
-                            <img id="profile_picture" src="{{ meetup.person2.profilepicFile }}" alt="Profile picture">
-                            <div class="person">
-                                <h2>{{ meetup.person2.firstName }}</h2>
-                                <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                            </div>
+                            {% if meetup.person1.id == user.id %}
+                                <img id="profile_picture" src="{{ meetup.person2.profilepicFile }}" alt="Profile picture">
+                                <div class="person">
+                                    <h2>{{ meetup.person2.firstName }}</h2>
+                                    <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                                </div>
+                            {% else %}
+                                <img id="profile_picture" src="{{ meetup.person1.profilepicFile }}" alt="Profile picture">
+                                <div class="person">
+                                    <h2>{{ meetup.person1.firstName }}</h2>
+                                    <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                                </div>
+                            {% endif %}
                             <div class="date">
                                 <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
-                                <button type="button" class="cancel"> Cancel Request</button>
+                                <form action="{{ path('meetup_delete', {'id': meetup.id}) }}" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ meetup.id) }}">
+                                    <button type="submit" class="cancel">Cancel Meetup</button>
+                                </form>
                             </div>
                         </div>
                     {% endif %}
@@ -69,17 +83,27 @@
                     {% if meetup.state == 1 %}
                         {% set hasMeetupStateOne = true %}
                         <div class="profile">
-                            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
-                            <div class="person">
-                                <h2>{{ meetup.person1.firstName }}</h2>
-                                <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                            </div>
+                            {% if meetup.person1.id == user.id %}
+                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <div class="person">
+                                    <h2>{{ meetup.person2.firstName }}</h2>
+                                    <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                                </div>
+                            {% else %}
+                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <div class="person">
+                                    <h2>{{ meetup.person1.firstName }}</h2>
+                                    <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                                </div>
+                            {% endif %}
                             <div class="date">
                                 <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
-                                <button type="button" class="cancel">Cancel Request</button>
                             </div>
                         </div>
                     {% endif %}
@@ -107,18 +131,45 @@
                     {% if meetup.state == 2 %}
                         {% set hasMeetupStateOne = true %}
                         <div class="profile">
-                            <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
-                            <div class="person">
-                                <h2>{{ meetup.person2.firstName }}</h2>
-                                <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a><br>
-                            </div>
-                            <div class="date">
-                                <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
-                                <button type="button" class="cancel"> Cancel Request</button>
-                            </div>
+                            {% if meetup.person1.id == user.id %}
+                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <div class="person">
+                                    <h2>{{ meetup.person2.firstName }}</h2>
+                                    <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                                </div>
+
+                                <div class="date">
+                                    <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
+                                    <form action="{{ path('meetup_delete', {'id': meetup.id}) }}" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ meetup.id) }}">
+                                        <button type="submit" class="cancel">Cancel Outgoing Request</button>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <div class="person">
+                                    <h2>{{ meetup.person1.firstName }}</h2>
+                                    <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a><br>
+                                </div>
+
+                                <div class="date">
+                                    <p><b>{{ meetup.date|date('F j, Y') }} at {{ meetup.time|date('g:ia') }}</b></p>
+                                    <form action="{{ path('meetup_delete', {'id': meetup.id}) }}" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ meetup.id) }}">
+                                        <button type="submit" class="cancel">Deny Incoming Request</button>
+                                    </form>
+                                    <form action="{{ path('meetup_accept', {'id': meetup.id}) }}" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('accept' ~ meetup.id) }}">
+                                        <button type="submit" class="accept">Accept Incoming Request</button>
+                                    </form>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endfor %}
