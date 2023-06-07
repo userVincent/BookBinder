@@ -10,8 +10,23 @@ function fetchLibraries() {
         });
 }
 
+function searchLibrary() {
+    const searchQuery = document.getElementById('input').value;
+    const searchParams = new URLSearchParams();
+    searchParams.append('q', searchQuery);
+
+    fetch('/libraries/data?q=&page=1&size=10' + searchParams.toString())
+        .then(response => response.json())
+        .then(data => {
+            appendLibraries(data.data);
+            currentPage++;
+        });
+}
+
 function appendLibraries(libraries) {
     const container = document.getElementById('librariesContainer');
+    container.innerHTML = ''; // Clear previous results
+
     libraries.forEach(library => {
         var address = `${library.StreetName} ${library.HouseNumber}, ${library.PostalCode} ${library.Town}`;
 
@@ -40,18 +55,19 @@ function appendLibraries(libraries) {
 
         const libraryElement = document.createElement('div');
         libraryElement.innerHTML = `
-                    <h2>
-                        <a href="/library/${library.id}">
-                            ${library.name}
-                        </a>
-                    </h2>
-                    <div id="mapid" style="height: 200px;"></div>
-                    <p>${address}</p>
-                `;
-        libraryElement.className = "library"
+            <h2>
+                <a href="/library/${library.id}">
+                    ${library.name}
+                </a>
+            </h2>
+            <div id="mapid" style="height: 200px;"></div>
+            <p>${address}</p>
+        `;
+        libraryElement.className = "library";
         container.appendChild(libraryElement);
     });
 }
+
 
 function scrollHandler() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
@@ -73,5 +89,5 @@ function escapeHtml(text) {
     });
 }
 
-window.addEventListener('scroll', scrollHandler);
-fetchLibraries(); // Fetch initial data
+//window.addEventListener('scroll', scrollHandler);
+//fetchLibraries(); // Fetch initial data

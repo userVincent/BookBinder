@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
     <script src="{{ asset('js/libraries.js') }}"></script>
 {% endblock %}
 
@@ -16,7 +15,7 @@
     <h3>Search for a library</h3>
     <div class="search-wrapper">
         <input id="input" class="search" placeholder="library name" type="text" >
-        <button id="search-button" onclick="selectLibrary()">Search</button>
+            <button id="search-button" onclick="searchLibrary()">Search</button>
     </div>
 
     <h1>Libraries</h1>

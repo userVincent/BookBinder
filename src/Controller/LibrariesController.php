@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Library;
 use App\Repository\LibraryRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,6 +44,30 @@ class LibrariesController extends AbstractController
             'data' => $libraryData,
         ]);
     }
+
+    // Change to search library
+    /*    #[Route('/searchLibrary', name: 'app_library_search', methods: ['GET', 'POST'])]
+    public function getLibrary(Request $request, LibraryRepository $libraryRepository): JsonResponse
+    {
+        $searchQuery = $request->request->get('searchQuery');
+        $libraries = $libraryRepository->searchLibrary($searchQuery);
+
+        if (empty($users)) {
+            return new JsonResponse([]);
+        }
+
+        $results = [];
+        foreach ($users as $user) {
+            $results[] = [
+                'firstname' => $user->getFirstName(),
+                'lastname' => $user->getLastName(),
+                'address' => $user->getAddress(),
+                'email' => $user->getEmail(),
+            ];
+        }
+
+        return new JsonResponse($results);
+    }*/
 
     #[Route('/libraries', name: 'app_libraries')]
     public function index(Request $request): Response
