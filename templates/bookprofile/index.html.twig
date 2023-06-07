@@ -1,4 +1,4 @@
-{% extends 'home/index.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Bookprofile{% endblock %}
 
@@ -6,6 +6,21 @@
     <link rel="stylesheet" href="{{ asset('css/bookprofile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/bookprofile.js') }}"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var isbn = "{{ isbn }}"; // Pass the `isbn` variable from Twig to JavaScript
+            initializeBookProfile(isbn); // Call a function defined in the separate JavaScript file
+        });
+    </script>
+{% endblock %}
+
+
+
 
 {% block main %}
 
@@ -61,111 +76,12 @@
 {#            <a href="/people-like/{{ isbn }}"><button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who liked this book</b>  </button></a>#}
             <button type="button" style="font-size: 15px"> <i class='fas fa-user-alt'></i> <b> People who are reading this book</b>  </button>
 
-            <div class="Reviews">
 
-                <div class="user_rating">
-                    <h4>Reviews</h4>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <p>4.1 average based on 254 reviews.</p>
-
-                    <div class="bars">
-                        <div class="side">
-                            <div>5 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-5"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>150</div>
-                        </div>
-                        <div class="side">
-                            <div>4 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-4"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>63</div>
-                        </div>
-                        <div class="side">
-                            <div>3 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-3"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>15</div>
-                        </div>
-                        <div class="side">
-                            <div>2 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-2"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>6</div>
-                        </div>
-                        <div class="side">
-                            <div>1 star</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-1"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div>20</div>
-                        </div>
-                    </div>
-
-                    <button onclick="openForm()" type="button" style="font-size: 15px"> <i class='fas fa-quote-left'></i> <b> Schrijf een review</b>  <i class='fas fa-quote-right'></i> </button>
-
-                    <script>
-                        function openForm() {
-                            document.getElementById("inputReview").style.display = "block";
-                        }
-                    </script>
-                    <div class="reviewForm" id="inputReview">
-                        <form action="/action_page.php" class="form-container">
-                            <label for="overall-rating">Overall Rating:</label>
-                            <select id="overall-rating" name="overall-rating">
-                                <option value="5">5 stars</option>
-                                <option value="4">4 stars</option>
-                                <option value="3">3 stars</option>
-                                <option value="2">2 stars</option>
-                                <option value="1">1 star</option>
-                            </select><br>
-
-                            <label for="review-text">Review Text:</label>
-                            <textarea id="review-text" name="review-text"></textarea><br>
-
-                            <input type="submit" value="Submit Review">
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
 
         <i style="font-size: 50px" onclick="likeDislike(this)" class="far fa-heart"></i>
 
-        <!-- Does not work? -->
-        <script>
-            function likeDislike(x) {
-                x.classList.toggle("fas fa-heart");
-            }
-        </script>
 
     </section>
 

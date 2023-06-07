@@ -127,6 +127,7 @@ class HomeController extends AbstractController
             'email' => $user->getEmail(),
             'address' => $user->getAddress(),
             'birthday' => $user->getBirthday()->format('Y-m-d'),
+            'favoriteBook' => $user->getFavoriteBooks(),
         ]);
     }
 
