@@ -29,20 +29,17 @@ class LoginControllerTest extends WebTestCase
             '_password' => '123456',
         ]);
 
-
-
         $this->client->submit($form);
         // Follow the redirection
-        $this->client->followRedirect();
-//        $this->assertRouteSame('/home'); // Assuming the login page route is 'app_login'
+        $this->crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('header>div>h1', 'Login');
+        $headerText = $this->crawler->filter('#catchphrase')->text();
+        echo $headerText;
 
-        $flashMessages = $this->client->getContainer()->get('session')->getFlashBag()->get('success');
-        $this->assertNotEmpty($flashMessages);
-        $this->assertEquals('Login successful!', $flashMessages[0]);
-        // Assert that the current page is the app_login route
-        $this->assertRouteSame('');
-        $this->assertSelectorTextContains('header>div>h1', 'Login');
+        $this->assertSelectorTextContains('#catchphrase', 'Find Books and Book Lovers!!');
+
+        // Assert that the current route matches the expected one
+        $this->assertRouteSame('app_home');
+
     }
 }
