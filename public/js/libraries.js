@@ -56,7 +56,7 @@ function createLibraryElement(library, address, lat, lon, isLibrarySelectionPage
     if (isLibrarySelectionPage) {
         libraryElement.innerHTML = `
             <h2>
-                <a href="#" onclick="selectLibrary(${library.id}); libraryForm.submit();">
+                <a href="/peopleselect" onclick="selectLibrary(${library.id}); libraryForm.submit();">
                     ${library.name}
                 </a>
             </h2>

@@ -41,7 +41,7 @@ function displaySearchResults(results) {
                 resultHTML += '<div class="ProfileBox"><img class="profile-img" src="' + result.image + '" alt="Profile picture"></div>';
                 resultHTML += '<div><h3>' + result.firstname + ' ' + result.lastname + '</h3></div>';
             resultHTML += '</div></a>';
-            resultHTML += '<button class="selectButton">Select</button>'
+            resultHTML += '<button class="selectButton">Send request</button>'
         resultHTML += '</div>';
     }
     resultHTML += '</div>';
