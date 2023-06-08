@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_default')]
     public function index(BookRepository $bookRepository): Response
     {
         //$books = $bookRepository->findBy([], null, 10);
@@ -111,6 +112,7 @@ class HomeController extends AbstractController
     {
         // controller can be blank: it will never be called!
         throw new \Exception('Don\'t forget to activate logout in security.yaml');
+
     }
 
     #[Route('/profile', name: 'app_user_profile')]

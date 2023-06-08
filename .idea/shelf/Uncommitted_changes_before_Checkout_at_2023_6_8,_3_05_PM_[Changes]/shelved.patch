@@ -1,0 +1,202 @@
+Index: config/packages/security.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>security:\n    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords\n    password_hashers:\n        Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface: 'auto'\n    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider\n    providers:\n        # used to reload user from session & other features (e.g. switch_user)\n        app_user_provider:\n            entity:\n                class: App\\Entity\\User\n                property: email\n    firewalls:\n        dev:\n            pattern: ^/(_(profiler|wdt)|css|images|js)/\n            security: false\n        main:\n            lazy: true\n            provider: app_user_provider\n\n            form_login:\n                # \"app_login\" is the name of the route created previously\n                login_path: app_login\n                check_path: app_login\n                default_target_path: /home\n\n            logout:\n                path: app_logout\n\n#            entry_point: App\\Security\\AuthenticationEntryPoint\n\n\n            # activate different ways to authenticate\n            # https://symfony.com/doc/current/security.html#the-firewall\n\n            # https://symfony.com/doc/current/security/impersonating_user.html\n            # switch_user: true\n\n    # Easy way to control access for large sections of your site\n    # Note: Only the *first* access control that matches will be used\n    access_control:\n        # - { path: ^/admin, roles: ROLE_ADMIN }\n        # - { path: ^/profile, roles: ROLE_USER }\n#        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }\n#        - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }\n#        - { path: ^/, roles: ROLE_USER, requires_channel: https }\n\n\nwhen@test:\n    security:\n        password_hashers:\n            # By default, password hashers are resource intensive and take time. This is\n            # important to generate secure password hashes. In tests however, secure hashes\n            # are not important, waste resources and increase test times. The following\n            # reduces the work factor to the lowest possible values.\n            Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface:\n                algorithm: auto\n                cost: 4 # Lowest possible value for bcrypt\n                time_cost: 3 # Lowest possible value for argon\n                memory_cost: 10 # Lowest possible value for argon\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+--- a/config/packages/security.yaml	(revision 933931501b8dd71e5c3aec372912e79e50dae825)
++++ b/config/packages/security.yaml	(date 1686225197040)
+@@ -25,6 +25,8 @@
+ 
+             logout:
+                 path: app_logout
++#                target: /
++#                invalidate_session: true
+ 
+ #            entry_point: App\Security\AuthenticationEntryPoint
+ 
+@@ -40,9 +42,11 @@
+     access_control:
+         # - { path: ^/admin, roles: ROLE_ADMIN }
+         # - { path: ^/profile, roles: ROLE_USER }
+-#        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+-#        - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+-#        - { path: ^/, roles: ROLE_USER, requires_channel: https }
++#        - { path: ^/login, roles: PUBLIC_ACCESS }
++#        - { path: ^/register, roles: PUBLIC_ACCESS }
++##        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
++##        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
++#        - { path: ^/, roles: ROLE_USER }
+ 
+ 
+ when@test:
+Index: tests/application/Controller/PageRouteTest.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Tests\\application\\Controller;\n\nuse App\\Entity\\User;\nuse Symfony\\Bundle\\FrameworkBundle\\Test\\WebTestCase;\n\nclass PageRouteTest extends WebTestCase\n{\n    public function testRouteHome(): void\n    {\n        $client = static::createClient();\n        $crawler = $client->request('GET', '/home');\n        $userRepository = static::getContainer()->get(UserRepository::class);\n        $this->entityManager = $kernel->getContainer()\n            ->get('doctrine')\n            ->getManager();\n        $this->userRepository = $this->entityManager->getRepository(User::class);\n\n        // retrieve the test user\n        $testUser = $userRepository->findOneByEmail('aocheng.zhao@student.kuleuven.be');\n\n        // simulate $testUser being logged in\n        $client->loginUser($testUser);\n\n        $this->assertResponseIsSuccessful();\n        $this->assertSelectorTextContains('#subtitle','Meet book lovers');\n        $this->assertSelectorTextContains('#catchphrase', 'Find Books and Book Lovers!!');\n    }\n\n    public function testRouteLogin(): void\n    {\n        $client = static::createClient();\n        $crawler = $client->request('GET', '/login');\n\n        $this->assertResponseIsSuccessful();\n        $this->assertSelectorTextContains('form >main>section>div>label', 'Email');\n    }\n\n    public function testRouteRegister(): void\n    {\n        $client = static::createClient();\n        $crawler = $client->request('GET', '/register');\n\n        $this->assertResponseIsSuccessful();\n        $this->assertSelectorTextContains('form', 'Email');\n        $form = $crawler->selectButton('Register')->form();\n    }\n\n//    public function testRouteBook(): void\n//    {\n//        $client = static::createClient();\n//        $crawler = $client->request('GET', '/book');\n//\n//        $this->assertResponseIsSuccessful();\n//        $this->assertSelectorTextContains('main>h1', 'All Books');\n//    }\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/application/Controller/PageRouteTest.php b/tests/application/Controller/PageRouteTest.php
+--- a/tests/application/Controller/PageRouteTest.php	(revision 933931501b8dd71e5c3aec372912e79e50dae825)
++++ b/tests/application/Controller/PageRouteTest.php	(date 1686216293246)
+@@ -3,27 +3,81 @@
+ namespace App\Tests\application\Controller;
+ 
+ use App\Entity\User;
++use Doctrine\ORM\EntityManagerInterface;
+ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+ class PageRouteTest extends WebTestCase
+ {
++
++    protected function setUp(): void
++    {
++        parent::setUp();
++
++        if (!self::$client) {
++            self::$client = static::createClient();
++        }
++
++        // Perform additional setup actions if needed
++        if (!self::$additionalSetupPerformed) {
++            $this->performAdditionalSetup();
++            self::$additionalSetupPerformed = true;
++        }
++    }
++
++    protected function performAdditionalSetup(): void
++    {
++        // Perform additional setup actions here
++    }
++    public function testNoneAuthenticationRoute():void
++    {
++        $client = static::createClient();
++        $crawler = $client->request('GET', '/home');
++        $this->assertTrue($client->getResponse()->isRedirection());
++        // Check if the redirect target is the login page
++        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++//        $crawler = $client->request('GET', '/profiles');
++//        $this->assertTrue($client->getResponse()->isRedirection());
++//        // Check if the redirect target is the login page
++//        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++//        $crawler = $client->request('GET', '/search-books');
++//        $this->assertTrue($client->getResponse()->isRedirection());
++//        // Check if the redirect target is the login page
++//        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++//        $crawler = $client->request('GET', '/meetups');
++//        $this->assertTrue($client->getResponse()->isRedirection());
++//        // Check if the redirect target is the login page
++//        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++//        $crawler = $client->request('GET', '/meetups/arrange');
++//        $this->assertTrue($client->getResponse()->isRedirection());
++//        // Check if the redirect target is the login page
++//        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++//        $crawler = $client->request('GET', '/meetups/arrange/library_select');
++//        $this->assertTrue($client->getResponse()->isRedirection());
++//        // Check if the redirect target is the login page
++//        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++//        $crawler = $client->request('GET', '/meetups/arrange/person_select');
++//        $this->assertTrue($client->getResponse()->isRedirection());
++//        // Check if the redirect target is the login page
++//        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++    }
++
+     public function testRouteHome(): void
+     {
+         $client = static::createClient();
+         $crawler = $client->request('GET', '/home');
+-        $userRepository = static::getContainer()->get(UserRepository::class);
+-        $this->entityManager = $kernel->getContainer()
+-            ->get('doctrine')
+-            ->getManager();
+-        $this->userRepository = $this->entityManager->getRepository(User::class);
++        $this->assertTrue($client->getResponse()->isRedirection());
++        // Check if the redirect target is the login page
++        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
++
++        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
++        $userRepository = $entityManager->getRepository(User::class);
+ 
+         // retrieve the test user
+         $testUser = $userRepository->findOneByEmail('aocheng.zhao@student.kuleuven.be');
+-
++        $this->assertNotNull($testUser, 'Test user is null');
+         // simulate $testUser being logged in
+         $client->loginUser($testUser);
+-
+-        $this->assertResponseIsSuccessful();
++        $crawler = $client->followRedirect();
+         $this->assertSelectorTextContains('#subtitle','Meet book lovers');
+         $this->assertSelectorTextContains('#catchphrase', 'Find Books and Book Lovers!!');
+     }
+@@ -55,7 +109,16 @@
+ //        $this->assertResponseIsSuccessful();
+ //        $this->assertSelectorTextContains('main>h1', 'All Books');
+ //    }
++    private function loginTestUser():void
++    {
++        $form = $crawler->selectButton('Sign in')->form();
++        $form->setValues([
++            '_username' => 'aocheng.zhao@student.kuleuven.be',
++            '_password' => '123456',
++        ]);
+ 
++        $this->client->submit($form);
++    }
+ 
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"bccc6749-9c85-4ed0-8397-f9b9390964be\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/public/js/home.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/public/js/home.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\n    <execution />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"CSS File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"book-features-hassin\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"PHP 8.2\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/vendor/symfony/flex\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-exporter\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/config\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dotenv\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/filesystem\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/runtime\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/framework-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php83\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dependency-injection\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/string\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/yaml\" />\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/maker-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/persistence\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/deprecations\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/dbal\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/event-manager\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/collections\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/stopwatch\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/common\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/sql-formatter\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/migrations\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/doctrine-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/orm\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/password-hasher\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-info\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-http\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-core\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-csrf\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-access\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/form\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/options-resolver\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/validator\" />\n      <path value=\"$PROJECT_DIR$/vendor/twig/twig\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/annotations\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/data-fixtures\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/fakerphp/faker\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/asset\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/web-profiler-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/myclabs/deep-copy\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-timer\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-code-coverage\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-invoker\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/phpunit\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-text-template\" />\n      <path value=\"$PROJECT_DIR$/vendor/theseer/tokenizer\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-file-iterator\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-enumerator\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-reflector\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/comparator\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/global-state\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/diff\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/recursion-context\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/complexity\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/version\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/cli-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/lines-of-code\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/type\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/exporter\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/resource-operations\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/environment\" />\n      <path value=\"$PROJECT_DIR$/vendor/masterminds/html5\" />\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/manifest\" />\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/version\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/panther\" />\n      <path value=\"$PROJECT_DIR$/vendor/php-webdriver/webdriver\" />\n      <path value=\"$PROJECT_DIR$/vendor/dbrekelmans/bdi\" />\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpseclib/phpseclib\" />\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/constant_time_encoding\" />\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/random_compat\" />\n      <path value=\"$PROJECT_DIR$/vendor/ralouphie/getallheaders\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-factory\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-client\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-message\" />\n      <path value=\"$PROJECT_DIR$/vendor/firebase/php-jwt\" />\n      <path value=\"$PROJECT_DIR$/vendor/google/auth\" />\n      <path value=\"$PROJECT_DIR$/vendor/google/apiclient-services\" />\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/guzzle\" />\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/psr7\" />\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/promises\" />\n      <path value=\"$PROJECT_DIR$/vendor/google/apiclient\" />\n      <path value=\"$PROJECT_DIR$/vendor/jms/metadata\" />\n      <path value=\"$PROJECT_DIR$/vendor/vich/uploader-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/phpunit-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/process\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dom-crawler\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/browser-kit\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/css-selector\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/google-mailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mime\" />\n    </include_path>\n  </component>\n  <component name=\"ProjectId\" id=\"2PjrLFUh7AC0HbUlWWTu7CYV2wN\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n    <option name=\"showMembers\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,\n    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,\n    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/segas/IdeaProjects/a22web38/public&quot;,\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <module name=\"Bookbinder\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <module name=\"Bookbinder\" />\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"webserver\" type=\"PhpBuiltInWebServerConfigurationType\" factoryName=\"PHP Built-in Web Server\" document_root=\"$PROJECT_DIR$/public\" port=\"8080\">\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"bccc6749-9c85-4ed0-8397-f9b9390964be\" name=\"Changes\" comment=\"\" />\n      <created>1683981277641</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1683981277641</updated>\n      <workItem from=\"1683981280725\" duration=\"1379000\" />\n      <workItem from=\"1683982679549\" duration=\"3024000\" />\n      <workItem from=\"1684493711287\" duration=\"9488000\" />\n      <workItem from=\"1684752072241\" duration=\"5059000\" />\n      <workItem from=\"1684797340221\" duration=\"668000\" />\n      <workItem from=\"1684842399439\" duration=\"85869000\" />\n      <workItem from=\"1685368539238\" duration=\"3387000\" />\n      <workItem from=\"1685386754317\" duration=\"29279000\" />\n      <workItem from=\"1685921924753\" duration=\"3324000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 933931501b8dd71e5c3aec372912e79e50dae825)
++++ b/.idea/workspace.xml	(date 1686229479901)
+@@ -4,9 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="">
++    <list default="true" id="ce5e0e59-af33-4781-a8e1-79e68bc82b6d" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/public/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/home.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/tests/application/Controller/PageRouteTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/Controller/PageRouteTest.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -256,4 +258,7 @@
+     <expand />
+     <select />
+   </component>
++  <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/bookBinder@phpunit.xml" NAME="phpunit Coverage Results" MODIFIED="1686215566990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"PhpIncludePathManager\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/vendor/symfony/flex\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-exporter\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/config\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dotenv\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/filesystem\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/runtime\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/framework-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php83\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dependency-injection\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/string\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/yaml\" />\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/maker-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/persistence\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/deprecations\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/dbal\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/event-manager\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/collections\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/stopwatch\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/common\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/sql-formatter\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/migrations\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/doctrine-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/orm\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/password-hasher\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-info\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-http\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-core\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-csrf\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-access\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/form\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/options-resolver\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/validator\" />\n      <path value=\"$PROJECT_DIR$/vendor/twig/twig\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/annotations\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/data-fixtures\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/fakerphp/faker\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/asset\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/web-profiler-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/myclabs/deep-copy\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-timer\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-code-coverage\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-invoker\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/phpunit\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-text-template\" />\n      <path value=\"$PROJECT_DIR$/vendor/theseer/tokenizer\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-file-iterator\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-enumerator\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-reflector\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/comparator\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/global-state\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/diff\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/recursion-context\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/complexity\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/version\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/cli-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/lines-of-code\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/type\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/exporter\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/resource-operations\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit\" />\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/environment\" />\n      <path value=\"$PROJECT_DIR$/vendor/masterminds/html5\" />\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/manifest\" />\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/version\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/panther\" />\n      <path value=\"$PROJECT_DIR$/vendor/php-webdriver/webdriver\" />\n      <path value=\"$PROJECT_DIR$/vendor/dbrekelmans/bdi\" />\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpseclib/phpseclib\" />\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/constant_time_encoding\" />\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/random_compat\" />\n      <path value=\"$PROJECT_DIR$/vendor/ralouphie/getallheaders\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-factory\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-client\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-message\" />\n      <path value=\"$PROJECT_DIR$/vendor/firebase/php-jwt\" />\n      <path value=\"$PROJECT_DIR$/vendor/google/auth\" />\n      <path value=\"$PROJECT_DIR$/vendor/google/apiclient-services\" />\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/guzzle\" />\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/psr7\" />\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/promises\" />\n      <path value=\"$PROJECT_DIR$/vendor/google/apiclient\" />\n      <path value=\"$PROJECT_DIR$/vendor/jms/metadata\" />\n      <path value=\"$PROJECT_DIR$/vendor/vich/uploader-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/phpunit-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/process\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dom-crawler\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/browser-kit\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/css-selector\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/google-mailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/dama/doctrine-test-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/clock\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/clock\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mime\" />\n      <path value=\"$PROJECT_DIR$/../../../../../../../../Program Files/php-8.2.5-nts-Win32-vs16-x64\" />\n      <path value=\"$PROJECT_DIR$/vendor/ezyang/htmlpurifier\" />\n      <path value=\"$PROJECT_DIR$/vendor/myclabs/php-enum\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet\" />\n      <path value=\"$PROJECT_DIR$/vendor/markbaker/matrix\" />\n      <path value=\"$PROJECT_DIR$/vendor/markbaker/complex\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/simple-cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/maennchen/zipstream-php\" />\n    </include_path>\n  </component>\n  <component name=\"PhpProjectSharedConfiguration\" php_language_level=\"8.1\" />\n  <component name=\"PhpUnit\">\n    <phpunit_settings>\n      <PhpUnitSettings configuration_file_path=\"$PROJECT_DIR$/phpunit.xml.dist\" custom_loader_path=\"$PROJECT_DIR$/vendor/autoload.php\" phpunit_phar_path=\"\" use_configuration_file=\"true\" />\n    </phpunit_settings>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/php.xml b/.idea/php.xml
+--- a/.idea/php.xml	(revision 933931501b8dd71e5c3aec372912e79e50dae825)
++++ b/.idea/php.xml	(date 1686210953704)
+@@ -146,6 +146,7 @@
+       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
++      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
+     </include_path>
+   </component>
+   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

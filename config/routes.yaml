@@ -22,9 +22,9 @@ default_path:
     # the controller value has the format 'controller_class::method_name'
     controller: App\Controller\HomeController::index
 
-#app_logout:
-#    path: /login
-#    methods: GET
+app_logout:
+    path: /logout
+    methods: GET
 
 
 book_profile:

@@ -25,6 +25,8 @@ security:
 
             logout:
                 path: app_logout
+#                target: app_login
+#                invalidate_session: true
 
 #            entry_point: App\Security\AuthenticationEntryPoint
 
@@ -40,9 +42,11 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-#        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/, roles: ROLE_USER, requires_channel: https }
+#        - { path: ^/login, roles: PUBLIC_ACCESS }
+#        - { path: ^/register, roles: PUBLIC_ACCESS }
+        - { path: ^/login, allow_if: "!is_authenticated()" }
+        - { path: ^/register, allow_if: "!is_authenticated()" }
+        - { path: ^/, roles: ROLE_USER }
 
 
 when@test:
