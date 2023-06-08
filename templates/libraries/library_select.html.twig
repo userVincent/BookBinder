@@ -21,7 +21,9 @@
 
     <h1>Libraries</h1>
 
-    <input class="nextButton" type="submit" value="Next">
+    <form id="libraryForm" action="{{ path('person_select') }}" method="post">
+        <input type="hidden" id="selectedLibraryId" name="libraryId" value="">
+    </form>
 
     <div id="librariesContainer" class="librariesContainer">
         <!-- Libraries data will be appended here -->
