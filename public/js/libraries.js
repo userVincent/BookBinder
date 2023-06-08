@@ -37,45 +37,54 @@ function appendLibraries(libraries) {
                     var lat = data[0].lat;
                     var lon = data[0].lon;
 
-                    var map = L.map('mapid').setView([lat, lon], 13);
-
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-                        maxZoom: 18
-                    }).addTo(map);
-
-                    L.marker([lat, lon]).addTo(map).bindPopup(library.name|escapeHtml('js')).openPopup();
-
-                    document.getElementById('address').textContent = address;
+                    // Create library element with map
+                    createLibraryElement(library, address, lat, lon, isLibrarySelectionPage);
                 }
+            })
+            .catch(function(error) {
+                console.error('Geocoding error:', error);
             });
-
-        const libraryElement = document.createElement('div');
-        if (isLibrarySelectionPage) {
-            libraryElement.innerHTML = `
-                    <h2>
-                        <a href="#" onclick="selectLibrary(${library.id}); libraryForm.submit();">
-                            ${library.name}
-                        </a>
-                    </h2>
-                    <div id="mapid" style="height: 200px;"></div>
-                    <p>${address}</p>
-                `;
-        } else {
-            libraryElement.innerHTML = `
-                    <h2>
-                        <a href="/library/${library.id}">
-                            ${library.name}
-                        </a>
-                    </h2>
-                    <div id="mapid" style="height: 200px;"></div>
-                    <p>${address}</p>
-                `;
-        }
-        libraryElement.className = "library"
-        container.appendChild(libraryElement);
     });
+}
+
+function createLibraryElement(library, address, lat, lon, isLibrarySelectionPage) {
+    const container = document.getElementById('librariesContainer');
+
+    const libraryElement = document.createElement('div');
+    const mapId = `mapid-${library.id}`;
+
+    if (isLibrarySelectionPage) {
+        libraryElement.innerHTML = `
+            <h2>
+                <a href="#" onclick="selectLibrary(${library.id}); libraryForm.submit();">
+                    ${library.name}
+                </a>
+            </h2>
+            <div id="${mapId}" style="height: 200px;"></div>
+            <p>${address}</p>
+        `;
+    } else {
+        libraryElement.innerHTML = `
+            <h2>
+                <a href="/library/${library.id}">
+                    ${library.name}
+                </a>
+            </h2>
+            <div id="${mapId}" style="height: 200px;"></div>
+            <p>${address}</p>
+        `;
+    }
+    libraryElement.className = "library";
+    container.appendChild(libraryElement);
+
+    // Create map for the library
+    var map = L.map(mapId).setView([lat, lon], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18
+    }).addTo(map);
 }
 
 function selectLibrary(libraryId) {
