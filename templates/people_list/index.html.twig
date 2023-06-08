@@ -6,10 +6,17 @@
     <link rel="stylesheet" href="{{ asset('css/peoplelist.css') }}">
 {% endblock %}
 
+
+{% block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/people_list.js') }}"></script>
+{% endblock %}
+
+
 {% block main %}
 
     <section class="Book">
-        <div>
+        <div class="profile-book-img">
             <img id="book_img" alt="Book cover">
         </div>
 
@@ -46,123 +53,57 @@
     </section>
 
     <section class="LikedBy">
-        <h4>People who also liked this book</h4>
-        <div class="PeopleList">
-            {% for user in users %}
-                {% if loop.index0 % 4 == 0 %}
-                    <div class="Row">
-                {% endif %}
-                <div class="Person">
-                    <div class="PersonContainer">
-                        <div class="ProfileBox">
-                            <img class="ProfileImg" src="" alt="Profile picture">
+        <h1>People who also liked this book</h1>
+        <div class="people-liked-container">
+            <div class="person-card-row">
+                {% for person in users %}
+                <div class="person-card">
+                    <!-- User profile picture -->
+                    <div class="user-profile-pic">
+                        {% if person.getProfilepicFilename() %}
+                            <img src="{{ asset('uploads/profilepics/' ~ person.getProfilepicFilename() ) }}" alt="Profile Picture" class="profile-picture">
+                        {% else %}
+                            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
+                        {% endif %}
+                    </div>
+                    <!-- User info -->
+                    <div class="user-info">
+                        <!-- User name -->
+                        <div class="data-user-name">
+                            <h3>{{ person.getFirstname ~ " " ~ person.getLastname }}</h3>
                         </div>
-                        <div class="PersonInfo">
-                            <p class="PersonName">{{ user.getFirstName() ~ " " ~ user.getLastName() }}</p>
+                        <!-- User age -->
+                        <div class="data-user-age">
+                            <p><b>Age: </b>25</p>
+                        </div>
+                        <!-- User city -->
+                        <div class="data-user-city">
+                            <p><b>City: </b>Leuven</p>
+                        </div>
+                        <!-- User interests -->
+                        <div class="data-user-interests">
+                            <p><b>Interests: </b>Football, tennis, hockey</p>
+                        </div>
+                        <!-- User liked books -->
+                        <div class="data-user-liked-books">
+                            <ul class="liked-books-list"><b>Liked books:</b>
+                                {% for book in person.getFavoriteBooks() %}
+                                    <li>
+                                        <a href="{{ path('book_profile', {'title': book.getTitle(), 'isbn': book.getISBN()}) }}">{{ book.getTitle() }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
-                {% if loop.index0 % 4 == 1 or loop.last %}
-                    </div>
+                {% if loop.index is divisible by(2) or loop.last %}
+            </div>
+            <div class="person-card-row">
                 {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </section>
 
-
-    <script>
-        // Call the function when the page is loaded
-        window.addEventListener('DOMContentLoaded', function() {
-            var isbn = "{{ isbn }}";  // Replace with your ISBN
-
-            // check if the book has already been favorited and set the text on the button based on that
-            const fav_button = document.getElementById("favorite_button");
-            checkFavoriteStatus('{{ isbn }}', fav_button);
-
-            // Fetch the book image from Google Books API
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Extract the image links from the API response
-                    const book = data.items[0].volumeInfo;
-                    const title = book.title;
-                    const author = book.authors ? book.authors[0] : "Unknown";
-                    const genres = book.categories ? book.categories.join(', ') : "Unknown";
-                    const pages = book.pageCount ? book.pageCount : "Unknown";
-                    const publicationDate = book.publishedDate ? book.publishedDate : "Unknown";
-                    const language = book.language ? book.language : "Unknown";
-                    const readingAge = book.readingModes ? book.readingModes.ageGroup : "Unknown";
-
-                    var imageLink = book.imageLinks ? book.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
-                    // Modify the URL to increase the resolution
-                    imageLink = imageLink.replace('&edge=curl', '&printsec=frontcover&img=1&zoom=5');
-
-                    // Update the image source in the HTML
-                    document.getElementById('book_img').src = imageLink;
-
-                    document.getElementById('book_title').textContent = title;
-                    document.getElementById('author').textContent = "Author: " + author;
-                    document.getElementById('genres').textContent =  genres;
-                    document.getElementById('pages').textContent = pages;
-                    document.getElementById('publication_date').textContent = publicationDate;
-                    document.getElementById('language').textContent = language;
-                    document.getElementById('reading_age').textContent = readingAge;
-                })
-                .catch(error => console.log(error));
-        });
-
-        function handleFavorite(bookId, buttonElement) {
-            // Send HTTP POST request to your Symfony backend endpoint
-            fetch(`/favorite-book/${bookId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ bookId: bookId }),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Check the response message and update the button accordingly
-                    if (data.message === 'Book favorited successfully') {
-                        buttonElement.textContent = 'Unfavorite';
-                        // Add any additional styling or behavior changes as needed
-                    } else if (data.message === 'Book unfavorited successfully') {
-                        buttonElement.textContent = 'Favorite';
-                        // Add any additional styling or behavior changes as needed
-                    } else {
-                        // Handle other possible response messages or errors
-                    }
-                })
-                .catch(error => {
-                    // Handle any errors that occur during the request
-                });
-        }
-
-        // Function to check the favorite status of a book
-        function checkFavoriteStatus(bookId, buttonElement) {
-            fetch(`/check-favorite-book/${bookId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message === 'Book already favorited') {
-                        buttonElement.textContent = 'Unfavorite';
-                    } else if (data.message === 'Book not favorited') {
-                        buttonElement.textContent = 'Favorite';
-                        // Add any additional styling or behavior changes as needed
-                    } else {
-                        // Handle other possible response messages or errors
-                    }
-                })
-                .catch(error => {
-                    // Handle any errors that occur during the request
-                });
-        }
-
-    </script>
 
 {% endblock %}

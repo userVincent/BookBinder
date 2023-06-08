@@ -8,6 +8,7 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/userprofile.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -17,7 +18,6 @@
         <div class="picture">
             <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
             <h1 class="user-name">{{ firstname ~ " " ~ lastname }}</h1>
-            <button id="request_button">Request a Meet Up</button>
         </div>
 
         <div class="profile-details">
@@ -49,16 +49,19 @@
     </div>
 
     <script>
+
         window.addEventListener('DOMContentLoaded', function() {
             document.getElementById('output').innerHTML = "";
-            fetch("https://www.googleapis.com/books/v1/volumes?q=" + "Great Gatsby" + "&maxResults=40")
+
+            fetch("/profile")
                 .then(response => response.json())
                 .then(data => {
+                    const favoriteBooks = data.favoriteBook;
                     for (var i = 0; i <20; i += 4) {
-                        const book1 = data.items[i].volumeInfo;
-                        const book2 = data.items[i + 1].volumeInfo;
-                        const book3 = data.items[i + 2].volumeInfo;
-                        const book4 = data.items[i + 3].volumeInfo;
+                        const book1 = favoriteBooks.items[i].volumeInfo;
+                        const book2 = favoriteBooks.items[i + 1].volumeInfo;
+                        const book3 = favoriteBooks.items[i + 2].volumeInfo;
+                        const book4 = favoriteBooks.items[i + 3].volumeInfo;
 
                         const title1 = book1.title;
                         const author1 = book1.authors ? book1.authors[0] : "Unknown";
@@ -156,7 +159,6 @@
                     }
                 });
         });
-
 
     </script>
 

@@ -232,8 +232,11 @@ footer {
     gap: 0.25rem;
 }
 
+/*styling the displayed books*/
+
 .row {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     border-bottom: 1px solid #000;
 }
@@ -241,9 +244,13 @@ footer {
 .grid-container {
     margin-top: 50px;
     margin-left: 100px;
+    margin-right: 100px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 25px;
+    max-width: 1200px; /* Set your desired maximum width */
+    margin-left: auto; /* To center the container horizontally */
+    margin-right: auto; /* To center the container horizontally */
 }
 
 .book {

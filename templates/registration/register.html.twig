@@ -20,10 +20,18 @@
                     {{ form_row(registrationForm.email, { 'label': 'Email', 'attr': {'placeholder': 'Enter Email', 'required': true, 'id': 'username'} }) }}
 
                         {{ form_row(registrationForm.address, { 'label': 'Address', 'attr': {'placeholder': 'Enter Address', 'required': true, 'id': 'address'} }) }}
-                        <br><br>
+
                         {{ form_row(registrationForm.birthday, { 'label': 'Birthday:', 'attr': {'required': true, 'id': 'birthday'} }) }}
                         {#added the name property of 'password'#}
                         {{ form_row(registrationForm.plainPassword, { 'label': 'Password', 'attr': {'placeholder': 'Enter Password', 'required': true, 'id': 'password','name': '_password'} }) }}
+
+                        <h3>Give us more information about yourself so we can give you the best experience</h3>
+
+                        {{ form_row(registrationForm.Interests, { 'label': 'Interests', 'attr': {'placeholder': 'Enter your interests: e.g. football, skiing, diving...', 'id': 'interests'} }) }}
+
+                        {{ form_row(registrationForm.About, { 'label': 'About', 'attr': {'placeholder': 'Enter a small description about yourself', 'id': 'about'} }) }}
+
+                        <br>
                         {{ form_row(registrationForm.profilepicFile) }}
                         {{ form_row(registrationForm.agreeTerms) }}
 

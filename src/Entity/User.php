@@ -27,6 +27,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Email(
+        message: 'The email {{ value }} is not a valid email.',
+    )]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -82,6 +85,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $Age = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Interests = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $About = null;
 
     public function __construct()
     {
@@ -334,7 +346,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
      * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
+     * during Doctrine hydration. cnbv
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $profilepicFile
      */
@@ -367,6 +379,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setProfilepicSize(?int $profilepicSize): self
     {
         $this->profilepicSize = $profilepicSize;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->Age;
+    }
+
+    public function setAge(?int $Age): self
+    {
+        $this->Age = $Age;
+
+        return $this;
+    }
+
+    public function getInterests(): ?string
+    {
+        return $this->Interests;
+    }
+
+    public function setInterests(?string $Interests): self
+    {
+        $this->Interests = $Interests;
+
+        return $this;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->About;
+    }
+
+    public function setAbout(?string $About): self
+    {
+        $this->About = $About;
 
         return $this;
     }
