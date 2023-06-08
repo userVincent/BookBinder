@@ -60,8 +60,7 @@ function appendLibraries(libraries) {
                         </a>
                     </h2>
                     <div id="mapid" style="height: 200px;"></div>
-                    <p>${address}</p><br>
-                    <button type="button" class="selectButton">Select</button>
+                    <p>${address}</p>
                 `;
         } else {
             libraryElement.innerHTML = `
