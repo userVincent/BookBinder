@@ -157,7 +157,7 @@ deploy-job:
     - apk add rsync
   # Every job will start a container with a clone from the current repo
   script:
-    - composer install
+    - composer install --ignore-platform-req=ext-gd
     # rsync is a copy/sync tool we use to copy the current folder ./ to studev
     # we ignore the .git folder and the .env file
     # we delete the files on the remote server that are not present in the local copy
