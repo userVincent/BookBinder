@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
+
     <list default="true" id="c005e1fb-ad51-4983-812a-07a7513c0c64" name="Changes" comment="" />
-=======
+
     <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="date form + previous button">
       <change afterPath="$PROJECT_DIR$/public/css/library_select.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/js/create_meetup.js" afterDir="false" />
@@ -20,7 +20,7 @@
       <change beforePath="$PROJECT_DIR$/templates/libraries/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/libraries/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/meetups/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meetups/index.html.twig" afterDir="false" />
     </list>
->>>>>>> origin/vincent_vansant
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,7 +205,7 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-<<<<<<< HEAD
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -231,7 +231,8 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/application/Controller" />
     </key>
-=======
+ </component>
+
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
@@ -242,7 +243,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
->>>>>>> origin/vincent_vansant
+
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -282,12 +283,12 @@
       <workItem from="1684797340221" duration="668000" />
       <workItem from="1684842399439" duration="85869000" />
       <workItem from="1685368539238" duration="3387000" />
-<<<<<<< HEAD
+
       <workItem from="1685386754317" duration="29279000" />
       <workItem from="1685921924753" duration="3324000" />
       <workItem from="1686169718606" duration="447000" />
       <workItem from="1686173362985" duration="1105000" />
-=======
+
       <workItem from="1685386754317" duration="6305000" />
       <workItem from="1685612107334" duration="6721000" />
       <workItem from="1685713014318" duration="3364000" />
@@ -295,7 +296,7 @@
       <workItem from="1685806984812" duration="4916000" />
       <workItem from="1686061722938" duration="12894000" />
       <workItem from="1686123535915" duration="4718000" />
->>>>>>> origin/vincent_vansant
+
     </task>
     <task id="LOCAL-00001" summary="peopleseelct file">
       <created>1686173762720</created>
@@ -341,16 +342,16 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-<<<<<<< HEAD
+
     <MESSAGE value="peopleseelct file" />
     <option name="LAST_COMMIT_MESSAGE" value="peopleseelct file" />
-=======
+
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Search result design is fixed.&#10;Better alignment, no overlap between the titles.&#10;no-image-available.png is also shown in case image is not available." />
     <MESSAGE value="Library page shows only first map" />
     <MESSAGE value="date form + previous button" />
     <option name="LAST_COMMIT_MESSAGE" value="date form + previous button" />
->>>>>>> origin/vincent_vansant
+
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
