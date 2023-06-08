@@ -12,10 +12,9 @@
 }
 
 .profile {
-    border: 1px solid #ccc;
-    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
+
     margin-bottom: 20px;
     margin-right: 10px;
     width: 350px; /* Adjust the width to your desired fixed size */
@@ -62,6 +61,14 @@ div.ProfileBox {
     cursor: pointer;
     opacity: 0.8; /* Transparency */
     transition: background-color 0.3s; /* Smooth transition */
+=======
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    border: 2px solid #cccccc;
+    border-radius: 20px;
+    align-items: center;
+>>>>>>> origin/vincent_vansant
 }
 
 .send-request-btn:hover {
@@ -108,24 +115,31 @@ div.ProfileBox {
     height: 600px;
 }
 
+.profileGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
 #profile_picture {
     padding: 10px;
     border-radius: 20px;
     width: 160px;
 }
 
-.profile {
-    display: flex;
-    flex-direction: row;
-    background-color: aliceblue;
-    border: 2px solid #cccccc;
-    border-radius: 20px;
-    width: 50%;
-    align-items: center;
-}
-
 .cancel {
     background-color: indianred;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.accept {
+    background-color: seagreen;
     color: white;
     padding: 14px 20px;
     margin: 8px 5px;
@@ -153,7 +167,7 @@ div.ProfileBox {
 
 .newMeetupButton {
     position: sticky;
-    top: 0;
+    top: 10px;
     left: 100%;
     display: block;
     padding: 10px;
@@ -164,7 +178,7 @@ div.ProfileBox {
     text-align: center;
     text-decoration: none;
     font-size: 18px;
-    margin: 4px;
+    margin: 10px;
     cursor: pointer;
 }
 
