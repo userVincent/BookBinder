@@ -21,9 +21,15 @@
 
     <h1>Libraries</h1>
 
-    <form id="libraryForm" action="{{ path('person_select') }}" method="post">
+    <form id="libraryForm" action="{{ path('app_people_select') }}" method="post">
         <input type="hidden" id="selectedLibraryId" name="libraryId" value="">
+
+        <button type="submit" class="nextButton">Next</button>
     </form>
+
+    <a href="{{ path('app_create_meetup') }}">
+        <button class="previousButton">Previous</button>
+    </a>
 
     <div id="librariesContainer" class="librariesContainer">
         <!-- Libraries data will be appended here -->

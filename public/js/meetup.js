@@ -41,7 +41,7 @@ function displaySearchResults(results) {
                 resultHTML += '<div class="ProfileBox"><img class="profile-img" src="' + result.image + '" alt="Profile picture"></div>';
                 resultHTML += '<div><h3>' + result.firstname + ' ' + result.lastname + '</h3></div>';
             resultHTML += '</div></a>';
-            resultHTML += '<div><button class="send-request-btn">Select</button></div>'
+            resultHTML += '<button class="selectButton">Select</button>'
         resultHTML += '</div>';
     }
     resultHTML += '</div>';
@@ -56,4 +56,18 @@ function loadPreviousData(){
         var results = JSON.parse(savedResults);
         displaySearchResults(results);
     }
+}
+
+function openMeetups(evt, meetups) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(meetups).style.display = "block";
+    evt.currentTarget.className += " active";
 }

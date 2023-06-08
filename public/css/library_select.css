@@ -7,7 +7,7 @@
     bottom: 50px;
     right: 150px;
     display: block;
-    padding: 20px 30px;
+    padding: 15px 20px;
     background-color: #3e88ff;
     border: none;
     border-radius: 50px;
@@ -21,4 +21,42 @@
 
 .nextButton:hover {
     background-color: skyblue;
+}
+
+.previousButton {
+    position: fixed;
+    left: 10px;
+    bottom: 50px;
+    background-color: white;
+    color: #3e88ff;
+    border: 2px solid #3e88ff;
+    border-radius: 50px;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 22px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.selectButton {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #87CEFA;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: background-color 0.3s;
+}
+
+.selectButton:hover {
+    background-color: #4CAF50; /* Green color on hover */
+}
+
+.selectButton:active {
+    background-color: #4CAF50; /* Green color on click */
 }

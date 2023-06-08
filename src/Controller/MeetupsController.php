@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class MeetupsController extends AbstractController
 {
     #[Route('/meetups', name: 'app_meetups')]
