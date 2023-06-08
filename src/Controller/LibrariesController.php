@@ -20,8 +20,15 @@ class LibrariesController extends AbstractController
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);
         $offset = ($page - 1) * $size;
+        $name = $request->query->get('name');
 
-        $libraries = $libraryRepository->findBy([], null, $size, $offset);
+        if($name == null){
+            $libraries = $libraryRepository->findBy([], null, $size, $offset);
+        }
+        else{
+            // name should be a substring of the library name
+            $libraries = $libraryRepository->findByName($name, $size, $offset);
+        }
 
         //dump($libraries); 
 

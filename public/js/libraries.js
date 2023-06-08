@@ -1,31 +1,29 @@
 let currentPage = 1;
-const pageSize = 10;
+const pageSize = 12;
+let isLoading = false;
+let hasMoreLibraries = true;
 
 function fetchLibraries() {
-    fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
-        .then(response => response.json())
-        .then(data => {
-            appendLibraries(data.data);
-            currentPage++;
-        });
-}
+    if (!isLoading && hasMoreLibraries) {
+        isLoading = true;
 
-function searchLibrary() {
-    const searchQuery = document.getElementById('input').value;
-    const searchParams = new URLSearchParams();
-    searchParams.append('q', searchQuery);
+        fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
+            .then(response => response.json())
+            .then(data => {
+                appendLibraries(data.data);
+                currentPage++;
+                isLoading = false;
 
-    fetch('/libraries/data?q=&page=1&size=10' + searchParams.toString())
-        .then(response => response.json())
-        .then(data => {
-            appendLibraries(data.data);
-            currentPage++;
-        });
+                if (data.data.length < pageSize) {
+                    hasMoreLibraries = false;
+                }
+            });
+    }
 }
 
 function appendLibraries(libraries) {
     const container = document.getElementById('librariesContainer');
-    container.innerHTML = ''; // Clear previous results
+    const isLibrarySelectionPage = window.location.href.includes('/library_select');
 
     libraries.forEach(library => {
         var address = `${library.StreetName} ${library.HouseNumber}, ${library.PostalCode} ${library.Town}`;
@@ -54,23 +52,38 @@ function appendLibraries(libraries) {
             });
 
         const libraryElement = document.createElement('div');
-        libraryElement.innerHTML = `
-            <h2>
-                <a href="/library/${library.id}">
-                    ${library.name}
-                </a>
-            </h2>
-            <div id="mapid" style="height: 200px;"></div>
-            <p>${address}</p>
-        `;
-        libraryElement.className = "library";
+        if (isLibrarySelectionPage) {
+            libraryElement.innerHTML = `
+                    <h2>
+                        <a href="#" onclick="selectLibrary(${library.id}); libraryForm.submit();">
+                            ${library.name}
+                        </a>
+                    </h2>
+                    <div id="mapid" style="height: 200px;"></div>
+                    <p>${address}</p>
+                `;
+        } else {
+            libraryElement.innerHTML = `
+                    <h2>
+                        <a href="/library/${library.id}">
+                            ${library.name}
+                        </a>
+                    </h2>
+                    <div id="mapid" style="height: 200px;"></div>
+                    <p>${address}</p>
+                `;
+        }
+        libraryElement.className = "library"
         container.appendChild(libraryElement);
     });
 }
 
+function selectLibrary(libraryId) {
+    document.getElementById('selectedLibraryId').value = libraryId;
+}
 
 function scrollHandler() {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
         fetchLibraries();
     }
 }
@@ -89,5 +102,5 @@ function escapeHtml(text) {
     });
 }
 
-//window.addEventListener('scroll', scrollHandler);
-//fetchLibraries(); // Fetch initial data
+window.addEventListener('scroll', scrollHandler);
+fetchLibraries(); // Fetch initial data

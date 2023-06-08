@@ -1,18 +1,23 @@
 function nextPage() {
-    // Get the form element
-    var form = document.getElementById('meetupDate');
+    // Get the date-time value
+    var datetime = document.getElementById('datetime').value;
 
-    // Create a hidden input to hold the form data
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'formData');
-    hiddenInput.setAttribute('value', JSON.stringify(getFormData(form)));
-
-    // Append the hidden input to the form
-    form.appendChild(hiddenInput);
-
-    // Submit the form
-    form.submit();
+    // Send the value to the server
+    fetch("{{ path('update_session') }}", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            // add CSRF token if needed
+        },
+        body: JSON.stringify({datetime: datetime})
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Redirect to the next page if the session update was successful
+        if (data.success) {
+            window.location.href = "{{ path('library_select') }}";
+        }
+    });
 }
 
 function getFormData(form) {
