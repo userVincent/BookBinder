@@ -8,6 +8,7 @@ function selectPeople() {
     var searchQuery = document.getElementById('input').value;
     searchPeople(searchQuery);
 }
+
 function searchPeople(searchQuery) {
     // Send an AJAX request to the backend controller
     // Replace "peopleSelectController" with the actual route/controller handling the search request
@@ -37,18 +38,22 @@ function displaySearchResults(results) {
     for (var i = 0; i < results.length; i += 1) {
         var result = results[i];
         resultHTML += '<a class="check-profile" href="/profile/public/' + result.id + '"><div class="profile">';
-            resultHTML += '<div class="profile-content">';
-                resultHTML += '<div class="ProfileBox"><img class="profile-img" src="' + result.image + '" alt="Profile picture"></div>';
-                resultHTML += '<div><h3>' + result.firstname + ' ' + result.lastname + '</h3></div>';
-            resultHTML += '</div></a>';
-            resultHTML += '<button class="selectButton">Send request</button>'
+        resultHTML += '<div class="profile-content">';
+        resultHTML += '<div class="ProfileBox"><img class="profile-img" src="' + result.image + '" alt="Profile picture"></div>';
+        resultHTML += '<div><h3>' + result.firstname + ' ' + result.lastname + '</h3></div>';
+        resultHTML += '</div></a>';
+        resultHTML += '<button class="selectButton" onclick="sendRequest(' + result.id + ')">Send request</button>';
         resultHTML += '</div>';
     }
     resultHTML += '</div>';
     outputElement.innerHTML = resultHTML;
     sessionStorage.setItem('searchResults', JSON.stringify(results));
-
 }
+
+function sendRequest(userId) {
+    window.location.href = `/meetups/arrange/create_meetup/${userId}`;
+}
+
 
 function loadPreviousData(){
     var savedResults = sessionStorage.getItem('searchResults');

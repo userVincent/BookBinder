@@ -56,7 +56,7 @@ function createLibraryElement(library, address, lat, lon, isLibrarySelectionPage
     if (isLibrarySelectionPage) {
         libraryElement.innerHTML = `
             <h2>
-                <a href="/peopleselect" onclick="selectLibrary(${library.id}); libraryForm.submit();">
+                <a href="#" onclick="selectLibrary(${library.id});">
                     ${library.name}
                 </a>
             </h2>
@@ -88,7 +88,7 @@ function createLibraryElement(library, address, lat, lon, isLibrarySelectionPage
 }
 
 function selectLibrary(libraryId) {
-    document.getElementById('selectedLibraryId').value = libraryId;
+    window.location.href = `/meetups/arrange/person_select/${libraryId}`;
 }
 
 function scrollHandler() {

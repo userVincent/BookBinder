@@ -10,14 +10,6 @@ use App\Entity\Library;
 
 class CreateMeetupController extends AbstractController
 {
-    #[Route('/create/meetup', name: 'app_create_meetup')]
-    public function index(): Response
-    {
-        return $this->render('create_meetup/index.html.twig', [
-            'controller_name' => 'CreateMeetupController',
-        ]);
-    }
-
     #[Route('/library/select', name: 'library_select')]
     public function selectLibrary(): Response
     {
