@@ -193,11 +193,14 @@ footer {
     border-radius: 30px;
     width: 500px;
 }
+/*styling for the book container*/
 
 .row {
     display: flex;
     flex-direction: row;
 }
+
+
 
 .Specifications {
     text-align: center;
@@ -274,6 +277,8 @@ button:hover {
 .ReviewForm {
     display: none;
 }
+
+
 
 /* Styles for screen widths up to 900px */
 

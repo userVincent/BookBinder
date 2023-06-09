@@ -34,7 +34,7 @@ input[type="datetime-local"] {
 .nextButton {
     position: relative;
     top: 50px;
-    left: 100%;
+    left: 95%;
     background-color: #3e88ff;
     color: white;
 }

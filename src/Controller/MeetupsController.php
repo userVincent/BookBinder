@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class MeetupsController extends AbstractController
 {
     #[Route('/meetups', name: 'app_meetups')]
@@ -58,7 +59,7 @@ class MeetupsController extends AbstractController
         return $this->render('create_meetup/index.html.twig');
     }
 
-    #[Route('/meetups/arrange/library_select', name: 'library_select', methods: ['POST'])]
+    #[Route('/meetups/arrange/library_select', name: 'library_select', methods: ['POST', 'GET'])]
     public function librarySelect(Request $request, SessionInterface $session): Response
     {
         // Get datetime from form

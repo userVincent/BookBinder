@@ -261,27 +261,3 @@ footer {
 .book img {
     width: 100%;
 }
-
-/* Styles for screen widths up to 900px */
-@media screen and (max-width: 900px) {
-    header.flex-container {
-        display: revert;
-    }
-    .flex-container {
-        display: revert;
-    }
-    .footer-container {
-        flex-direction: column;
-    }
-    .element {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-    #logo {
-        align-items: center;
-    }
-    img {
-        width: 50px;
-    }
-}

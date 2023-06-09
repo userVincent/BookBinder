@@ -6,6 +6,7 @@
     border: 2px solid #cccccc;
     border-radius: 20px;
     align-items: center;
+    position: relative;
 }
 
 .librariesContainer {

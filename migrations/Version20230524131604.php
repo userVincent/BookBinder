@@ -20,12 +20,13 @@ final class Version20230524131604 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE book DROP title, DROP author, DROP pages, DROP language, DROP rating');
+        //no drop title since it is used in public database now, June 5. And no other versions that adds title back.
+        $this->addSql('ALTER TABLE book DROP author, DROP pages, DROP language, DROP rating');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE book ADD title VARCHAR(255) NOT NULL, ADD author VARCHAR(255) NOT NULL, ADD pages INT DEFAULT NULL, ADD language VARCHAR(255) DEFAULT NULL, ADD rating DOUBLE PRECISION DEFAULT NULL');
+        $this->addSql('ALTER TABLE book ADD author VARCHAR(255) NOT NULL, ADD pages INT DEFAULT NULL, ADD language VARCHAR(255) DEFAULT NULL, ADD rating DOUBLE PRECISION DEFAULT NULL');
     }
 }

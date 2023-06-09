@@ -6,14 +6,14 @@ let hasMoreLibraries = true;
 function fetchLibraries() {
     if (!isLoading && hasMoreLibraries) {
         isLoading = true;
-        
+
         fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
             .then(response => response.json())
             .then(data => {
                 appendLibraries(data.data);
                 currentPage++;
                 isLoading = false;
-                
+
                 if (data.data.length < pageSize) {
                     hasMoreLibraries = false;
                 }
@@ -56,7 +56,7 @@ function createLibraryElement(library, address, lat, lon, isLibrarySelectionPage
     if (isLibrarySelectionPage) {
         libraryElement.innerHTML = `
             <h2>
-                <a href="#" onclick="selectLibrary(${library.id}); libraryForm.submit();">
+                <a href="/peopleselect" onclick="selectLibrary(${library.id}); libraryForm.submit();">
                     ${library.name}
                 </a>
             </h2>

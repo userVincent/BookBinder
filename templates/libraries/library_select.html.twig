@@ -1,32 +1,14 @@
 {% extends 'libraries/index.html.twig' %}
 
-{% block title %}Libraries Page{% endblock %}
-
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/library_select.css') }}">
     {{ parent() }}
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('js/libraries.js') }}"></script>
-{% endblock %}
+{% block previousButton %}
 
-{% block main %}
-    <h3>Search for a library</h3>
-    <div class="search-wrapper">
-        <input id="input" class="search" placeholder="library name" type="text" >
-        <button id="search-button" onclick="selectLibrary()">Search</button>
-    </div>
-
-    <h1>Libraries</h1>
-
-    <form id="libraryForm" action="{{ path('person_select') }}" method="post">
-        <input type="hidden" id="selectedLibraryId" name="libraryId" value="">
-    </form>
-
-    <div id="librariesContainer" class="librariesContainer">
-        <!-- Libraries data will be appended here -->
-    </div>
+    <a href="{{ path('app_create_meetup') }}">
+        <button class="previousButton">Previous</button>
+    </a>
 
 {% endblock %}

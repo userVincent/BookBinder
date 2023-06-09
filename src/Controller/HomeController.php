@@ -33,8 +33,8 @@ class HomeController extends AbstractController
 
 
     //To add a book to favorites or to remove it
-    #[Route('/favorite-book/{bookId}', name: 'app_favorite-book', methods: ['POST'])]
-    public function favoriteAction(String $bookId, EntityManagerInterface $entityManager): JsonResponse
+    #[Route('/favorite-book/{bookId}/{title}', name: 'app_favorite-book', methods: ['POST'])]
+    public function favoriteAction(String $bookId, String $title, EntityManagerInterface $entityManager): JsonResponse
     {
         // Retrieve the current user from the session or authentication context
         $user = $this->getUser();
@@ -50,6 +50,7 @@ class HomeController extends AbstractController
             // Book doesn't exist, create a new instance and set its ISBN
             $book = new Book();
             $book->setISBN($ISBN);
+            $book->setTitle($title);
             $entityManager->persist($book);
             $entityManager->flush();
 //            return new JsonResponse(['message' => 'Book not found'], 404);
@@ -126,13 +127,14 @@ class HomeController extends AbstractController
             'email' => $user->getEmail(),
             'address' => $user->getAddress(),
             'birthday' => $user->getBirthday()->format('Y-m-d'),
+            'favoriteBook' => $user->getFavoriteBooks(),
         ]);
     }
 
-    #[Route('/profile/public', name: 'app_user_profile_public')]
-    public function getProfilePublic(Request $request, UserRepository $userRepository): Response
+    #[Route('/profile/public/{id}', name: 'app_user_profile_public')]
+    public function getProfilePublic(Request $request, $id, UserRepository $userRepository): Response
     {
-        $user = $this->getUser();
+        $user = $userRepository->find($id);
 
         return $this->render('user_profile_public/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -150,12 +152,24 @@ class HomeController extends AbstractController
     {
         // Assuming there is a method to find the book by ISBN in your repository
         $book = $bookRepository->findOneBy(['ISBN' => $isbn]);
+        if ($book != null){
+            $users = $book->getUsers();
+
+            //Ensure that if the user has favorited that book it doesn't show his own profile
+            $current_user = $this->getUser();
+            if ($users->contains($current_user)){
+                $users->removeElement($current_user);
+            }
+        }
+        else {
+            $users = null;
+        }
 
 
         return $this->render('people_list/index.html.twig', [
             'controller_name' => 'HomeController',
             'isbn' => $isbn,
-            'users' => $book->getUsers(),
+            'users' => $users,
         ]);
     }
 
@@ -163,7 +177,7 @@ class HomeController extends AbstractController
     public function selectPeople(Request $request, UserRepository $userRepository): Response
     {
 
-        return $this->render('meetup/people_select.html.twig', [
+        return $this->render('meetups/people_select.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -184,8 +198,7 @@ class HomeController extends AbstractController
             $results[] = [
                 'firstname' => $user->getFirstName(),
                 'lastname' => $user->getLastName(),
-                'address' => $user->getAddress(),
-                'email' => $user->getEmail(),
+                'id' => $user->getId(),
             ];
         }
 
