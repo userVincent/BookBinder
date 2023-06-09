@@ -2,12 +2,26 @@ let currentPage = 1;
 const pageSize = 12;
 let isLoading = false;
 let hasMoreLibraries = true;
+let town = null;
 
 function fetchLibraries() {
     if (!isLoading && hasMoreLibraries) {
         isLoading = true;
+        if (town != null) {
+            fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize + '&town=' + town)
+                .then(response => response.json())
+                .then(data => {
+                    appendLibraries(data.data);
+                    currentPage++;
+                    isLoading = false;
 
-        fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
+                    if (data.data.length < pageSize) {
+                        hasMoreLibraries = false;
+                    }
+                });
+        }
+        else {
+            fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize)
             .then(response => response.json())
             .then(data => {
                 appendLibraries(data.data);
@@ -18,6 +32,7 @@ function fetchLibraries() {
                     hasMoreLibraries = false;
                 }
             });
+        }
     }
 }
 
@@ -27,8 +42,12 @@ function appendLibraries(libraries) {
 
     libraries.forEach(library => {
         var address = `${library.StreetName} ${library.HouseNumber}, ${library.PostalCode} ${library.Town}`;
-
-        fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(address))
+        //createLibraryElement(library, address, 0, 0, isLibrarySelectionPage);
+        if (library.Latitude != 0.00000000 && library.Longitude != 0.00000000) {
+            createLibraryElement(library, address, library.Latitude, library.Longitude, isLibrarySelectionPage);
+        }
+        else {
+            fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(address))
             .then(function(response) {
                 return response.json();
             })
@@ -36,15 +55,38 @@ function appendLibraries(libraries) {
                 if (data.length > 0) {
                     var lat = data[0].lat;
                     var lon = data[0].lon;
-
+                    
                     // Create library element with map
                     createLibraryElement(library, address, lat, lon, isLibrarySelectionPage);
+
+                    // Update library coordinates in database
+                    fetch('/libraries/update_coordinates', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                        libraryId: library.id,
+                        latitude: lat,
+                        longitude: lon,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
                 }
             })
             .catch(function(error) {
                 console.error('Geocoding error:', error);
             });
+
+        }
     });
+    
 }
 
 function createLibraryElement(library, address, lat, lon, isLibrarySelectionPage) {
@@ -109,6 +151,31 @@ function escapeHtml(text) {
     return text.replace(/[&<>"'\/]/g, function(m) {
         return map[m];
     });
+}
+
+function searchLibrary() {
+    const inputElement = document.getElementById('input');
+    const searchTerm = encodeURIComponent(inputElement.value);
+    town = searchTerm;
+    currentPage = 1;  // Reset pagination
+    hasMoreLibraries = true;  // Reset the flag to allow loading more libraries
+
+    // Clear current libraries
+    const container = document.getElementById('librariesContainer');
+    container.innerHTML = '';
+
+    // Modify the fetch URL to include the search term
+    fetch('/libraries/data?page=' + currentPage + '&size=' + pageSize + '&town=' + searchTerm)
+        .then(response => response.json())
+        .then(data => {
+            appendLibraries(data.data);
+            currentPage++;
+            isLoading = false;
+
+            if (data.data.length < pageSize) {
+                hasMoreLibraries = false;
+            }
+        });
 }
 
 window.addEventListener('scroll', scrollHandler);
