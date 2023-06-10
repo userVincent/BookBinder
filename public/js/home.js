@@ -18,10 +18,9 @@ window.onclick = function(event) {
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     displayTrendingBooks();
 };
-
 
 function displayTrendingBooks() {
     document.getElementById('output').innerHTML = "";

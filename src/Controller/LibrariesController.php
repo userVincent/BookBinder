@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 class LibrariesController extends AbstractController
 {
@@ -20,14 +21,14 @@ class LibrariesController extends AbstractController
         $page = $request->query->getInt('page', 1);
         $size = $request->query->getInt('size', 10);
         $offset = ($page - 1) * $size;
-        $name = $request->query->get('name');
+        $town = $request->query->get('town');
 
-        if($name == null){
+        if($town == null){
             $libraries = $libraryRepository->findBy([], null, $size, $offset);
         }
         else{
-            // name should be a substring of the library name
-            $libraries = $libraryRepository->findByName($name, $size, $offset);
+            // town should be a substring of the library town
+            $libraries = $libraryRepository->findByTown($town, $size, $offset);
         }
 
         //dump($libraries); 
@@ -40,6 +41,8 @@ class LibrariesController extends AbstractController
                 'StreetName' => $library->getStreetName(),
                 'HouseNumber' => $library->getHouseNumber(),
                 'PostalCode' => $library->getPostalCode(),
+                'Longitude' => $library->getLongitude(),
+                'Latitude' => $library->getLatitude(),
                 'Town' => $library->getTown(),
                 // ... Other properties ...
             ];
@@ -51,30 +54,6 @@ class LibrariesController extends AbstractController
             'data' => $libraryData,
         ]);
     }
-
-    // Change to search library
-    /*    #[Route('/searchLibrary', name: 'app_library_search', methods: ['GET', 'POST'])]
-    public function getLibrary(Request $request, LibraryRepository $libraryRepository): JsonResponse
-    {
-        $searchQuery = $request->request->get('searchQuery');
-        $libraries = $libraryRepository->searchLibrary($searchQuery);
-
-        if (empty($users)) {
-            return new JsonResponse([]);
-        }
-
-        $results = [];
-        foreach ($users as $user) {
-            $results[] = [
-                'firstname' => $user->getFirstName(),
-                'lastname' => $user->getLastName(),
-                'address' => $user->getAddress(),
-                'email' => $user->getEmail(),
-            ];
-        }
-
-        return new JsonResponse($results);
-    }*/
 
     #[Route('/libraries', name: 'app_libraries')]
     public function index(Request $request): Response
@@ -93,6 +72,28 @@ class LibrariesController extends AbstractController
         return $this->render('libraries/library.html.twig', [
         'library' => $library,
         'userIdMeetup' => $userIdMeetup,
-    ]);
+        ]);
+    }
+
+    #[Route('/libraries/update_coordinates', name: 'update_coordinates', methods: ['POST'])]
+    public function update_coordinates(Request $request, EntityManagerInterface $em): Response
+    {
+        $data = json_decode($request->getContent(), true);
+        $libraryId = $data['libraryId'];
+        $latitude = $data['latitude'];
+        $longitude = $data['longitude'];
+
+        $library = $em->getRepository(Library::class)->find($libraryId);
+
+        if (!$library) {
+            return $this->json(['error' => 'Library not found'], 404);
+        }
+
+        $library->setLatitude($latitude);
+        $library->setLongitude($longitude);
+
+        $em->flush();
+
+        return $this->json(['message' => 'Coordinates updated successfully']);
     }
 }

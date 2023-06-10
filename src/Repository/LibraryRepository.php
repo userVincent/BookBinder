@@ -39,6 +39,29 @@ class LibraryRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByName($name, $limit, $offset)
+    {
+        return $this->createQueryBuilder('l')
+            ->where('l.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByTown($town, $limit, $offset)
+    {
+        return $this->createQueryBuilder('l')
+            ->where('l.Town LIKE :Town')
+            ->setParameter('Town', '%'.$town.'%')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
+
+
 //    /**
 //     * @return Library[] Returns an array of Library objects
 //     */
