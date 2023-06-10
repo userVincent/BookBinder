@@ -21,7 +21,7 @@ function initializeBookProfile(isbn) {
             const publicationDate = book.publishedDate ? book.publishedDate : "Unknown";
             const language = book.language ? book.language : "Unknown";
 
-            const imageLink = book.imageLinks ? book.imageLinks.thumbnail : "{{ asset('images/no-image-available.png') }}";
+            const imageLink = book.imageLinks ? book.imageLinks.thumbnail : "images/no-image-available.png";
 
             // Update the image source in the HTML
             document.getElementById('book_img').src = imageLink;
