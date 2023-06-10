@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c005e1fb-ad51-4983-812a-07a7513c0c64" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +304,7 @@
       <workItem from="1685806984812" duration="4916000" />
       <workItem from="1686061722938" duration="12894000" />
       <workItem from="1686123535915" duration="4718000" />
-      <workItem from="1686315704156" duration="30646000" />
+      <workItem from="1686315704156" duration="31600000" />
     </task>
     <task id="LOCAL-00001" summary="peopleseelct file">
       <created>1686173762720</created>
