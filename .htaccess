@@ -1,2 +1,8 @@
 FallbackResource /public/index.php
-RewriteRule ^(.+)$ index.php?query=$1 "[B=?,L]"
+
+RewriteEngine On
+
+# Redirect /public to /
+RewriteRule ^public/(.*)$ /$1 [R=301,L]
+
+RewriteRule ^(.+)$ index.php?query=$1 [B,L]
