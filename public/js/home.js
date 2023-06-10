@@ -18,9 +18,10 @@ window.onclick = function(event) {
     }
 }
 
-if (window.location.pathname === '/home') {
+window.onload = function() {
     displayTrendingBooks();
-}
+};
+
 
 function displayTrendingBooks() {
     document.getElementById('output').innerHTML = "";
