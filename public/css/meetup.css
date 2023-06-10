@@ -116,3 +116,11 @@
 a {
     text-decoration: none;
 }
+
+.profile-picture {
+    padding: 10px;
+    border-radius: 20px;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+}
