@@ -179,7 +179,7 @@ class HomeController extends AbstractController
     public function selectPeople(Request $request, UserRepository $userRepository): Response
     {
 
-        return $this->render('meetup/people_select.html.twig', [
+        return $this->render('meetups/people_select.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }

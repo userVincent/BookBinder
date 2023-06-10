@@ -3,13 +3,17 @@ toggle between hiding and showing the dropdown content */
 function toggleMenu() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-// window.onload = function() {
-//     displayTrendingBooks();
-// };
-document.addEventListener('DOMContentLoaded', function() {
-    // Your function code here
+window.onload = function() {
     displayTrendingBooks();
-});
+};
+//
+// if (window.location.pathname === '/home') {
+//     displayTrendingBooks();
+// }
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Your function code here
+//     displayTrendingBooks();
+// });
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
@@ -24,10 +28,6 @@ window.onclick = function(event) {
         }
     }
 }
-//
-// if (window.location.pathname === '/home') {
-//     displayTrendingBooks();
-// }
 
 function displayTrendingBooks() {
     document.getElementById('output').innerHTML = "";

@@ -61,26 +61,18 @@ div.ProfileBox {
     cursor: pointer;
     opacity: 0.8; /* Transparency */
     transition: background-color 0.3s; /* Smooth transition */
-=======
+}
+
+.profile {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
     display: flex;
     flex-direction: row;
     background-color: aliceblue;
     border: 2px solid #cccccc;
     border-radius: 20px;
     align-items: center;
->>>>>>> origin/vincent_vansant
 }
-
-.send-request-btn:hover {
-    background-color: #4CAF50; /* Green color on hover */
-}
-
-.send-request-btn:active {
-    background-color: #4CAF50; /* Green color on click */
-}
-
-
-
 
 /* Style the buttons inside the tab */
 .tab button {

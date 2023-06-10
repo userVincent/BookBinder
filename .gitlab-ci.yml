@@ -163,5 +163,6 @@ deploy-job:
     # we delete the files on the remote server that are not present in the local copy
       #--exclude=".env"
     - rsync -rv --exclude=".git/"
-      --delete
-      ./ a22web38@shell.studev.groept.be:/var/www/html
+                --exclude="config/packages/framework.yaml"
+                --delete
+                ./ a22web38@shell.studev.groept.be:/var/www/html
