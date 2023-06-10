@@ -269,6 +269,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    //@TODO add tests for these two
     public function removeMeetupLocally(Meetup $meetup): self
     {
         if ($this->meetups->removeElement($meetup)) {

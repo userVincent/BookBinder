@@ -63,6 +63,7 @@ class MeetupRepositoryTest extends KernelTestCase
 
         $this->meetup->setDate(new DateTime('1990-01-01'));
         $this->meetup->setTime(new DateTime('20:10:00'));
+        $this->meetup->setState(0);
         $this->meetup->setPerson1($this->user1);
         $this->meetup->setPerson2($this->user2);
         $this->meetup->setLibrary($this->library);
@@ -75,14 +76,15 @@ class MeetupRepositoryTest extends KernelTestCase
         $this->meetupRepository->save($this->meetup, true);
 
         // Retrieve the saved user from the database
-        $savedLibrary = $this->meetupRepository->find($this->meetup->getId());
+        $savedMeetup = $this->meetupRepository->find($this->meetup->getId());
 
-        $this->assertEquals($this->meetup->getTime(), $savedLibrary->getTime());
-        $this->assertEquals($this->meetup->getDate(), $savedLibrary->getDate());
-        $this->assertEquals($this->meetup->getId(), $savedLibrary->getId());
-        $this->assertEquals($this->meetup->getPerson1(), $savedLibrary->getPerson1());
-        $this->assertEquals($this->meetup->getPerson2(), $savedLibrary->getPerson2());
-        $this->assertEquals($this->meetup->getLibrary(), $savedLibrary->getLibrary());
+        $this->assertEquals($this->meetup->getTime(), $savedMeetup->getTime());
+        $this->assertEquals($this->meetup->getDate(), $savedMeetup->getDate());
+        $this->assertEquals($this->meetup->getState(), $savedMeetup->getState());
+        $this->assertEquals($this->meetup->getId(), $savedMeetup->getId());
+        $this->assertEquals($this->meetup->getPerson1(), $savedMeetup->getPerson1());
+        $this->assertEquals($this->meetup->getPerson2(), $savedMeetup->getPerson2());
+        $this->assertEquals($this->meetup->getLibrary(), $savedMeetup->getLibrary());
 
 
     }

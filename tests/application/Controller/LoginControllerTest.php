@@ -25,7 +25,7 @@ class LoginControllerTest extends WebTestCase
     {
         $form = $this->crawler->selectButton('Sign in')->form();
         $form->setValues([
-            '_username' => 'aocheng.zhao@student.kuleuven.be',
+            '_username' => 'tester1@gmail.com',
             '_password' => '123456',
         ]);
 

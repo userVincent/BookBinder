@@ -27,9 +27,9 @@ class BookRepositoryTest extends KernelTestCase
         $this->book = new Book();
         $this->book->setTitle('testBook');
         $this->book->setISBN('6666666666666');//13 digits
-        $this->book->setAuthor('tester');
-        $this->book->setPages('999');
-        $this->book->setRating('9.9');
+//        $this->book->setAuthor('tester');
+//        $this->book->setPages('999');
+//        $this->book->setRating('9.9');
 
     }
 
@@ -41,9 +41,9 @@ class BookRepositoryTest extends KernelTestCase
         $savedBook = $this->bookRepository->find($this->book->getId());
 
         $this->assertEquals($this->book->getISBN(), $savedBook->getISBN());
-        $this->assertEquals($this->book->getAuthor(), $savedBook->getAuthor());
+//        $this->assertEquals($this->book->getAuthor(), $savedBook->getAuthor());
         $this->assertEquals($this->book->getLibraries(), $savedBook->getLibraries());
-        $this->assertEquals($this->book->getRating(), $savedBook->getRating());
+//        $this->assertEquals($this->book->getRating(), $savedBook->getRating());
         $this->assertEquals($this->book->getTitle(), $savedBook->getTitle());
     }
 

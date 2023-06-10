@@ -9,32 +9,25 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class PageRouteTest extends WebTestCase
 {
 
+    private $client;
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        if (!self::$client) {
-            self::$client = static::createClient();
+        if (!$this->client) {
+            $this->client = static::createClient();
         }
 
-        // Perform additional setup actions if needed
-        if (!self::$additionalSetupPerformed) {
-            $this->performAdditionalSetup();
-            self::$additionalSetupPerformed = true;
-        }
     }
 
-    protected function performAdditionalSetup(): void
-    {
-        // Perform additional setup actions here
-    }
+
     public function testNoneAuthenticationRoute():void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/home');
-        $this->assertTrue($client->getResponse()->isRedirection());
+        $crawler = $this->client->request('GET', '/home');
+        $this->assertTrue($this->client->getResponse()->isRedirection());
         // Check if the redirect target is the login page
-        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
+        $this->assertStringContainsString('/login', $this->client->getResponse()->headers->get('Location'));
 //        $crawler = $client->request('GET', '/profiles');
 //        $this->assertTrue($client->getResponse()->isRedirection());
 //        // Check if the redirect target is the login page
@@ -61,63 +54,89 @@ class PageRouteTest extends WebTestCase
 //        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
     }
 
-    public function testRouteHome(): void
+    /**
+     * @depends testNoneAuthenticationRoute
+     */
+    public function testAuthenticatedRouteHome(): void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/home');
-        $this->assertTrue($client->getResponse()->isRedirection());
-        // Check if the redirect target is the login page
-        $this->assertStringContainsString('/login', $client->getResponse()->headers->get('Location'));
-
-        $entityManager = static::getContainer()->get(EntityManagerInterface::class);
-        $userRepository = $entityManager->getRepository(User::class);
-
-        // retrieve the test user
-        $testUser = $userRepository->findOneByEmail('aocheng.zhao@student.kuleuven.be');
-        $this->assertNotNull($testUser, 'Test user is null');
-        // simulate $testUser being logged in
-        $client->loginUser($testUser);
-        $crawler = $client->followRedirect();
+        $this->loginTestUser($this->client);
+        $crawler = $this->client->request('GET', '/home');
         $this->assertSelectorTextContains('#subtitle','Meet book lovers');
         $this->assertSelectorTextContains('#catchphrase', 'Find Books and Book Lovers!!');
     }
 
+    /**
+     * @depends testNoneAuthenticationRoute
+     */
+    public function testAuthenticatedRouteLibraries(): void
+    {
+        $this->loginTestUser($this->client);
+        $crawler = $this->client->request('GET', '/libraries');
+        $this->assertSelectorTextContains('#subtitle','Meet book lovers');
+        $this->assertSelectorTextContains('main > h1', 'Libraries');
+    }
+    /**
+     * @depends testNoneAuthenticationRoute
+     */
+    public function testAuthenticatedRouteMeetups(): void
+    {
+        $this->loginTestUser($this->client);
+        $crawler = $this->client->request('GET', '/meetups');
+        $this->assertSelectorTextContains('#subtitle','Meet book lovers');
+        $this->assertSelectorTextContains('main > h1', 'Your Meetups');
+    }
+    /**
+     * @depends testNoneAuthenticationRoute
+     */
+    public function testAuthenticatedRouteProfile(): void
+    {
+        $testUser = $this->loginTestUser($this->client);
+
+        $crawler = $this->client->request('GET', '/profile');
+        $this->assertSelectorTextContains('#subtitle','Meet book lovers');
+        $this->assertSelectorTextContains('.user-name', $testUser->getFirstName());
+        $this->assertSelectorTextContains('.user-name', $testUser->getLastName());
+    }
+
+
     public function testRouteLogin(): void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
+        $crawler = $this->client->request('GET', '/login');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('form >main>section>div>label', 'Email');
     }
 
+
     public function testRouteRegister(): void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/register');
+        $crawler = $this->client->request('GET', '/register');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('form', 'Email');
         $form = $crawler->selectButton('Register')->form();
     }
 
-//    public function testRouteBook(): void
-//    {
-//        $client = static::createClient();
-//        $crawler = $client->request('GET', '/book');
-//
-//        $this->assertResponseIsSuccessful();
-//        $this->assertSelectorTextContains('main>h1', 'All Books');
-//    }
-    private function loginTestUser():void
+
+    protected function loginTestUser($client):User
     {
+        $crawler = $client->request('GET', '/login');
         $form = $crawler->selectButton('Sign in')->form();
         $form->setValues([
-            '_username' => 'aocheng.zhao@student.kuleuven.be',
+            '_username' => 'tester1@gmail.com',
             '_password' => '123456',
         ]);
 
-        $this->client->submit($form);
+        $client->submit($form);
+        // Access the user through the container
+        $entityManager = $client->getContainer()->get(EntityManagerInterface::class);
+        $userRepository = $entityManager->getRepository(User::class);
+
+        // Retrieve the test user
+        $testUser = $userRepository->findOneByEmail('tester1@gmail.com');
+        $this->assertNotNull($testUser, 'Test user is null');
+
+        return $testUser;
     }
 
 
