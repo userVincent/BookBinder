@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="Fix home page">
+    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="Fix profile pictures on meetups page and profile page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/date.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/date.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/meetup.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/meetup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/meetup.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/meetup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meetups/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meetups/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_profile_public/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_profile_public/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +243,8 @@
       <workItem from="1686216017868" duration="4586000" />
       <workItem from="1686243680239" duration="8298000" />
       <workItem from="1686316713550" duration="1094000" />
-      <workItem from="1686385640984" duration="8007000" />
+      <workItem from="1686385640984" duration="8547000" />
+      <workItem from="1686416364785" duration="2860000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1686214170308</created>
@@ -297,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686385802866</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix profile pictures on meetups page and profile page">
+      <created>1686394066829</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686394066829</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +328,8 @@
     <MESSAGE value="Make previous button block in select library" />
     <MESSAGE value="create meetup with all buttons" />
     <MESSAGE value="Fix home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix home page" />
+    <MESSAGE value="Fix profile pictures on meetups page and profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix profile pictures on meetups page and profile page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
