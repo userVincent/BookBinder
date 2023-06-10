@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/home.js') }}"></script>
-    <script src="{{ asset('js/userprofile.js') }}"></script>
+{#    <script src="{{ asset('js/home.js') }}"></script>#}
+{#    <script src="{{ asset('js/userprofile.js') }}"></script>#}
 {% endblock %}
 
 
@@ -39,24 +39,35 @@
             </div>
             <div class="Description">
                 <h1 id="description">Description:</h1>
-                <p>
-                    Hey there! I'm Jane, a book lover extraordinaire and an enthusiastic
-                    user of the Book Binder app. With a passion for literature that knows
-                    no bounds, I find joy in immersing myself in captivating stories and exploring diverse genres.
-                </p>
+                    {% if description %}
+                <p> {{ description }} </p>
+                    {% else %}
+                <p>-</p>
+                    {% endif %}
             </div>
         </div>
 
     </section>
 
+
     <div class="section-heading">
-        <h2>Favorite Books</h2>
+        <h2>Your favorite Books</h2>
         <div class="divider"></div>
     </div>
 
     <div id="output">
-
+        <div class="data-user-liked-books">
+            <ul class="liked-books-list"><b>Liked books:</b>
+                {% for book in favoriteBook %}
+                    <li>
+                        <a href="{{ path('book_profile', {'title': book.getTitle(), 'isbn': book.getISBN()}) }}">{{ book.getTitle() }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+
+
 
 
 

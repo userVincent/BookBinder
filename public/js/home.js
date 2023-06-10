@@ -18,9 +18,13 @@ window.onclick = function(event) {
     }
 }
 
-if (window.location.pathname === '/home') {
+// if (window.location.pathname === '/home') {
+//     displayTrendingBooks();
+// }
+document.addEventListener('DOMContentLoaded', function() {
+    // Your function code here
     displayTrendingBooks();
-}
+});
 
 function displayTrendingBooks() {
     document.getElementById('output').innerHTML = "";
