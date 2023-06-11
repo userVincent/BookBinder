@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c005e1fb-ad51-4983-812a-07a7513c0c64" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LibrariesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LibrariesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LibraryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LibraryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +324,7 @@
       <workItem from="1686472438955" duration="1869000" />
       <workItem from="1686488963206" duration="1710000" />
       <workItem from="1686493290556" duration="1258000" />
-      <workItem from="1686494789789" duration="896000" />
+      <workItem from="1686494789789" duration="1806000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1686214170308</created>
