@@ -1,29 +1,27 @@
-/*.tab {*/
-/*    overflow: hidden;*/
-/*}*/
-/*.profile-row {*/
-/*    margin-top: 30px;*/
-/*    margin-bottom: 20px;*/
-/*    clear: both;*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    flex-direction: row;*/
-/*    justify-content: space-between;*/
-/*}*/
+.tab {
+    overflow: hidden;
+}
+.profile-row {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .profile {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
-
-    margin-bottom: 20px;
-    margin-right: 10px;
-    width: 350px; /* Adjust the width to your desired fixed size */
-    height: 70px; /* Adjust the height to your desired fixed size */
     display: flex;
     flex-direction: row;
+    background-color: aliceblue;
+    border: 2px solid #cccccc;
+    border-radius: 20px;
     align-items: center;
-    justify-content: space-between;
 }
+
 
 .check-profile{
     color: black;
@@ -63,16 +61,6 @@ div.ProfileBox {
     transition: background-color 0.3s; /* Smooth transition */
 }
 
-.profile {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    background-color: aliceblue;
-    border: 2px solid #cccccc;
-    border-radius: 20px;
-    align-items: center;
-}
 
 /* Style the buttons inside the tab */
 .tab button {
