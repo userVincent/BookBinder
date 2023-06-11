@@ -10,12 +10,10 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
             <link rel="stylesheet" href="{{ asset('css/home.css') }}">
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
             <script src="{{ asset('js/home.js') }}"></script>
         {% endblock %}
     {% endblock %}</head>
