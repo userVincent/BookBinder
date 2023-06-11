@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/home.js') }}"></script>
-    <script src="{{ asset('js/userprofile.js') }}"></script>
+{#    <script src="{{ asset('js/home.js') }}"></script>#}
+{#    <script src="{{ asset('js/userprofile.js') }}"></script>#}
 {% endblock %}
 
 {% block main %}
@@ -29,11 +29,11 @@
             </div>
             <div class="Description">
                 <h1 id="description">Description:</h1>
-                <p>
-                    Hey there! I'm Jane, a book lover extraordinaire and an enthusiastic
-                    user of the Book Binder app. With a passion for literature that knows
-                    no bounds, I find joy in immersing myself in captivating stories and exploring diverse genres.
-                </p>
+                {% if description %}
+                    <p> {{ description }} </p>
+                {% else %}
+                    <p>-</p>
+                {% endif %}
             </div>
         </div>
 
@@ -46,120 +46,18 @@
 
     <div id="output">
 
+        <div id="output">
+            <div class="data-user-liked-books">
+                <ul class="liked-books-list"><b>Liked books:</b>
+                    {% for book in favoriteBook %}
+                        <li>
+                            <a href="{{ path('book_profile', {'title': book.getTitle(), 'isbn': book.getISBN()}) }}">{{ book.getTitle() }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <script>
-
-        window.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('output').innerHTML = "";
-
-            fetch("/profile")
-                .then(response => response.json())
-                .then(data => {
-                    const favoriteBooks = data.favoriteBook;
-                    for (var i = 0; i <20; i += 4) {
-                        const book1 = favoriteBooks.items[i].volumeInfo;
-                        const book2 = favoriteBooks.items[i + 1].volumeInfo;
-                        const book3 = favoriteBooks.items[i + 2].volumeInfo;
-                        const book4 = favoriteBooks.items[i + 3].volumeInfo;
-
-                        const title1 = book1.title;
-                        const author1 = book1.authors ? book1.authors[0] : "Unknown";
-                        const isbn1 = book1.industryIdentifiers ? book1.industryIdentifiers[0].identifier : "Not available";
-                        const imageLinks1 = book1.imageLinks ? book1.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
-                        const title2 = book2.title;
-                        const author2 = book2.authors ? book2.authors[0] : "Unknown";
-                        const isbn2 = book2.industryIdentifiers ? book2.industryIdentifiers[0].identifier : "Not available";
-                        const imageLinks2 = book2.imageLinks ? book2.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
-                        const title3 = book3.title;
-                        const author3 = book3.authors ? book3.authors[0] : "Unknown";
-                        const isbn3 = book3.industryIdentifiers ? book3.industryIdentifiers[0].identifier : "Not available";
-                        const imageLinks3 = book3.imageLinks ? book3.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
-                        const title4 = book4.title;
-                        const author4 = book4.authors ? book4.authors[0] : "Unknown";
-                        const isbn4 = book4.industryIdentifiers ? book4.industryIdentifiers[0].identifier : "Not available";
-                        const imageLinks4 = book4.imageLinks ? book4.imageLinks.thumbnail : "no-image-available.jpg"; // Default image if no thumbnail available
-
-                        var booksHTML = `
-                    <div class="row">
-                    <div class="grid-container">
-                        <section class="book_container">
-                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
-                            <a href="/book_profile/${encodeURIComponent(title1)}/${isbn1}">
-                                <div class="book-image" style="flex: 0 0 30%;">
-                                    <img src="${imageLinks1}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
-                                </div>
-                            </a>
-                            <div class="book-info" style="flex: 1;">
-                                <a href="/book_profile/${encodeURIComponent(title1)}/${isbn1}">
-                                <h3>${title1}</h3>
-                                </a>
-                                <p>${author1}</p>
-                            </div>
-                        </div>
-                        </section>
-
-                        <section class="book_container">
-                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
-                                <a href="/book_profile/${encodeURIComponent(title2)}/${isbn2}">
-                                <div class="book-image" style="flex: 0 0 30%;">
-                                    <img src="${imageLinks2}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
-                                </div>
-                                </a>
-                                <div class="book-info" style="flex: 1;">
-                                    <a href="/book_profile/${encodeURIComponent(title2)}/${isbn2}">
-                                    <h3>${title2}</h3>
-                                    </a>
-                                    <p>${author2}</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="book_container">
-                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
-                                <a href="/book_profile/${encodeURIComponent(title3)}/${isbn3}">
-                                    <div class="book-image" style="flex: 0 0 30%;">
-                                        <img src="${imageLinks3}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
-                                    </div>
-                                </a>
-                                <div class="book-info" style="flex: 1;">
-                                    <a href="/book_profile/${encodeURIComponent(title3)}/${isbn3}">
-                                        <h3>${title3}</h3>
-                                    </a>
-                                    <p>${author3}</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="book_container">
-                            <div class="book" style="display: flex; width: 50%; margin-bottom: 20px;">
-                                <a href="/book_profile/${encodeURIComponent(title4)}/${isbn4}">
-                                    <div class="book-image" style="flex: 0 0 30%;">
-                                        <img src="${imageLinks4}" alt="Book Cover" style="width: 100%; height: 100%; object-fit: contain;">
-                                    </div>
-                                </a>
-                                <div class="book-info" style="flex: 1;">
-                                    <a href="/book_profile/${encodeURIComponent(title4)}/${isbn4}">
-                                        <h3>${title4}</h3>
-                                    </a>
-                                    <p>${author4}</p>
-                                </div>
-                            </div>
-                        </section>
-
-                    </div>
-                    </div>
-                `;
-
-
-                        document.getElementById("output").innerHTML += booksHTML;
-                    }
-                });
-        });
-
-    </script>
 
 {% endblock %}

@@ -318,6 +318,19 @@ footer {
     width: 100%;
 }
 
+.liked-books-list {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+.liked-books-list li {
+    display: inline; /* Display list items inline */
+}
+
+.liked-books-list li:not(:last-child)::after {
+    content: ", "; /* Add comma after each list item except the last one */
+}
 
 /* Styles for screen widths up to 900px */
 @media screen and (max-width: 900px) {

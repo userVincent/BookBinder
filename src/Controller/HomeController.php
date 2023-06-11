@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Repository\BookRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Faker\Guesser\Name;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -119,6 +120,13 @@ class HomeController extends AbstractController
     public function getProfile(Request $request, UserRepository $userRepository): Response
     {
         $user = $this->getUser();
+        $description = $user->getAbout();
+
+        if ($description == null) {
+            $description = '-';
+        }
+        $books = $user->getFavoriteBooks();
+        $number = count($books);
 
         return $this->render('user_profile_private/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -129,7 +137,9 @@ class HomeController extends AbstractController
             'email' => $user->getEmail(),
             'address' => $user->getAddress(),
             'birthday' => $user->getBirthday()->format('Y-m-d'),
-            'favoriteBook' => $user->getFavoriteBooks(),
+            'favoriteBook' => $books,
+            'number' => $number,
+            'description' => $description,
         ]);
     }
 
@@ -137,6 +147,12 @@ class HomeController extends AbstractController
     public function getProfilePublic(Request $request, $id, UserRepository $userRepository): Response
     {
         $user = $userRepository->find($id);
+        $description = $user->getAbout();
+        $books = $user->getFavoriteBooks();
+        $number = count($books);
+        if ($description == null) {
+            $description = '-';
+        }
 
         return $this->render('user_profile_public/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -146,6 +162,8 @@ class HomeController extends AbstractController
             'email' => $user->getEmail(),
             'address' => $user->getAddress(),
             'birthday' => $user->getBirthday()->format('Y-m-d'),
+            'favoriteBook' => $books,
+            'description' => $description,
         ]);
     }
 
