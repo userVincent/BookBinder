@@ -144,6 +144,9 @@ class MeetupsController extends AbstractController
         if(strpos($referer, '/meetups/arrange/library_select') !== false) {
             // Save library ID to session
             $meetupData = $session->get('meetupData', []);
+            if ($libraryId === 'null') {
+                $libraryId = null;
+            }
             $meetupData['libraryId'] = $libraryId;
             $session->set('meetupData', $meetupData);
         }

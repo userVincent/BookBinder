@@ -254,16 +254,18 @@ class HomeControllerTest extends WebTestCase
         $this->assertSelectorTextContains('.data-user-name > h3',$this->user2->getLastName());
 
     }
-//    /**
-//     * @depends testResponse
-//     */
-//    public function testPeopleSelect()
-//    {
-//        // @TODO Finish the test after the twig file is ready
-//        // Simulate a GET request to the '/profile' URL
-////        $this->crawler = $this->client->request('GET', '/peopleselect');
-//
-//    }
+    /**
+     * @depends testResponse
+     */
+    public function testPeopleSelect()
+    {
+
+        // Simulate a GET request to the '/profile' URL
+       $this->crawler = $this->client->request('GET', '/peopleselect');
+        $this->assertSelectorTextContains('#subtitle','Meet book lovers');
+        $this->assertSelectorTextContains('main > h2','Search for a Book Lover!!');
+
+    }
 
     /**
      * @depends testResponse

@@ -9,8 +9,9 @@
 
     <ul>
         {% for book in books %}
-            <li>{{ book.title }} by <b>{{ book.author }}</b></li>
-            <p>This book contains {{ book.pages }} pages</p>
+{#            <li>{{ book.title }} by <b>{{ book.author }}</b></li>#}
+            <li>{{ book.title }} </li>
+{#            <p>This book contains {{ book.pages }} pages</p>#}
             <p>The ISBN of the book is {{ book.ISBN }}</p>
         {% endfor %}
     </ul>

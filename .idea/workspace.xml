@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c005e1fb-ad51-4983-812a-07a7513c0c64" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/SessionHelperTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/application/Controller/BookprofileControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/application/Controller/MeetupsControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/application/Controller/ProfileControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CreateMeetupController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MeetupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MeetupsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserProfilePrivateController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/LibraryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LibraryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/application/Controller/HomeControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/Controller/HomeControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +203,7 @@
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2PjrLFUh7AC0HbUlWWTu7CYV2wN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -213,11 +230,12 @@
       <recent name="C:\Users\Tomas\OneDrive\Documenten\3de BAC\Semester_2\Software_Engineering_and_Web_Technology\a22web38\templates\libraries" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.phpunit">
+  <component name="RunManager" selected="PHPUnit.MeetupsControllerTest.testCreateMeetupNullLibrary">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Bookbinder" />
       <method v="2">
@@ -231,24 +249,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HomeControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\application\Controller\HomeControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/HomeControllerTest.php" scope="Class" />
+    <configuration name="MeetupsControllerTest.testCreateMeetup" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\application\Controller\MeetupsControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/MeetupsControllerTest.php" method="testCreateMeetup" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="LibrariesControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\application\Controller\LibrariesControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" scope="Class" />
+    <configuration name="MeetupsControllerTest.testCreateMeetupInvaildLibrary" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\application\Controller\MeetupsControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/MeetupsControllerTest.php" method="testCreateMeetupInvaildLibrary" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="LibrariesControllerTest.testGetDataWithoutName" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\application\Controller\LibrariesControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" method="testGetDataWithoutName" scope="Method" />
+    <configuration name="MeetupsControllerTest.testCreateMeetupNullLibrary" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\application\Controller\MeetupsControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/MeetupsControllerTest.php" method="testCreateMeetupNullLibrary" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="LibrariesControllerTest.testResponse" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\application\Controller\LibrariesControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" method="testResponse" scope="Method" />
+    <configuration name="UserTest.testRemoveMeetup2" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\unit\Entity\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" method="testRemoveMeetup2" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="LibrariesControllerTest.testShow" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\application\Controller\LibrariesControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" method="testShow" scope="Method" />
+    <configuration name="UserTest.testRemoveMeetupLocally2" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\unit\Entity\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" method="testRemoveMeetupLocally2" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -266,19 +284,19 @@
     <list>
       <item itemvalue="PHP Built-in Web Server.webserver" />
       <item itemvalue="PHPUnit.phpunit" />
-      <item itemvalue="PHPUnit.LibrariesControllerTest" />
-      <item itemvalue="PHPUnit.LibrariesControllerTest.testGetDataWithoutName" />
-      <item itemvalue="PHPUnit.LibrariesControllerTest.testResponse" />
-      <item itemvalue="PHPUnit.LibrariesControllerTest.testShow" />
-      <item itemvalue="PHPUnit.HomeControllerTest" />
+      <item itemvalue="PHPUnit.MeetupsControllerTest.testCreateMeetupInvaildLibrary" />
+      <item itemvalue="PHPUnit.MeetupsControllerTest.testCreateMeetupNullLibrary" />
+      <item itemvalue="PHPUnit.UserTest.testRemoveMeetup2" />
+      <item itemvalue="PHPUnit.UserTest.testRemoveMeetupLocally2" />
+      <item itemvalue="PHPUnit.MeetupsControllerTest.testCreateMeetup" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.LibrariesControllerTest" />
-        <item itemvalue="PHPUnit.LibrariesControllerTest.testShow" />
-        <item itemvalue="PHPUnit.LibrariesControllerTest.testGetDataWithoutName" />
-        <item itemvalue="PHPUnit.LibrariesControllerTest.testResponse" />
-        <item itemvalue="PHPUnit.HomeControllerTest" />
+        <item itemvalue="PHPUnit.MeetupsControllerTest.testCreateMeetupNullLibrary" />
+        <item itemvalue="PHPUnit.MeetupsControllerTest.testCreateMeetupInvaildLibrary" />
+        <item itemvalue="PHPUnit.MeetupsControllerTest.testCreateMeetup" />
+        <item itemvalue="PHPUnit.UserTest.testRemoveMeetup2" />
+        <item itemvalue="PHPUnit.UserTest.testRemoveMeetupLocally2" />
       </list>
     </recent_temporary>
   </component>
@@ -313,6 +331,7 @@
       <workItem from="1686216017868" duration="4586000" />
       <workItem from="1686243680239" duration="8077000" />
       <workItem from="1686365594035" duration="1879000" />
+      <workItem from="1686420400231" duration="30747000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1686214170308</created>
@@ -379,21 +398,47 @@
     <MESSAGE value="Make previous button block in select library" />
     <option name="LAST_COMMIT_MESSAGE" value="Make previous button block in select library" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/base.html.twig</url>
+          <line>66</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/bookBinder@LibrariesControllerTest.xml" NAME="LibrariesControllerTest Coverage Results" MODIFIED="1686358915096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/bookBinder@PageRouteTest_testAuthenticatedRouteLibraries.xml" NAME="PageRouteTest.testAuthenticatedRouteLibraries Coverage Results" MODIFIED="1686251568973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/bookBinder@RegistrationControllerTest.xml" NAME="RegistrationControllerTest Coverage Results" MODIFIED="1686261326277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/bookBinder@HomeControllerTest.xml" NAME="HomeControllerTest Coverage Results" MODIFIED="1686350932661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/bookBinder@phpunit_xml_dist.xml" NAME="phpunit.xml.dist Coverage Results" MODIFIED="1685317046414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@ProfileControllerTest_testIndex.xml" NAME="ProfileControllerTest.testIndex Coverage Results" MODIFIED="1686445118236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@UserTest_testRemoveMeetupLocally2.xml" NAME="UserTest.testRemoveMeetupLocally2 Coverage Results" MODIFIED="1686465436060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@UserTest_testRemoveMeetup2.xml" NAME="UserTest.testRemoveMeetup2 Coverage Results" MODIFIED="1686465671115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest.xml" NAME="MeetupsControllerTest Coverage Results" MODIFIED="1686430410921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@BookTest.xml" NAME="BookTest Coverage Results" MODIFIED="1686271011360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@phpunit.xml" NAME="phpunit Coverage Results" MODIFIED="1686465681992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@HomeControllerTest.xml" NAME="HomeControllerTest Coverage Results" MODIFIED="1686409012547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@UserTest_testRemoveMeetup.xml" NAME="UserTest.testRemoveMeetup Coverage Results" MODIFIED="1686450331618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testCreateMeetupInvaildLibrary.xml" NAME="MeetupsControllerTest.testCreateMeetupInvaildLibrary Coverage Results" MODIFIED="1686468364535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@LibrariesControllerTest.xml" NAME="LibrariesControllerTest Coverage Results" MODIFIED="1686408981676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@PageRouteTest_testAuthenticatedRouteLibraries.xml" NAME="PageRouteTest.testAuthenticatedRouteLibraries Coverage Results" MODIFIED="1686251568973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/bookBinder@UserTest.xml" NAME="UserTest Coverage Results" MODIFIED="1686270060463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testLibrarySelect.xml" NAME="MeetupsControllerTest.testLibrarySelect Coverage Results" MODIFIED="1686427915736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testCreateMeetup.xml" NAME="MeetupsControllerTest.testCreateMeetup Coverage Results" MODIFIED="1686466629092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testSelectLibrary.xml" NAME="MeetupsControllerTest.testSelectLibrary Coverage Results" MODIFIED="1686428773894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testPersonSelect.xml" NAME="MeetupsControllerTest.testPersonSelect Coverage Results" MODIFIED="1686429214298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@ProfileControllerTest.xml" NAME="ProfileControllerTest Coverage Results" MODIFIED="1686445711938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@BookprofileControllerTest.xml" NAME="BookprofileControllerTest Coverage Results" MODIFIED="1686443397387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@phpunit_xml_dist.xml" NAME="phpunit.xml.dist Coverage Results" MODIFIED="1685317046414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@UserTest_testRemoveMeetupLocally.xml" NAME="UserTest.testRemoveMeetupLocally Coverage Results" MODIFIED="1686451207316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/bookBinder@LibraryTest.xml" NAME="LibraryTest Coverage Results" MODIFIED="1686272355439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/bookBinder@PageRouteTest_testAuthenticatedRouteProfile.xml" NAME="PageRouteTest.testAuthenticatedRouteProfile Coverage Results" MODIFIED="1686253812083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/bookBinder@LibrariesControllerTest_testShow.xml" NAME="LibrariesControllerTest.testShow Coverage Results" MODIFIED="1686358795905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/bookBinder@BookTest.xml" NAME="BookTest Coverage Results" MODIFIED="1686271011360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/bookBinder@phpunit.xml" NAME="phpunit Coverage Results" MODIFIED="1686399488103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testArrangeMeetup.xml" NAME="MeetupsControllerTest.testArrangeMeetup Coverage Results" MODIFIED="1686427504892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bookBinder@MeetupsControllerTest_testCreateMeetupNullLibrary.xml" NAME="MeetupsControllerTest.testCreateMeetupNullLibrary Coverage Results" MODIFIED="1686468378051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

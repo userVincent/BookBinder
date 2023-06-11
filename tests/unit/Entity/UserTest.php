@@ -11,9 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;
 use DateTime;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\File\File;
 
-class UserTest extends TestCase
+class UserTest extends KernelTestCase
 {
     private $user;
     private $library;
@@ -165,13 +166,60 @@ class UserTest extends TestCase
         $this->assertEquals($this->time,$this->meetup->getTime());
 
     }
-//    public function testRemoveMeetup()
-//    {
-////        $meetupRepository = $this->createMock(ObjectRepository::class);
-////
-////        $gotMeetup = $this->user->removeMeetup($this->meetup,$meetupRepository)->getMeetups();
-//        $this->assertNotContains($this->meetup,$gotMeetup);
-//    }
+    public function testRemoveMeetup()
+    {
+        $kernel = self::bootKernel();
+
+        $entityManager = $kernel->getContainer()
+            ->get('doctrine')
+            ->getManager();
+        $meetupRepository = $entityManager->getRepository(Meetup::class);
+
+        $gotMeetup = $this->user->removeMeetup($this->meetup,$meetupRepository)->getMeetups();
+        $this->assertNotContains($this->meetup,$gotMeetup);
+    }
+    public function testRemoveMeetup2()
+    {
+        $kernel = self::bootKernel();
+
+        $entityManager = $kernel->getContainer()
+            ->get('doctrine')
+            ->getManager();
+        $meetupRepository = $entityManager->getRepository(Meetup::class);
+        $meetup2 = new Meetup();
+        $library2 = new Library();
+        $library2->setName('testLibrary2');
+        $date = new DateTime();
+        $time = new DateTime();
+        $this->user->addMeetup($meetup2, $this->person2, $library2, $date, $time);
+        $meetup2->setPerson1($this->person2);
+        $meetup2->setPerson2($this->user);
+
+        $this->assertEquals($this->user->getId(),$meetup2->getPerson2()->getId());
+        $gotMeetup2 = $this->user->removeMeetup($meetup2,$meetupRepository)->getMeetups();
+        $this->assertNotContains($meetup2,$gotMeetup2);
+    }
+    public function testRemoveMeetupLocally()
+    {
+        $gotMeetup = $this->user->removeMeetupLocally($this->meetup)->getMeetups();
+        $this->assertNotContains($this->meetup,$gotMeetup);
+
+    }
+    public function testRemoveMeetupLocally2()
+    {
+        $meetup2 = new Meetup();
+        $library2 = new Library();
+        $library2->setName('testLibrary2');
+        $date = new DateTime();
+        $time = new DateTime();
+        $this->user->addMeetup($meetup2, $this->person2, $library2, $date, $time);
+        $meetup2->setPerson1($this->person2);
+        $meetup2->setPerson2($this->user);
+
+        $this->assertEquals($this->user->getId(),$meetup2->getPerson2()->getId());
+        $gotMeetup2 = $this->user->removeMeetupLocally($meetup2)->getMeetups();
+        $this->assertNotContains($meetup2,$gotMeetup2);
+    }
 
 //meetup not finished
     public function testFavoriteBooksGettersAndSetters()

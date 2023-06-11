@@ -20,6 +20,7 @@
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests</directory>
+<!--            <exclude>./tests/TestCase.php</exclude>-->
         </testsuite>
     </testsuites>
 
@@ -27,7 +28,14 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <file>src/Kernel.php</file>
+            <file>src/Security/AuthenticationEntryPoint.php</file>
+            <directory>src/DataFixtures/</directory>
+        </exclude>
     </coverage>
+
+
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
