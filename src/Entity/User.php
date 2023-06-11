@@ -57,7 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Library::class, mappedBy: 'members')]
     private Collection $libraries;
 
-    #[ORM\OneToMany(mappedBy: 'person', targetEntity: Meetup::class)]
+    #[ORM\OneToMany(mappedBy: 'person1', targetEntity: Meetup::class)]
     private Collection $meetups;
 
     /**

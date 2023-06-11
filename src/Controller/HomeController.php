@@ -207,6 +207,15 @@ class HomeController extends AbstractController
     public function getPeople(Request $request, UserRepository $userRepository): JsonResponse
     {
         $searchQuery = $request->request->get('searchQuery');
+
+        $user = $this->getUser();
+        $user = $userRepository->find($user);
+        if (!$user) {
+            $userId = 0;
+        } else{
+            $userId = $user->getId();
+        }
+
         $users = $userRepository->searchUsers($searchQuery);
 
         if (empty($users)) {
@@ -215,12 +224,15 @@ class HomeController extends AbstractController
 
         $results = [];
         foreach ($users as $user) {
-            $results[] = [
-                'firstname' => $user->getFirstName(),
-                'lastname' => $user->getLastName(),
-                'id' => $user->getId(),
-                'profilepicFilename' => $user->getProfilepicFilename(),
-            ];
+            if($user->getId() != $userId){
+                $results[] = [
+                    'firstname' => $user->getFirstName(),
+                    'lastname' => $user->getLastName(),
+                    'id' => $user->getId(),
+                    'profilepicFilename' => $user->getProfilepicFilename(),
+                ];
+            }
+            
         }
 
         return new JsonResponse($results);
