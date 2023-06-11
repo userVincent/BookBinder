@@ -50,6 +50,7 @@ function displaySearchResults(results) {
     sessionStorage.setItem('searchResults', JSON.stringify(results));
 }
 
+
 function sendRequest(userId) {
     window.location.href = `/meetups/arrange/create_meetup/${userId}`;
 }

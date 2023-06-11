@@ -35,7 +35,7 @@
                         {% set hasMeetupStateOne = true %}
                         <div class="profile">
                             {% if meetup.person1.id == user.id %}
-                                <img id="profile_picture" src="{{ meetup.person2.profilepicFile }}" alt="Profile picture">
+                                <img src="{{ asset('uploads/profilepics/' ~ meetup.person2.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
                                 <div class="person">
                                     <h2>{{ meetup.person2.firstName }}</h2>
                                     <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
@@ -44,7 +44,7 @@
                                     <a href="#"><i class="fa fa-linkedin"></i></a><br>
                                 </div>
                             {% else %}
-                                <img id="profile_picture" src="{{ meetup.person1.profilepicFile }}" alt="Profile picture">
+                                <img src="{{ asset('uploads/profilepics/' ~ meetup.person1.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
                                 <div class="person">
                                     <h2>{{ meetup.person1.firstName }}</h2>
                                     <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
@@ -84,7 +84,7 @@
                         {% set hasMeetupStateOne = true %}
                         <div class="profile">
                             {% if meetup.person1.id == user.id %}
-                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <img src="{{ asset('uploads/profilepics/' ~ meetup.person2.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
                                 <div class="person">
                                     <h2>{{ meetup.person2.firstName }}</h2>
                                     <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
@@ -93,7 +93,7 @@
                                     <a href="#"><i class="fa fa-linkedin"></i></a><br>
                                 </div>
                             {% else %}
-                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <img src="{{ asset('uploads/profilepics/' ~ meetup.person1.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
                                 <div class="person">
                                     <h2>{{ meetup.person1.firstName }}</h2>
                                     <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
@@ -132,7 +132,7 @@
                         {% set hasMeetupStateOne = true %}
                         <div class="profile">
                             {% if meetup.person1.id == user.id %}
-                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <img src="{{ asset('uploads/profilepics/' ~ meetup.person2.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
                                 <div class="person">
                                     <h2>{{ meetup.person2.firstName }}</h2>
                                     <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>
@@ -149,7 +149,7 @@
                                     </form>
                                 </div>
                             {% else %}
-                                <img id="profile_picture" src="{{ asset('images/Profile.png') }}" alt="Profile picture">
+                                <img src="{{ asset('uploads/profilepics/' ~ meetup.person1.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
                                 <div class="person">
                                     <h2>{{ meetup.person1.firstName }}</h2>
                                     <a href="/library/{{ meetup.library.id }}" class="Library">Location: {{ meetup.library.name }}</a><br><br>

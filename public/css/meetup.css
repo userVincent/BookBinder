@@ -123,11 +123,14 @@ div.ProfileBox {
     background-color: indianred;
     color: white;
     padding: 14px 20px;
-    margin: 8px 5px;
     border: none;
     cursor: pointer;
     border-radius: 20px;
     font-size: 15px;
+}
+
+.date {
+    text-align: right;
 }
 
 .accept {
@@ -180,4 +183,12 @@ div.ProfileBox {
 
 a {
     text-decoration: none;
+}
+
+.profile-picture {
+    padding: 10px;
+    border-radius: 20px;
+    width: 120px;
+    height: 120px;
+    text-align: center;
 }

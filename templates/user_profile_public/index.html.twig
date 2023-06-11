@@ -16,7 +16,7 @@
 
     <section id="upper_main">
         <div class="picture">
-            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture" class="profile-picture">
+            <img src="{{ asset('uploads/profilepics/' ~ user.profilepicFilename) }}" onerror="this.src='{{ asset('images/profile.png') }}'" class="profile-picture">
             <h1 class="user-name">{{ firstname ~ " " ~ lastname }}</h1>
         </div>
 
