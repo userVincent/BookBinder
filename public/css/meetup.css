@@ -1,15 +1,15 @@
-.tab {
-    overflow: hidden;
-}
-.profile-row {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    clear: both;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-}
+/*.tab {*/
+/*    overflow: hidden;*/
+/*}*/
+/*.profile-row {*/
+/*    margin-top: 30px;*/
+/*    margin-bottom: 20px;*/
+/*    clear: both;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-between;*/
+/*}*/
 
 .profile {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
