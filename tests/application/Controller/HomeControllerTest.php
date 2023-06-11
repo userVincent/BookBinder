@@ -285,6 +285,7 @@ class HomeControllerTest extends WebTestCase
                 'firstname' => 'Shusaku',
                 'lastname' => 'Segawa',
                 'id' => $this->user2->getId(),
+                'profilepicFilename' => $this->user2->getProfilepicFilename(),
             ],
             // Add more expected results as needed
         ];

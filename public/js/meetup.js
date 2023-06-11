@@ -39,7 +39,7 @@ function displaySearchResults(results) {
         var result = results[i];
         resultHTML += '<a class="check-profile" href="/profile/public/' + result.id + '"><div class="profile">';
         resultHTML += '<div class="profile-content">';
-        resultHTML += '<div class="ProfileBox"><img class="profile-img" src="' + result.image + '" alt="Profile picture"></div>';
+        resultHTML += '<div class="ProfileBox"><img class="profile-img" src="/uploads/profilepics/' + result.profilepicFilename + '" alt="Profile picture"></div>';
         resultHTML += '<div><h3>' + result.firstname + ' ' + result.lastname + '</h3></div>';
         resultHTML += '</div></a>';
         resultHTML += '<button class="selectButton" onclick="sendRequest(' + result.id + ')">Send request</button>';

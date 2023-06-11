@@ -219,6 +219,7 @@ class HomeController extends AbstractController
                 'firstname' => $user->getFirstName(),
                 'lastname' => $user->getLastName(),
                 'id' => $user->getId(),
+                'profilepicFilename' => $user->getProfilepicFilename(),
             ];
         }
 
