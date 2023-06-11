@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="c005e1fb-ad51-4983-812a-07a7513c0c64" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/tests/SessionHelperTrait.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tests/application/Controller/BookprofileControllerTest.php" afterDir="false" />
@@ -40,6 +41,24 @@
       <change beforePath="$PROJECT_DIR$/tests/application/Controller/HomeControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/Controller/HomeControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/application/Controller/LibrariesControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/Entity/UserTest.php" afterDir="false" />
+=======
+    <list default="true" id="bccc6749-9c85-4ed0-8397-f9b9390964be" name="Changes" comment="Refactoring.&#10;Removed javascript code within twig files/&#10;Still one needs to be removed from user_profile to show favorite books.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_2023_13_50_[Changes]1/Profile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_2023_13_50_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_2023_13_50__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_11_39_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_11_39_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_2_18_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_2_18_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_2_18_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_1_2023_2_18_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_11_39_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_11_39_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_12_30_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_1_2023_12_30_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/bookprofile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bookprofile.js" afterDir="false" />
+>>>>>>> origin/shusaku_segawa
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,6 +353,7 @@
       <workItem from="1685386754317" duration="29279000" />
       <workItem from="1685921924753" duration="3324000" />
       <workItem from="1686169718606" duration="447000" />
+<<<<<<< HEAD
       <workItem from="1686173362985" duration="1105000" />
       <workItem from="1685386754317" duration="6305000" />
       <workItem from="1685612107334" duration="6721000" />
@@ -348,6 +368,10 @@
       <workItem from="1686243680239" duration="8077000" />
       <workItem from="1686365594035" duration="1879000" />
       <workItem from="1686420400231" duration="30747000" />
+=======
+      <workItem from="1686173362985" duration="1412000" />
+      <workItem from="1686416792397" duration="1217000" />
+>>>>>>> origin/shusaku_segawa
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1686214170308</created>
@@ -377,6 +401,7 @@
       <option name="project" value="LOCAL" />
       <updated>1686220527940</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00005" summary="Make previous button block in select library">
       <created>1686248055427</created>
       <option name="number" value="00005" />
@@ -385,6 +410,16 @@
       <updated>1686248055427</updated>
     </task>
     <option name="localTasksCounter" value="6" />
+=======
+    <task id="LOCAL-00002" summary="Refactoring.&#10;Removed javascript code within twig files/&#10;Still one needs to be removed from user_profile to show favorite books.">
+      <created>1686174522640</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686174522640</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+>>>>>>> origin/shusaku_segawa
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,6 +439,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="peopleseelct file" />
+<<<<<<< HEAD
     <MESSAGE value="Search result design is fixed.&#10;Better alignment, no overlap between the titles.&#10;no-image-available.png is also shown in case image is not available." />
     <MESSAGE value="Library page shows only first map" />
     <MESSAGE value="date form + previous button" />
@@ -424,6 +460,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+=======
+    <MESSAGE value="Refactoring.&#10;Removed javascript code within twig files/&#10;Still one needs to be removed from user_profile to show favorite books." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring.&#10;Removed javascript code within twig files/&#10;Still one needs to be removed from user_profile to show favorite books." />
+>>>>>>> origin/shusaku_segawa
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
