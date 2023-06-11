@@ -52,12 +52,38 @@ class LibraryRepository extends ServiceEntityRepository
 
     public function findByTown($town, $limit, $offset)
     {
+        $subQuery = $this->createQueryBuilder('l2')
+            ->select('MIN(l2.id)')
+            ->where('l2.Town LIKE :Town')
+            ->groupBy('l2.name')
+            ->getQuery()
+            ->getDQL();
+
         return $this->createQueryBuilder('l')
             ->where('l.Town LIKE :Town')
+            ->andWhere('l.id IN (' . $subQuery . ')')
             ->setParameter('Town', '%'.$town.'%')
             ->setMaxResults($limit)
             ->setFirstResult($offset)
             ->getQuery()
+            ->getResult();
+    }
+
+    public function findDistinctNames($size, $offset)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT l
+                FROM App:Library l
+                WHERE l.id IN (
+                    SELECT MIN(l2.id)
+                    FROM App:Library l2
+                    GROUP BY l2.name
+                )
+                ORDER BY l.id ASC'
+            )
+            ->setMaxResults($size)
+            ->setFirstResult($offset)
             ->getResult();
     }
 

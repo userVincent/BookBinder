@@ -24,7 +24,7 @@ class LibrariesController extends AbstractController
         $town = $request->query->get('town');
 
         if($town == null){
-            $libraries = $libraryRepository->findBy([], null, $size, $offset);
+            $libraries = $libraryRepository->findDistinctNames( $size, $offset);
         }
         else{
             // town should be a substring of the library town

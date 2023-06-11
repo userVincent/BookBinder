@@ -61,7 +61,7 @@ class LibrariesControllerTest extends WebTestCase
         $size = 10;
         $page = 1;
         $offset = ($page - 1) * $size;
-        $libraries = $this->libraryRepository->findBy([], null, $size, $offset);
+        $libraries = $this->libraryRepository->findDistinctNames( $size, $offset);
 
         // Assert the response content
         $expectedData = [];
