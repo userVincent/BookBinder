@@ -126,7 +126,7 @@ class MeetupsController extends AbstractController
     }
 
     // BACKWARD LIBRARY SELECT (FROM SELECING PERSON)
-    #[Route('/meetups/arrange/library_select', name: 'library_select_backward')]
+    #[Route('/meetups/arrange/library_select_b', name: 'library_select_backward')]
     public function selectLibrary(): Response
     {
         // Render the HTML page
